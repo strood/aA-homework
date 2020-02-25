@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Description" content="The famous soup of the day recipe, made from scratch from fresh ingredients, classic home cooking."
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>My Recipe Page</title>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      
+        ga('create', 'UA-12345678-9', 'auto');
+        ga('send', 'pageview');
+      
+      </script>
+      <script type="text/javascript" src="external_javascript_example.js"></script>
+      <link rel="stylesheet" href="css_reset.css" type="text/css">
+</head>
+<body>
+    <header>    
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Appacademylogo.png" style="width: 5em; height: 5em;">
+        <nav>   
+            <ul>
+                <a href="#description">Description</a>
+                <a href="#ingredients">Ingredients</a>
+                <a href="#directions">Directions</a> 
+            </ul>
+        </nav>
+    </header>
+    <h1>Soup of the Day</h1>
+   <aside>
+    <h2>Ingredients</h2>
+
+    <p>
+        <ul>
+            <li>Broth</li>
+            <li>Veggies</li>
+            <li>Beans</li>
+            <li>Chicken</li>
+        </ul>
+
+    </p>
+   </aside>
+
+   <section>
+    <h2>Description</h2>
+    <p>
+        My soup of the day is the best soup! It combines all the freshest ingredients, with a loving preparation 
+        to bring out the best in each element. You can read more <a href="https://en.wikipedia.org/wiki/Soup">here</a> 
+    </p>
+    <figure>
+        <img src="http://images.media-allrecipes.com/userphotos/150x150/5454427.jpg" alt="A hearty bowl of soup" />
+    <figcaption>
+        <a href="https://en.wikipedia.org/wiki/Soup">Wiki</a>
+    </figcaption>
+    </figure>
+    
+    
+
+    <h2>Directions</h2>
+    <ol>
+        <li>Chop veggies and boil broth</li>
+        <li>Add chicken and beans to broth</li>
+        <li>Add veggies to pot</li>
+        <li>Simmer for 4 hours</li>
+    </ol>
+
+    
+    </section>
+    <section id="reviews">
+        <form action="/reviews" method="post" id="review-form">
+            <label for="rname">
+                Reviwer Name:
+            </label>
+                <input type="text" id="rname" name="name">
+            <label for="rating">Rating:</label>
+
+            1<input type="radio" name="rating" value="1" checked>
+                2<input type="radio" name="rating" value="2">
+                3<input type="radio" name="rating" value="3">
+                4<input type="radio" name="rating" value="4">
+                5<input type="radio" name="rating" value="5">
+                    
+            <label for="expertise">
+                Cooking Expertise:
+            </label>
+                <select id="expertise" name="expertise">
+                    <option value="Select Cooking Expertise" disabled="true" selected >Select Cooking Expertise</option>
+                    <option value="Sometimes Cook">Sometimes Cook</option>
+                    <option value="Cook Everyday">Cook Everyday</option>
+                    <option value="Cooking as Hobby">Cooking as Hobby</option>
+                    <option value="Professional Chef">Professional Chef</option>
+                    </select>
+            <section>
+                <label>
+                    Review:
+                    <textarea name="review" cols="30" rows="10"></textarea>
+                </label>
+            </section>
+            <input type="submit" value="submit-review">
+        </form>
+    </section>
+    <footer>
+        <p>The original recipe author, my ramsay, said it was "Fantastic. Light soup that is super flavor some."
+            <a href="https://www.yummly.com/recipe/Easy-Roasted-Tomato-Soup-2287716?prm-v1">Ramsays recipe</a>
+        </p>
+    </footer>  
+</body>
+</html>
