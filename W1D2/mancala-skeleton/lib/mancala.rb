@@ -1,5 +1,5 @@
-require_relative 'board'
-require_relative 'player'
+require_relative "board"
+require_relative "player"
 
 class Mancala
   def initialize(name1, name2)
@@ -33,7 +33,7 @@ class Mancala
           @board.valid_move?(start_pos)
         rescue Exception => e
           puts e.message
-        retry
+          retry
         end
         move_result = @board.make_move(start_pos, current_player.name)
       else
@@ -44,7 +44,7 @@ class Mancala
   end
 
   def won?
-     @board.one_side_empty?
+    @board.one_side_empty?
   end
 
   def winner_message
@@ -62,3 +62,7 @@ class Mancala
     puts " 1   2   3   4   5   6"
   end
 end
+
+m = Mancala.new("Jim", "Bob")
+
+m.play
