@@ -1,5 +1,5 @@
-require 'rspec'
-require 'p06_lru_cache'
+require "rspec"
+require "p06_lru_cache"
 
 describe LRUCache do
   describe "#get" do
