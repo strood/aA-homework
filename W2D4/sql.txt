@@ -1,0 +1,366 @@
+Databases
+The Ruby objects you create during the lifetime of your program will die when it closes. To save (or persist) data, you need to somehow write the data to permanent storage, like the hard disk. We saw some of this in the serialization chapter.
+
+Applications usually also require rich relationships between pieces of data. Consider a blogging system: users have many posts, posts have many tags, users may be following other users, and so on.
+
+Relational databases (also sometimes referred to as RDBMS, relational database management systems) were developed to provide a means of organizing data and their relationships, persisting that data, and querying that data.
+
+Tables
+Relational databases organize data in tables.
+
+id	name	age
+1	John	22
+2	James	24
+3	Sally	54
+4	Bob	48
+5	Lucy	33
+6	Mary	98
+Each row is a single entity in the table. Each column houses an additional piece of data for that entity.
+
+Every row in a database table will have a primary key which will be its unique identifier in that table row. By convention, the primary key is simply id. Most relational database systems have an auto-increment feature to ensure that the primary keys are always unique.
+
+Breaking your domain down into database tables & columns is an important part of developing any application. Each table will house one type of resource: people, houses, blog_posts, etc. The columns in the table will house the data associated with each instance of the resource.
+
+Database Schemas
+Your database schema is a description of the organization of your database into tables and columns.
+
+Designing your schema is one of the first and most important steps when writing an application. It forces you to ask a basic but essential question: what data does my application need to function?
+
+When implementing a database schema, you must decide on three things:
+
+the tables you will have
+the columns each of those tables will have
+and the data type of each of those columns
+Schemas are mutable, so the decisions up front are not at all set in stone. Still, you should spend time thinking about your schema at the outset to avoid making major, avoidable mistakes.
+
+The concept of static typing may be new to you. Ruby is dynamically typed -- there is no need to specify in method parameters or variables the class (also called type) of the data stored in it. Ruby won't stop you even if you store something silly like a Cat object in a variable named favorite_dog, or a String in a variable named number.
+
+SQL is not quite so flexible; you must specify the type of data that will go into each column.
+
+Here are a few of the most common datatypes:
+
+BOOLEAN
+INT
+FLOAT (stores "floating point" numbers)
+VARCHAR(255) (essentialy a string with a length limit of 255 chars)
+TEXT (a string of unlimited length)
+DATE
+DATETIME
+TIME
+BLOB (non-textual, binary data; e.g., an image)
+We'll see how exactly we create tables, include columns, and specify column types in just a bit.
+
+Modeling Relationships
+Now we have a way to store users and additional bits of data on them, but how would we store associated entities like a blog post written by a user?
+
+We probably have the sense that they should be in their own tables since they're not really additional attributes on a user (which would call for additional columns), nor are they users themselves (which would call for additional rows). But if posts were in their own table, how would we know that they were associated with a particular user?
+
+We model these relationships between entries in separate tables through foreign keys. A foreign key is a value in a database table whose responsibility is to point to a row in a different table. Check out the posts table below (and pretend that people were a bit more creative in their titles and bodies).
+
+posts table:
+
+id |   title   |     body    |  user_id
+---------------------------------------
+1  |  'XXXX'   |   'xyz...'  |    3
+2  |  'XXXX'   |   'xyz...'  |    5
+3  |  'XXXX'   |   'xyz...'  |    7
+4  |  'XXXX'   |   'xyz...'  |    10
+5  |  'XXXX'   |   'xyz...'  |    2
+6  |  'XXXX'   |   'xyz...'  |    5
+The user_id column is a foreign key column. If we wanted to find all the posts for the user with id 5, we'd look in the posts table and retrieve all the posts where the user_id column had a value of 5. If you already know a little SQL:
+
+SELECT
+  *
+FROM
+  posts
+WHERE
+  posts.user_id = 5
+By convention, the foreign key in one table will reference the primary key in another table. We usually call the column that houses the foreign key [other_table_name_singularized]_id.
+
+Foreign keys are how we model relationships between pieces of data across multiple tables. This also allows us to ensure that data is not duplicated across our database. Posts live in a single place, users in another, and the foreign key (user_id) in posts expresses the relation between the one and the other.
+
+Structured Query Language (SQL)
+Now that we know what these tables look like and generally how relationships are modeled between them, how do we actually get at the data?
+
+Enter SQL. SQL is a domain-specific language that's designed to query data out of relational databases.
+
+Here's a sample SQL query (we'll break it down in just a second):
+
+-- Find crazy cat people
+SELECT
+  name, age, has_cats
+FROM
+  tenants
+WHERE
+  (has_cats = true AND age > 50)
+SQL queries are broken down into clauses. Here, there is the SELECT clause, the FROM clause, and the WHERE clause. SELECT takes a list of comma-separated column names; only these columns of data will be retrieved. FROM takes a table name to query. WHERE takes a list of conditions separated by AND or OR; only rows matching these conditions are returned..
+
+SQL provides powerful filtering with WHERE; it supports the standard comparison and equality operators (<, >, >=, <=, =, !=) as well as boolean operators (AND, OR, NOT).
+
+There are 4 main data manipulation operations that SQL provides:
+
+SELECT: retrieve values from one or more rows
+INSERT: insert a row into a table
+UPDATE: update values in one or more existing rows
+DELETE: delete one or more rows
+Below are brief descriptions of each of the operators syntactical signatures and a couple simple examples of their use:
+
+SELECT
+Structure:
+
+SELECT
+  one or more columns (or all columns with *)
+FROM
+  one (or more tables, joined with JOIN)
+WHERE
+  one (or more conditions, joined with AND/OR);
+Examples:
+
+SELECT
+  *
+FROM
+  users
+WHERE
+  name = 'Ned';
+
+SELECT
+  account_number, account_type
+FROM
+  accounts
+WHERE
+  (customer_id = 5 AND account_type = 'checking');
+INSERT
+Structure:
+
+INSERT INTO
+  table name (column names)
+VALUES
+  (values);
+Examples:
+
+INSERT INTO
+  users (name, age, height_in_inches)
+VALUES
+  ('Santa Claus', 876, 34);
+
+INSERT INTO
+  accounts (account_number, customer_id, account_type)
+VALUES
+  (12345, 76, 'savings');
+UPDATE
+Structure:
+
+UPDATE
+  table_name
+SET
+  col_name1 = value1,
+  col_name2 = value2
+WHERE
+  conditions
+Examples:
+
+UPDATE
+  users
+SET
+  name = 'Eddard Stark', house = 'Winterfell'
+WHERE
+  name = 'Ned Stark';
+
+UPDATE
+  accounts
+SET
+  balance = 30
+WHERE
+  id = 6;
+DELETE
+Structure:
+
+DELETE FROM
+  table_name
+WHERE
+  conditions
+Examples:
+
+DELETE FROM
+  users
+WHERE
+  (name = 'Eddard Stark' AND house = 'Winterfell');
+
+DELETE FROM
+  accounts
+WHERE
+  customer_id = 666;
+Schema Definitions
+Before basic querying can take place though, you need to actually define your database schema. There are three operators that SQL provides to manipulate a database schema:
+
+CREATE TABLE
+ALTER TABLE
+DROP TABLE
+Here's an example of creating a users table (we'll break it down shortly):
+
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  birth_date DATE,
+  house VARCHAR(255),
+  favorite_food VARCHAR(20)
+);
+CREATE TABLE first specifies the name of the table, and then in parentheses, the list of column names along with their data types.
+
+Querying across multiple tables (JOIN)
+Similarly to the objects in a good Ruby program, a well-designed database will split data into tables that each encapsulate some object. Sometimes, we will want to access the data from more than one of these tables at once, but so far we've only seen ways to query a single table. How might we query across tables?
+
+SQL provides a powerful facility: the JOIN. A JOIN will do just what you'd expect it to do: join together two tables, resulting in a temporary combined table that you can query just like any other. JOIN clauses include an ON statement, in which you specify how exactly those two tables relate to one another. This is where foreign keys come into play. Check out the simple join below.
+
+Let's write a query that returns the title of all the blog posts written by each user:
+
+SELECT
+  users.name, posts.title
+FROM
+  posts
+JOIN
+  users ON posts.user_id = users.id
+This will return one row per post, with the user's name appearing next to the title of the post they authored. By storing a user_id column in the posts table, we can associate user data to posts without adding columns that would duplicate data from other tables in the database and other rows in the posts table; we just JOIN the tables as needed.
+
+In this example, we joined two different tables using a foreign key stored in a single column. This is the most common case we will see, but JOIN is a flexible operator that can handle a variety of conditions. Two variations we will use are self joins, in which we join a table to itself (for example, if we have a table of employees, each of whom has a supervisor in the same table) and joins that use multiple columns to specify the ON condition (for example, if we have a bus timetable that identifies routes by a company name and a route number).
+
+In another case, we might have a many-to-many relationship; perhaps, in the example above, users can "like" posts. In this case, including a foreign key in one of the tables doesn't make sense; a user can like any number of posts, and a post can be liked by any number of users. In this case, we could use a join table that contains a foreign key for each table, allowing us to represent each like with a row linking a user to a post. We would then need two joins to associate users and liked posts, like so:
+
+SELECT
+  users.name, posts.title
+FROM
+  posts
+JOIN
+  likes ON posts.id = likes.post_id
+JOIN
+  users ON likes.user_id = users.id
+This query will give a list of user names and the posts they have liked.
+
+
+Self Joins
+What is a self join?
+A self join is exactly what it sounds like: an instance of a table joining with itself. The way you should visualize a self join for a given table is by imagining a join performed between two identical copies of that table.
+
+Let's take a look at a classic self-join example. This returns each employee's first and last name along with their manager's.
+
+Employee Table
+id	first_name	last_name	manager_id
+1	Kush	Patel	NULL
+2	Jeff	Fiddler	1
+3	Quinn	Leong	2
+4	Shamayel	Daoud	2
+5	Robert	Koeze	4
+6	Munyo	Frey	3
+7	Kelly	Chung	4
+SELECT
+  team_member.first_name, team_member.last_name,
+   manager.first_name, manager.last_name
+FROM
+  employee AS team_member
+JOIN
+  employee AS manager ON manager.id = team_member.manager_id
+team_member.first_name	team_member.last_name	manager.first_name	manager.last_name
+Jeff	Fiddler	Kush	Patel
+Quinn	Leong	Jeff	Fiddler
+Shamayel	Daoud	Jeff	Fiddler
+Robert	Koeze	Shamayel	Daoud
+Munyo	Frey	Quinn	Leong
+Kelly	Chung	Shamayel	Daoud
+In all the examples you've covered thus far, JOINs were performed on two different tables (presumably with two different names), which made it easy to reference a specific column in a table. Since we only deal with one table in a self join, we have to use aliases.
+
+An alias is essentially a nickname for a table (or, in some cases, a column). This is necessary because the query processor needs to make a distinction between the duplicates of the same table to JOIN them. Keep in mind, the keyword AS is not necessary to alias tables or columns. The above SQL query could be rewritten:
+
+SELECT
+  team_member.first_name, team_member.last_name,
+   manager.first_name, manager.last_name
+FROM
+  employee team_member
+JOIN
+  employee manager ON manager.id = team_member.manager_id
+
+
+
+  Formatting SQL Code
+SQL Conventions
+Different programmers use different SQL conventions, but in preparation for ActiveRecord and Rails, which have their own conventions, you should:
+
+Always name SQL tables snake_case and pluralized. (e.g., musical_instruments, favorite_cats)
+If a musician belongs to a band, your musicians table will need to store a foreign key that refers to the id column in the bands table. The foreign key column should be named band_id.
+Always have a column named id, and use it as the primary key for a table.
+You must not write SQL all on a single line. It will be impossible to read:
+
+SELECT * FROM table_one LEFT OUTER table_two ON table_one.column_one = table_two.column_x WHERE (table_one.column_three > table_two.column_y ...
+Here's an example of some well formatted SQL code:
+
+SELECT
+  table_two.column_one,
+  table_two.column_two,
+  table_two.column_three
+FROM
+  table_one
+LEFT OUTER JOIN
+  table_two ON table_one.column_one = table_two.column_x
+WHERE
+  (table_one.column_three > table_two.column_y
+    AND another_condition IS NULL)
+GROUP BY
+  table_two.column_four
+ORDER BY
+  table_two.column_four
+Notice that each component of the SQL statement starts with the keyword aligned left. The body of each component is indented two spaces. Complex WHERE clauses are parenthesized and indented two spaces on the following line.
+
+Subqueries
+Life gets complicated when you make subqueries. Here's how I do it:
+
+SELECT
+  bands.*
+FROM
+  bands
+JOIN (
+  SELECT
+    albums.*
+  FROM
+    albums
+  WHERE
+    album.type = "POP"
+  GROUP BY
+    album.band_id
+  HAVING
+    COUNT(*) > 3
+  ) AS pop_group_albums ON bands.id = pop_group_albums.band_id
+WHERE
+  band.leader_id IN (
+    SELECT
+      musicians.id
+    FROM
+      musicians
+    WHERE
+      musicians.birth_yr > 1940
+  )
+I put the leading paren on the prior line, indent the query two spaces, and close with a trailing paren at the start of a new line. I put the ON of a JOIN right after the closing paren.
+
+
+NULL and Ternary Logic in SQL
+SQL uses ternary logic. This means that a conditional statement can evaluate to TRUE, FALSE or NULL (unknown). Whaaaa? :open_mouth: And somehow NULL is still 'falsy'? Unfortunately, this won't be the only time you run into logic that defies intuition. Stay tuned for Javascript quirks.
+
+If we ask if a NULL value == NULL, we will always get false. 
+This is because NULL was derived to represent an unknown value.
+ How can we know if two unknowns are the same? We can't.
+  Given that this sort of comparison doesn't yield any useful information,
+   always use IS NULL or IS NOT NULL in place of the traditional (== or !=) 
+   comparisons.
+
+   Lets say your company has a list of all Sales Associates, with data on the revenue that each Associate brings in, and their individual salary. Times are tight, and you now want to find out which of your Associates are costing the company more than the average revenue brought per Associate.
+
+First, you would need to calculate the average revenue all the Associates are generating:
+
+SELECT AVG(revenue_generated)
+FROM sales_associates;
+And then using that result, we can then compare the costs of each of the Associates against that value. To use it as a subquery, we can just write it straight into the WHERE clause of the query:
+
+SELECT *
+FROM sales_associates
+WHERE salary > 
+   (SELECT AVG(revenue_generated)
+    FROM sales_associates);
+As the constraint is executed, each Associate's salary will be tested against the value queried from the inner subquery.
