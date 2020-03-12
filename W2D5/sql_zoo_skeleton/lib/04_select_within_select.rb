@@ -8,7 +8,7 @@
 #  population  :integer
 #  gdp         :integer
 
-require_relative './sqlzoo.rb'
+require_relative "./sqlzoo.rb"
 
 # A note on subqueries: we can refer to values in the outer SELECT within the
 # inner SELECT. We can name the tables so that we can tell the difference
@@ -35,6 +35,16 @@ end
 def larger_than_russia
   # List each country name where the population is larger than 'Russia'.
   execute(<<-SQL)
+  SELECT name
+  FROM countries
+  WHERE population > (
+    SELECT
+      population
+    FROM
+      countries
+    WHERE
+      name='Russia'
+  )
   SQL
 end
 
@@ -42,6 +52,18 @@ def richer_than_england
   # Show the countries in Europe with a per capita GDP greater than
   # 'United Kingdom'.
   execute(<<-SQL)
+  SELECT 
+    name
+  FROM
+    countries
+  WHERE continent ='Europe' AND (gdp / population) > (
+    SELECT
+      (gdp / population)
+    FROM
+      countries
+    WHERE
+      name='United Kingdom'
+  )
   SQL
 end
 
@@ -49,6 +71,13 @@ def neighbors_of_certain_b_countries
   # List the name and continent of countries in the continents containing
   # 'Belize', 'Belgium'.
   execute(<<-SQL)
+  SELECT
+    name,
+    continent
+  FROM 
+    countries
+  WHERE
+    continent IN ('Europe','Americas')
   SQL
 end
 
@@ -56,6 +85,28 @@ def population_constraint
   # Which country has a population that is more than Canada but less than
   # Poland? Show the name and the population.
   execute(<<-SQL)
+  SELECT
+    name,
+    population
+  FROM 
+    countries
+  WHERE
+    population > (
+      SELECT
+        population
+      FROM
+        countries
+      WHERE
+        name ='Canada'
+    ) AND
+    population < (
+      SELECT
+        population
+      FROM
+        countries
+      WHERE
+        name='Poland'
+    )
   SQL
 end
 
@@ -65,5 +116,11 @@ def sparse_continents
   # population.
   # Hint: Sometimes rewording the problem can help you see the solution.
   execute(<<-SQL)
+  SELECT x.name, x.continent, x.population
+  FROM countries AS x
+  WHERE 25000000 > ALL (
+    SELECT y.population
+    FROM countries AS y
+    WHERE x.continent = y.continent)
   SQL
 end

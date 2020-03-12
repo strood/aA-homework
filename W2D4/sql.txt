@@ -260,6 +260,7 @@ FROM
 JOIN
   employee AS manager ON manager.id = team_member.manager_id
 team_member.first_name	team_member.last_name	manager.first_name	manager.last_name
+
 Jeff	Fiddler	Kush	Patel
 Quinn	Leong	Jeff	Fiddler
 Shamayel	Daoud	Jeff	Fiddler
