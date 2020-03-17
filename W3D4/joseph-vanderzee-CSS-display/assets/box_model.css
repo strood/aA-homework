@@ -129,9 +129,9 @@ input:last-child {
     background: gold;
 }
 
-input:last-child:hover {
-    -webkit-filter: brightness(90%);
-}
+/* input:last-child:hover {
+    webkit-filter: brightness(90%);
+} */
 
 ol li:nth-of-type(2n) {
   background-color: whitesmoke;
