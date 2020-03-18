@@ -2,6 +2,7 @@
 
 require "sqlite3"
 require "singleton" # Ensures only a single copy of db class ever created
+require "active_support/inflector"
 
 class QuestionDBConnection < SQLite3::Database
   include Singleton
@@ -13,11 +14,17 @@ class QuestionDBConnection < SQLite3::Database
   end
 end
 
-class User
+class Base
+  def self.all(input)
+    data = QuestionDBConnection.instance.execute(input)
+  end
+end
+
+class User < Base
   attr_accessor :fname, :lname
 
   def self.all #Show all entries from plays table
-    data = QuestionDBConnection.instance.execute("SELECT * FROM users")
+    data = super("SELECT * FROM users")
     data.map { |datum| User.new(datum) }
   end
 
@@ -81,11 +88,11 @@ class User
   end
 end
 
-class Question
+class Question < Base
   attr_accessor :title, :body, :author
 
   def self.all #Show all entries from plays table
-    data = QuestionDBConnection.instance.execute("SELECT * FROM questions")
+    data = super("SELECT * FROM questions")
     data.map { |datum| Question.new(datum) }
   end
 
@@ -166,10 +173,10 @@ class Question
   end
 end
 
-class Question_Follow
+class Question_Follow < Base
   attr_accessor :question, :follower
   def self.all #Show all entries from plays table
-    data = QuestionDBConnection.instance.execute("SELECT * FROM question_follows")
+    data = super("SELECT * FROM question_follows")
     data.map { |datum| Question_Follow.new(datum) }
   end
 
@@ -230,11 +237,11 @@ class Question_Follow
   end
 end
 
-class Reply
+class Reply < Base
   attr_accessor :subject, :parent, :author, :body
 
   def self.all #Show all entries from plays table
-    data = QuestionDBConnection.instance.execute("SELECT * FROM replies")
+    data = super("SELECT * FROM replies")
     data.map { |datum| Reply.new(datum) }
   end
 
@@ -328,10 +335,10 @@ class Reply
   end
 end
 
-class Question_Like
+class Question_Like < Base
   attr_accessor :question, :liker
   def self.all #Show all entries from plays table
-    data = QuestionDBConnection.instance.execute("SELECT * FROM question_likes")
+    data = super("SELECT * FROM question_likes")
     data.map { |datum| Question_Like.new(datum) }
   end
 
