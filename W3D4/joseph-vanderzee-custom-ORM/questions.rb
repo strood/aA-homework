@@ -138,7 +138,7 @@ class Question
       SQL
     else
       QuestionDBConnection.instance.execute(<<-SQL, @title, @body, @author)
-        INSERT INTO questions (title, body, author)
+        INSERT INTO users (title, body, author)
         VALUES (?, ?, ?)
       SQL
       @id = QuestionDBConnection.instance.last_insert_row_id
@@ -294,7 +294,7 @@ class Reply
       SQL
     else
       QuestionDBConnection.instance.execute(<<-SQL, @subject, @parent, @author, @body)
-        INSERT INTO replies (subject, parent, author, body)
+        INSERT INTO repl (subject, parent, author, body)
         VALUES (?, ?, ?, ?)
       SQL
       @id = QuestionDBConnection.instance.last_insert_row_id
