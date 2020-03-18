@@ -48,12 +48,36 @@ class User
     @lname = options["lname"]
   end
 
+  def save #save instance to db, default to update if already present in db.
+    if @id #perform update if in db, will have id already if in db, else it wont by default
+      QuestionDBConnection.instance.execute(<<-SQL, @fname, @lname, @id)
+        UPDATE users
+        SET fname=?, lname=?
+        WHERE id=?
+      SQL
+    else
+      QuestionDBConnection.instance.execute(<<-SQL, @fname, @lname)
+        INSERT INTO users (fname, lname)
+        VALUES (?, ?)
+      SQL
+      @id = QuestionDBConnection.instance.last_insert_row_id
+    end
+  end
+
   def authored_questions
     Question.find_by_author_id(@id)
   end
 
   def authored_replies
     Reply.find_by_user_id(@id)
+  end
+
+  def followed_questions
+    Question_Follow.followed_questions_for_user_id(@id)
+  end
+
+  def liked_questions
+    Question_Like.liked_questions_for_user_id(@id)
   end
 end
 
@@ -89,6 +113,14 @@ class Question
     end
   end
 
+  def self.most_followed(n)
+    Question_Follow.most_followed_questions(n)
+  end
+
+  def self.most_liked(n)
+    Question_Like.most_liked_questions(n)
+  end
+
   def initialize(options) # create new instance of question class
     @id = options["id"] #will either be defined if from self.all,
     #or null if person creates without relation
@@ -97,12 +129,40 @@ class Question
     @author = options["author"]
   end
 
+  def save #save instance to db, default to update if already present in db.
+    if @id #perform update if in db, will have id already if in db, else it wont by default
+      QuestionDBConnection.instance.execute(<<-SQL, @title, @body, @author, @id)
+        UPDATE questions
+        SET title=?, body=?, author=?
+        WHERE id=?
+      SQL
+    else
+      QuestionDBConnection.instance.execute(<<-SQL, @title, @body, @author)
+        INSERT INTO questions (title, body, author)
+        VALUES (?, ?, ?)
+      SQL
+      @id = QuestionDBConnection.instance.last_insert_row_id
+    end
+  end
+
   def author
     @author
   end
 
   def replies
     Reply.find_by_question_id(@id)
+  end
+
+  def followers
+    Question_Follow.followers_for_question_id(@id)
+  end
+
+  def likers
+    Question_Like.likers_for_question_id(@id)
+  end
+
+  def num_likes
+    Question_Like.num_likes_for_question_id(@id)
   end
 end
 
@@ -121,6 +181,45 @@ class Question_Follow
     SQL
     raise "id: '#{id}' not in question_follows database" unless data[0]
     Question_Follow.new(data[0])
+  end
+
+  def self.followers_for_question_id(question_id)
+    data = QuestionDBConnection.instance.execute(<<-SQL, question_id)
+      SELECT fname, lname, users.id
+      FROM question_follows
+      JOIN users
+      ON users.id = question_follows.follower
+      WHERE question_follows.question=?
+    SQL
+    raise "question_id: '#{question_id}' does not have any followers un users database" unless data[0]
+
+    data.map { |datum| User.new(datum) }
+  end
+
+  def self.followed_questions_for_user_id(user_id)
+    data = QuestionDBConnection.instance.execute(<<-SQL, user_id)
+      SELECT questions.author, questions.body, questions.title, questions.id 
+      FROM question_follows
+      JOIN questions
+      ON questions.id = question_follows.question
+      WHERE question_follows.follower=?
+    SQL
+    raise "user_id: '#{user_id}' is not following any questions in the questions database" unless data[0]
+
+    data.map { |datum| Question.new(datum) }
+  end
+
+  def self.most_followed_questions(n)
+    data = QuestionDBConnection.instance.execute(<<-SQL, n)
+      SELECT questions.id, questions.title, questions.body, questions.author 
+      FROM question_follows
+      JOIN questions 
+      ON questions.id = question_follows.question 
+      GROUP BY question 
+      ORDER BY count(*) DESC
+      LIMIT ?;
+    SQL
+    data.map { |datum| Question.new(datum) }
   end
 
   def initialize(options) # create new instance of question_follow class
@@ -186,6 +285,22 @@ class Reply
     @body = options["body"]
   end
 
+  def save #save instance to db, default to update if already present in db.
+    if @id #perform update if in db, will have id already if in db, else it wont by default
+      QuestionDBConnection.instance.execute(<<-SQL, @subject, @parent, @author, @body, @id)
+        UPDATE replies
+        SET subject=?, parent=?, author=?, body=?
+        WHERE id=?
+      SQL
+    else
+      QuestionDBConnection.instance.execute(<<-SQL, @subject, @parent, @author, @body)
+        INSERT INTO replies (subject, parent, author, body)
+        VALUES (?, ?, ?, ?)
+      SQL
+      @id = QuestionDBConnection.instance.last_insert_row_id
+    end
+  end
+
   def author
     @author
   end
@@ -228,6 +343,52 @@ class Question_Like
     SQL
     raise "id: '#{id}' not in question_likes database" unless data[0]
     Question_Like.new(data[0])
+  end
+
+  def self.likers_for_question_id(question_id)
+    data = QuestionDBConnection.instance.execute(<<-SQL, question_id)
+      SELECT users.fname, users.lname, users.id
+      FROM question_likes
+      JOIN users
+      ON question_likes.liker = users.id
+      WHERE question_likes.question=?
+    SQL
+    raise "question_id: '#{question_id}' has no likers in users database" unless data[0]
+    data.map { |datum| User.new(datum) }
+  end
+
+  def self.num_likes_for_question_id(question_id)
+    data = QuestionDBConnection.instance.execute(<<-SQL, question_id)
+      SELECT COUNT(*)
+      FROM question_likes
+      WHERE question=?
+    SQL
+    data[0]["COUNT(*)"]
+  end
+
+  def self.most_liked_questions(n)
+    data = QuestionDBConnection.instance.execute(<<-SQL, n)
+      SELECT questions.id, questions.title, questions.body, questions.author 
+      FROM question_likes
+      JOIN questions
+      ON questions.id = question_likes.question
+      GROUP BY question
+      ORDER BY count(*) DESC
+      LIMIT ?
+    SQL
+    data.map { |datum| Question.new(datum) }
+  end
+
+  def self.liked_questions_for_user_id(user_id)
+    data = QuestionDBConnection.instance.execute(<<-SQL, user_id)
+      SELECT questions.id, questions.title, questions.body, questions.author
+      FROM question_likes
+      JOIN questions
+      ON question_likes.question = questions.id
+      WHERE question_likes.liker=?
+    SQL
+    raise "user_id: '#{user_id}' has no liked questions in questions database" unless data[0]
+    data.map { |datum| Question.new(datum) }
   end
 
   def initialize(options) # create new instance of reply class
