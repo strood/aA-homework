@@ -1,0 +1,17 @@
+html, body, header, aside, section, footer, nav, h1, h2, ol, ul, p {
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    font: inherit;
+    list-style: none;
+}
+
+body {
+    line-height: 1.5;
+}
+
+img {
+    width: 100%;
+}
