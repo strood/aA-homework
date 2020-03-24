@@ -23,10 +23,6 @@ class Visit < ApplicationRecord
              class_name: :ShortenedUrl
 
   def self.record_visit!(user, shortened_url)
-    p user
-    p shortened_url
-    new_visit = Visit.new(user_id: user, url_id: shortened_url)
-    p new_visit
-    new_visit.save!
+    Visit.new(user_id: user, url_id: shortened_url).save!
   end
 end

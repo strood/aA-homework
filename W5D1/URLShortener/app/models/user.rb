@@ -36,7 +36,7 @@ class User < ApplicationRecord
 
   def create!(long_url) #create a new shortened url and save to db, given a long url, called on user.
     shortened = ShortenedUrl.new(long_url: long_url, user_id: self.id)
-    shortened.short_url = ShortenedUrl.random_code
+    shortened.short_url = "short.n/" + ShortenedUrl.random_code[0..4]
     shortened.save!
   end
 end
