@@ -16,7 +16,7 @@ class Toy < ApplicationRecord
   # end
 
   belongs_to :dog,
-    primary_key: :id,     #dogs id
+    primary_key: :id,
     foreign_key: :dog_id,  #from toys tble
     class_name: :Dog
 
