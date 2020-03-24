@@ -38,6 +38,15 @@ class ShortenedUrl < ApplicationRecord
            through: :visits,
            source: :user
 
+  has_many :tags,
+    primary_key: :id,
+    foreign_key: :url_id,
+    class_name: :Tagging
+
+  has_many :tag_topics,
+    through: :tags,
+    source: :topic
+
   def self.random_code #generate random code to use as short_url, called in User.create!
     loop do
       code = SecureRandom::urlsafe_base64
@@ -49,8 +58,7 @@ class ShortenedUrl < ApplicationRecord
   end
 
   def num_clicks
-    visits = Visit.select { |visit| visit.url_id == self.id }
-    visits.length
+    self.visits.count
   end
 
   def num_uniques
