@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLOAT</title>
+
+    <style>
+        /* Flexbox is the future, this is a new way to go abouts the whole issue of floats. */
+
+        h1 {
+            display: block;
+            background: yellow;
+        }
+
+        p {
+            display: block;
+            background: orange;
+            
+        }
+        article {
+            background: blue;
+            border: 10px solid red;
+            margin: 50px;
+
+            
+        }
+
+        img {
+            display: block;
+            background: orange;
+            width: 300px;
+            height: 400px;
+
+            float: left;
+            opacity: 0.5;
+        }
+
+        .stop_float {
+            display: block;
+            background: green;
+            clear: left;
+        }
+
+        .pseudo-stop-float:after {
+            content: "stop the float!";
+            background: green;
+
+            display: block;
+            clear: both;
+
+        }
+
+        .group:after {
+
+            content: ""; 
+            display: block;
+            clear: both;    
+        }
+
+       
+    </style>
+</head>
+<body>
+
+    <article  class="group">
+    <h1>Cats   
+    </h1>
+    <img src="cat1.jpg" alt="cat">  
+    <img src="cat1.jpg" alt="cat"> 
+    <img src="cat1.jpg" alt="cat"> 
+
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+        Adipisci et, hic incidunt suscipit magni odio ea nihil nam voluptatem, 
+        blanditiis rerum optio praesentium eos error pariatur perferendis maiores! Suscipit, 
+        commodi?
+    </p>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+        Adipisci et, hic incidunt suscipit magni odio ea nihil nam voluptatem, 
+        blanditiis rerum optio praesentium eos error pariatur perferendis maiores! Suscipit, 
+        commodi?
+    </p>
+
+    <!-- <div class="stop_float"></div> -->
+</article>
+
+<article>
+    <h1>Lasers</h1>
+
+    <img src="cat1.jpg" alt="cat"> 
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+        Adipisci et, hic incidunt suscipit magni odio ea nihil nam voluptatem, 
+        blanditiis rerum optio praesentium eos error pariatur perferendis maiores! Suscipit, 
+        commodi?
+    </p>
+</article>
+</body>
+</html>
