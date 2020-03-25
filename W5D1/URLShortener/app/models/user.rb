@@ -4,6 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  email      :string           not null
+#  premium    :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -38,5 +39,15 @@ class User < ApplicationRecord
     shortened = ShortenedUrl.new(long_url: long_url, user_id: self.id)
     shortened.short_url = "short.n/" + ShortenedUrl.random_code[0..4]
     shortened.save!
+  end
+
+  def upgrade
+    self.premium = true
+    self.save!
+  end
+
+  def downgrade
+    self.premium = false
+    self.save!
   end
 end

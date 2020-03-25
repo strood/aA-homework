@@ -18,6 +18,8 @@ class ShortenedUrl < ApplicationRecord
   validates :short_url, presence: true
   validates :short_url, uniqueness: true
   validates :user_id, presence: true
+  validate :no_spamming
+  validate :nonpremium_max
 
   belongs_to :submitter,
     primary_key: :id,
@@ -47,6 +49,20 @@ class ShortenedUrl < ApplicationRecord
     through: :tags,
     source: :topic
 
+  def no_spamming
+    sub_past_min = ShortenedUrl.select(:id).where(created_at: (Time.now - 1.minute)..Time.now)
+    unless sub_past_min.length <= 4
+      errors[:user_id] << "User #{:user_id} has created too many URL's in the past minute, no spamming! (Max 5 per minute)"
+    end
+  end
+
+  def nonpremium_max
+    user = User.find_by(id: self.user_id)
+    if user.submitted_urls.count >= 5 && !user.premium
+      errors[:user_id] << "#{user.id} has created too many URL's for a non-premium member, must subscribe for more links (Max 5 per free user)"
+    end
+  end
+
   def self.random_code #generate random code to use as short_url, called in User.create!
     loop do
       code = SecureRandom::urlsafe_base64
@@ -55,6 +71,22 @@ class ShortenedUrl < ApplicationRecord
         break
       end
     end
+  end
+
+  def self.prune(n)
+    output = ShortenedUrl
+      .joins(:submitter)
+      .joins("LEFT JOIN visits ON visits.url_id = shortened_urls.id")
+      .where("(shortened_urls.id IN (
+      SELECT shortened_urls.id
+      FROM shortened_urls
+      JOIN visits
+      ON visits.url_id = shortened_urls.id
+      GROUP BY shortened_urls.id
+      HAVING MAX(visits.created_at) < '#{n.minute.ago}'
+    ) OR (
+      visits.id IS NULL and shortened_urls.created_at < '#{n.minutes.ago}'
+    )) AND users.premium = 'f'").destroy_all
   end
 
   def num_clicks
