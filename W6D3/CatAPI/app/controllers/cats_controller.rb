@@ -19,7 +19,10 @@ class CatsController < ApplicationController
     # Content-length: ...
     #
     # {body injson format} = {"cat": {"name": "Sally"}, "dog": { "name": "Bertrand"} }
-    cat = Cat.new(name: params[:cat])
+
+    cat = Cat.new(cat_params)
+    cat.admin = false
+
     if cat.save
       render json: cat
     else
@@ -29,10 +32,19 @@ class CatsController < ApplicationController
 
   def update
     # ...
+    #Cant shouldnt eb able to update self to become admin...
+    cat = Cat.find(params[:id])
+    # if i upload an admin attribute, this tries to set
+    # cat.admin, but i dont want this
+
+    cat.update(params[:cat])
   end
 
   def destroy
     # ...
+    # if !curren_cst_user.admin
+    #     raise "error"
+    # end
   end
 
   def cat_params

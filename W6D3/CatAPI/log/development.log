@@ -656,3 +656,933 @@ Migrating to CreateToys (20200402204206)
   [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" ORDER BY "cats"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" ORDER BY "cats"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mToy Load (1.0ms)[0m  [1m[34mSELECT "toys".* FROM "toys" WHERE "toys"."cat_id" = $1[0m  [["cat_id", 1]]
+Started GET "/toys" for ::1 at 2020-04-02 15:04:52 -0600
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by ToysController#index as */*
+  [1m[36mToy Load (1.7ms)[0m  [1m[34mSELECT "toys".* FROM "toys"[0m
+  ↳ app/controllers/toys_controller.rb:3
+Completed 200 OK in 34ms (Views: 17.0ms | ActiveRecord: 11.4ms)
+
+
+Started GET "/toys/1" for ::1 at 2020-04-02 15:05:25 -0600
+Processing by ToysController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mToy Load (0.7ms)[0m  [1m[34mSELECT  "toys".* FROM "toys" WHERE "toys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:7
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/toys/2" for ::1 at 2020-04-02 15:06:14 -0600
+Processing by ToysController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mToy Load (0.3ms)[0m  [1m[34mSELECT  "toys".* FROM "toys" WHERE "toys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:7
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Toy with 'id'=2:
+  app/controllers/toys_controller.rb:7:in `show'
+
+Started POST "/toys?cat_id:2&name:%22Cpt.Toy%22,ttype:%22mouse%22" for ::1 at 2020-04-02 15:08:02 -0600
+Processing by ToysController#create as */*
+  Parameters: {"cat_id:2"=>nil, "name:\"Cpt.Toy\",ttype:\"mouse\""=>nil}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:15
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/toys_controller.rb:15
+Completed 422 Unprocessable Entity in 20ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/toys?cat_id:1&name:%22Cpt.Toy%22,ttype:%22mouse%22" for ::1 at 2020-04-02 15:08:15 -0600
+Processing by ToysController#create as */*
+  Parameters: {"cat_id:1"=>nil, "name:\"Cpt.Toy\",ttype:\"mouse\""=>nil}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:15
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/toys_controller.rb:15
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/toys?cat_id:1&name:%22Cpt.Toy%22&ttype:%22mouse%22" for ::1 at 2020-04-02 15:09:19 -0600
+Processing by ToysController#create as */*
+  Parameters: {"cat_id:1"=>nil, "name:\"Cpt.Toy\""=>nil, "ttype:\"mouse\""=>nil}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:15
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/toys_controller.rb:15
+Completed 422 Unprocessable Entity in 5ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:10:51 -0600
+Processing by ToysController#create as */*
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:15
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/toys_controller.rb:15
+Completed 422 Unprocessable Entity in 7ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:11:19 -0600
+Processing by ToysController#create as */*
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:15
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/toys_controller.rb:15
+Completed 422 Unprocessable Entity in 7ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:13:25 -0600
+Processing by ToysController#create as */*
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:15
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/toys_controller.rb:15
+Completed 422 Unprocessable Entity in 20ms (Views: 0.6ms | ActiveRecord: 3.5ms)
+
+
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  [1m[36mToy Load (0.9ms)[0m  [1m[34mSELECT "toys".* FROM "toys"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mToy Create (0.4ms)[0m  [1m[32mINSERT INTO "toys" ("cat_id", "name", "ttype", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["cat_id", 2], ["name", "Gross String"], ["ttype", "string"], ["created_at", "2020-04-02 21:15:23.653992"], ["updated_at", "2020-04-02 21:15:23.653992"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/toys" for ::1 at 2020-04-02 15:15:47 -0600
+Processing by ToysController#create as */*
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:15
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/toys_controller.rb:15
+Completed 422 Unprocessable Entity in 4ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:17:51 -0600
+Processing by ToysController#create as */*
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:15
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/toys_controller.rb:15
+Completed 422 Unprocessable Entity in 20ms (Views: 0.4ms | ActiveRecord: 4.7ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:21:07 -0600
+Processing by ToysController#create as */*
+Completed 500 Internal Server Error in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+
+AbstractController::DoubleRenderError - Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".:
+  app/controllers/toys_controller.rb:12:in `create'
+
+Started POST "/toys" for ::1 at 2020-04-02 15:22:05 -0600
+Processing by ToysController#create as */*
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:22:25 -0600
+Processing by ToysController#create as */*
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:22:26 -0600
+Processing by ToysController#create as */*
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:22:34 -0600
+Processing by ToysController#create as */*
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:22:39 -0600
+Processing by ToysController#create as */*
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:23:15 -0600
+Processing by ToysController#create as */*
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:23:16 -0600
+Processing by ToysController#create as */*
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:23:21 -0600
+Processing by ToysController#create as */*
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:23:27 -0600
+Processing by ToysController#create as */*
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:23:34 -0600
+Processing by ToysController#create as */*
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:23:40 -0600
+Processing by ToysController#create as */*
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:24:48 -0600
+Processing by ToysController#create as */*
+Completed 400 Bad Request in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: toy:
+  app/controllers/toys_controller.rb:39:in `toy_params'
+  app/controllers/toys_controller.rb:13:in `create'
+
+Started POST "/toys" for ::1 at 2020-04-02 15:25:14 -0600
+Processing by ToysController#create as */*
+Completed 400 Bad Request in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: toy:
+  app/controllers/toys_controller.rb:39:in `toy_params'
+  app/controllers/toys_controller.rb:13:in `create'
+
+Started POST "/cats" for ::1 at 2020-04-02 15:26:05 -0600
+Processing by CatsController#create as */*
+Completed 400 Bad Request in 5ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: cat:
+  app/controllers/cats_controller.rb:39:in `cat_params'
+  app/controllers/cats_controller.rb:22:in `create'
+
+Started POST "/cats" for ::1 at 2020-04-02 15:26:18 -0600
+Processing by CatsController#create as */*
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: cat:
+  app/controllers/cats_controller.rb:39:in `cat_params'
+  app/controllers/cats_controller.rb:22:in `create'
+
+Started POST "/cats" for ::1 at 2020-04-02 15:26:36 -0600
+Processing by CatsController#create as */*
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[36mCat Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:23
+Completed 422 Unprocessable Entity in 17ms (Views: 0.2ms | ActiveRecord: 5.8ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:26:40 -0600
+Processing by CatsController#create as */*
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[36mCat Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:23
+Completed 422 Unprocessable Entity in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:26:53 -0600
+Processing by CatsController#create as */*
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[36mCat Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:23
+Completed 422 Unprocessable Entity in 4ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:26:54 -0600
+Processing by CatsController#create as */*
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[36mCat Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:23
+Completed 422 Unprocessable Entity in 4ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:27:11 -0600
+Processing by CatsController#create as */*
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[36mCat Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:23
+Completed 422 Unprocessable Entity in 7ms (Views: 0.5ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:27:39 -0600
+Processing by CatsController#create as */*
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[36mCat Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:23
+Completed 422 Unprocessable Entity in 12ms (Views: 0.1ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:28:56 -0600
+Processing by CatsController#create as */*
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[36mCat Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:23
+Completed 422 Unprocessable Entity in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:29:01 -0600
+Processing by CatsController#create as */*
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[36mCat Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:23
+Completed 422 Unprocessable Entity in 3ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for ::1 at 2020-04-02 15:29:52 -0600
+Processing by CatsController#index as */*
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:7
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/toys" for ::1 at 2020-04-02 15:30:11 -0600
+Processing by ToysController#index as */*
+  [1m[36mToy Load (0.4ms)[0m  [1m[34mSELECT "toys".* FROM "toys"[0m
+  ↳ app/controllers/toys_controller.rb:3
+Completed 200 OK in 17ms (Views: 9.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/toys/1" for ::1 at 2020-04-02 15:30:20 -0600
+Processing by ToysController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mToy Load (0.4ms)[0m  [1m[34mSELECT  "toys".* FROM "toys" WHERE "toys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:7
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/toys/2" for ::1 at 2020-04-02 15:30:22 -0600
+Processing by ToysController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mToy Load (0.5ms)[0m  [1m[34mSELECT  "toys".* FROM "toys" WHERE "toys"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:7
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cats/2" for ::1 at 2020-04-02 15:30:25 -0600
+Processing by CatsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mCat Load (0.2ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:14
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:32:12 -0600
+Processing by CatsController#create as */*
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[36mCat Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:23
+Completed 422 Unprocessable Entity in 4ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:34:32 -0600
+Processing by CatsController#create as */*
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[36mCat Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:23
+Completed 422 Unprocessable Entity in 19ms (Views: 0.4ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:34:56 -0600
+Processing by CatsController#create as */*
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[36mCat Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:23
+Completed 422 Unprocessable Entity in 7ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:35:18 -0600
+Processing by CatsController#create as */*
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:35:27 -0600
+Processing by CatsController#create as */*
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:36:13 -0600
+Processing by CatsController#create as */*
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:36:24 -0600
+Processing by CatsController#create as */*
+  Parameters: {"cat"=>{"name"=>"Gertrude"}}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:36:48 -0600
+Processing by CatsController#create as */*
+  Parameters: {"cat"=>{"name"=>"Gertrude"}}
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:36:55 -0600
+Processing by CatsController#create as */*
+  Parameters: {"cat"=>{"name"=>"Gertrude"}}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+Started POST "/cats" for ::1 at 2020-04-02 15:37:39 -0600
+Processing by CatsController#create as */*
+  Parameters: {"cat"=>{"name"=>"Gertrude"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[36mCat Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" = $1 LIMIT $2[0m  [["name", "{\"name\"=>\"Gertrude\"}"], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[36mCat Create (0.3ms)[0m  [1m[32mINSERT INTO "cats" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "{\"name\"=>\"Gertrude\"}"], ["created_at", "2020-04-02 21:37:39.685613"], ["updated_at", "2020-04-02 21:37:39.685613"]]
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cats_controller.rb:24
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 4.2ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:37:55 -0600
+Error occurred while parsing request parameters.
+Contents:
+
+{ "name": "Gertrude" } }
+
+JSON::ParserError - 765: unexpected token at '}':
+
+Started POST "/cats" for ::1 at 2020-04-02 15:38:01 -0600
+Processing by CatsController#create as */*
+  Parameters: {"name"=>"Gertrude", "cat"=>{"name"=>"Gertrude"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[36mCat Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" = $1 LIMIT $2[0m  [["name", "{\"name\"=>\"Gertrude\"}"], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:24
+Completed 422 Unprocessable Entity in 4ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:38:11 -0600
+Processing by CatsController#create as */*
+  Parameters: {"name"=>"Jebediah", "cat"=>{"name"=>"Jebediah"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[36mCat Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" = $1 LIMIT $2[0m  [["name", "{\"name\"=>\"Jebediah\"}"], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[36mCat Create (0.2ms)[0m  [1m[32mINSERT INTO "cats" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "{\"name\"=>\"Jebediah\"}"], ["created_at", "2020-04-02 21:38:11.092390"], ["updated_at", "2020-04-02 21:38:11.092390"]]
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cats_controller.rb:24
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:38:19 -0600
+Error occurred while parsing request parameters.
+Contents:
+
+{ name: "Jebediah" }
+
+JSON::ParserError - 765: unexpected token at '{ name: "Jebediah" }':
+
+Started POST "/cats" for ::1 at 2020-04-02 15:38:36 -0600
+Error occurred while parsing request parameters.
+Contents:
+
+{ cat: { name: "Jebediah"} }
+
+JSON::ParserError - 765: unexpected token at '{ cat: { name: "Jebediah"} }':
+
+Started POST "/cats" for ::1 at 2020-04-02 15:38:46 -0600
+Processing by CatsController#create as */*
+  Parameters: {"cat"=>{"name"=>"Jebediah"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[36mCat Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" = $1 LIMIT $2[0m  [["name", "{\"name\"=>\"Jebediah\"}"], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:24
+Completed 422 Unprocessable Entity in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+  [1m[36mCat Load (0.8ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+Started POST "/cats" for ::1 at 2020-04-02 15:39:03 -0600
+Error occurred while parsing request parameters.
+Contents:
+
+{ "cat": { "name": Jebediah} }
+
+JSON::ParserError - 765: unexpected token at '{ "cat": { "name": Jebediah} }':
+
+Started POST "/cats" for ::1 at 2020-04-02 15:39:43 -0600
+Processing by CatsController#create as */*
+  Parameters: {"name"=>"Brian", "cat"=>{"name"=>"Brian"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[36mCat Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" = $1 LIMIT $2[0m  [["name", "{\"name\"=>\"Brian\"}"], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[36mCat Create (0.6ms)[0m  [1m[32mINSERT INTO "cats" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "{\"name\"=>\"Brian\"}"], ["created_at", "2020-04-02 21:39:43.138772"], ["updated_at", "2020-04-02 21:39:43.138772"]]
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cats_controller.rb:24
+Completed 200 OK in 7ms (Views: 0.7ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:39:57 -0600
+Processing by CatsController#create as */*
+  Parameters: {"name"=>"Brian", "cat"=>{"name"=>"Brian"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[36mCat Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" = $1 LIMIT $2[0m  [["name", "Brian"], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[36mCat Create (0.4ms)[0m  [1m[32mINSERT INTO "cats" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Brian"], ["created_at", "2020-04-02 21:39:57.322898"], ["updated_at", "2020-04-02 21:39:57.322898"]]
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cats_controller.rb:24
+Completed 200 OK in 13ms (Views: 0.6ms | ActiveRecord: 9.2ms)
+
+
+Started POST "/cats" for ::1 at 2020-04-02 15:40:23 -0600
+Processing by CatsController#create as */*
+  Parameters: {"name"=>"Gordon", "cat"=>{"name"=>"Gordon"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[36mCat Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."name" = $1 LIMIT $2[0m  [["name", "Gordon"], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[36mCat Create (0.3ms)[0m  [1m[32mINSERT INTO "cats" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Gordon"], ["created_at", "2020-04-02 21:40:23.587135"], ["updated_at", "2020-04-02 21:40:23.587135"]]
+  ↳ app/controllers/cats_controller.rb:24
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cats_controller.rb:24
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:41:37 -0600
+Processing by ToysController#create as */*
+  Parameters: {"cat_id"=>3, "name"=>"Stringithing", "ttype"=>"string", "toy"=>{"cat_id"=>3, "name"=>"Stringithing", "ttype"=>"string"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:15
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:15
+  [1m[36mToy Create (0.3ms)[0m  [1m[32mINSERT INTO "toys" ("cat_id", "name", "ttype", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["cat_id", 3], ["name", "Stringithing"], ["ttype", "string"], ["created_at", "2020-04-02 21:41:37.580879"], ["updated_at", "2020-04-02 21:41:37.580879"]]
+  ↳ app/controllers/toys_controller.rb:15
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/toys_controller.rb:15
+Completed 500 Internal Server Error in 24ms (Views: 0.4ms | ActiveRecord: 8.7ms)
+
+
+
+AbstractController::DoubleRenderError - Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".:
+  app/controllers/toys_controller.rb:16:in `create'
+
+Started GET "/toys" for ::1 at 2020-04-02 15:42:02 -0600
+Processing by ToysController#index as */*
+  Parameters: {"cat_id"=>3, "name"=>"Stringithing", "ttype"=>"string", "toy"=>{"cat_id"=>3, "name"=>"Stringithing", "ttype"=>"string"}}
+  [1m[36mToy Load (0.6ms)[0m  [1m[34mSELECT "toys".* FROM "toys"[0m
+  ↳ app/controllers/toys_controller.rb:3
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:42:30 -0600
+Processing by ToysController#create as */*
+  Parameters: {"cat_id"=>3, "name"=>"Stringithing", "ttype"=>"string", "toy"=>{"cat_id"=>3, "name"=>"Stringithing", "ttype"=>"string"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:15
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:15
+  [1m[36mToy Create (0.4ms)[0m  [1m[32mINSERT INTO "toys" ("cat_id", "name", "ttype", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["cat_id", 3], ["name", "Stringithing"], ["ttype", "string"], ["created_at", "2020-04-02 21:42:30.951283"], ["updated_at", "2020-04-02 21:42:30.951283"]]
+  ↳ app/controllers/toys_controller.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/toys_controller.rb:15
+Completed 500 Internal Server Error in 6ms (Views: 0.3ms | ActiveRecord: 1.4ms)
+
+
+
+AbstractController::DoubleRenderError - Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".:
+  app/controllers/toys_controller.rb:16:in `create'
+
+Started GET "/toys" for ::1 at 2020-04-02 15:42:45 -0600
+Processing by ToysController#index as */*
+  Parameters: {"cat_id"=>3, "name"=>"Stringithing", "ttype"=>"string", "toy"=>{"cat_id"=>3, "name"=>"Stringithing", "ttype"=>"string"}}
+  [1m[36mToy Load (0.3ms)[0m  [1m[34mSELECT "toys".* FROM "toys"[0m
+  ↳ app/controllers/toys_controller.rb:3
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 15:43:11 -0600
+Processing by ToysController#create as */*
+  Parameters: {"cat_id"=>3, "name"=>"Stringithing", "ttype"=>"string", "toy"=>{"cat_id"=>3, "name"=>"Stringithing", "ttype"=>"string"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:13
+  [1m[36mCat Load (0.2ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:13
+  [1m[36mToy Create (0.3ms)[0m  [1m[32mINSERT INTO "toys" ("cat_id", "name", "ttype", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["cat_id", 3], ["name", "Stringithing"], ["ttype", "string"], ["created_at", "2020-04-02 21:43:11.423870"], ["updated_at", "2020-04-02 21:43:11.423870"]]
+  ↳ app/controllers/toys_controller.rb:13
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/toys_controller.rb:13
+Completed 200 OK in 23ms (Views: 0.4ms | ActiveRecord: 8.5ms)
+
+
+Started POST "/toys/5" for ::1 at 2020-04-02 15:44:30 -0600
+  
+ActionController::RoutingError (No route matches [POST] "/toys/5"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/toys/5" for ::1 at 2020-04-02 15:45:58 -0600
+Processing by ToysController#show as */*
+  Parameters: {"cat_id"=>3, "name"=>"Stringithing", "ttype"=>"string", "id"=>"5", "toy"=>{"cat_id"=>3, "name"=>"Stringithing", "ttype"=>"string"}}
+  [1m[36mToy Load (0.3ms)[0m  [1m[34mSELECT  "toys".* FROM "toys" WHERE "toys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:7
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/toys/5" for ::1 at 2020-04-02 15:46:29 -0600
+Processing by ToysController#update as */*
+  Parameters: {"cat_id"=>3, "name"=>"Senetor_string", "ttype"=>"string", "id"=>"5", "toy"=>{"cat_id"=>3, "name"=>"Senetor_string", "ttype"=>"string"}}
+  [1m[36mToy Load (2.1ms)[0m  [1m[34mSELECT  "toys".* FROM "toys" WHERE "toys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:29
+  [1m[36mCat Load (0.7ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:29
+  [1m[36mToy Update (0.4ms)[0m  [1m[33mUPDATE "toys" SET "name" = $1, "updated_at" = $2 WHERE "toys"."id" = $3[0m  [["name", "Senetor_string"], ["updated_at", "2020-04-02 21:46:29.272485"], ["id", 5]]
+  ↳ app/controllers/toys_controller.rb:29
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/toys_controller.rb:29
+Completed 200 OK in 13ms (Views: 0.9ms | ActiveRecord: 5.4ms)
+
+
+Started PATCH "/toys/5" for ::1 at 2020-04-02 15:47:09 -0600
+Processing by ToysController#update as */*
+  Parameters: {"cat_id"=>3, "name"=>"Sensational_string", "id"=>"5", "toy"=>{"cat_id"=>3, "name"=>"Sensational_string"}}
+  [1m[36mToy Load (0.5ms)[0m  [1m[34mSELECT  "toys".* FROM "toys" WHERE "toys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:27
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:29
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:29
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/toys_controller.rb:29
+Completed 422 Unprocessable Entity in 8ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started PATCH "/toys/5" for ::1 at 2020-04-02 15:50:48 -0600
+Processing by ToysController#update as */*
+  Parameters: {"cat_id"=>3, "name"=>"Semi-sweet_string", "id"=>"5", "toy"=>{"cat_id"=>3, "name"=>"Semi-sweet_string"}}
+  [1m[36mToy Load (0.2ms)[0m  [1m[34mSELECT  "toys".* FROM "toys" WHERE "toys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:27
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:29
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/toys_controller.rb:29
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 4.4ms)
+
+
+
+ActiveModel::ForbiddenAttributesError - ActiveModel::ForbiddenAttributesError:
+  app/controllers/toys_controller.rb:29:in `update'
+
+Started PATCH "/toys/5" for ::1 at 2020-04-02 15:52:06 -0600
+Processing by ToysController#update as */*
+  Parameters: {"toy"=>{"cat_id"=>3, "name"=>"Semi-sweet_string"}, "id"=>"5"}
+  [1m[36mToy Load (0.5ms)[0m  [1m[34mSELECT  "toys".* FROM "toys" WHERE "toys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:27
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:29
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/toys_controller.rb:29
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.5ms)
+
+
+
+ActiveModel::ForbiddenAttributesError - ActiveModel::ForbiddenAttributesError:
+  app/controllers/toys_controller.rb:29:in `update'
+
+Started PATCH "/toys/5" for ::1 at 2020-04-02 16:00:42 -0600
+Processing by ToysController#update as */*
+  Parameters: {"cat_id"=>3, "name"=>"Semi-sweet_string", "id"=>"5", "toy"=>{"cat_id"=>3, "name"=>"Semi-sweet_string"}}
+  [1m[36mToy Load (0.6ms)[0m  [1m[34mSELECT  "toys".* FROM "toys" WHERE "toys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:28
+Unpermitted parameter: :cat_id
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:30
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:30
+  [1m[36mToy Update (0.4ms)[0m  [1m[33mUPDATE "toys" SET "name" = $1, "updated_at" = $2 WHERE "toys"."id" = $3[0m  [["name", "Semi-sweet_string"], ["updated_at", "2020-04-02 22:00:42.217751"], ["id", 5]]
+  ↳ app/controllers/toys_controller.rb:30
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/toys_controller.rb:30
+Completed 200 OK in 44ms (Views: 0.4ms | ActiveRecord: 11.2ms)
+
+
+Started PATCH "/toys/5" for ::1 at 2020-04-02 16:00:53 -0600
+Processing by ToysController#update as */*
+  Parameters: {"cat_id"=>5, "name"=>"Semi-sweet_string", "id"=>"5", "toy"=>{"cat_id"=>5, "name"=>"Semi-sweet_string"}}
+  [1m[36mToy Load (0.3ms)[0m  [1m[34mSELECT  "toys".* FROM "toys" WHERE "toys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:28
+Unpermitted parameter: :cat_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:30
+  [1m[36mCat Load (0.2ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:30
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/toys_controller.rb:30
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 0.8ms)
+
+
+Started PATCH "/toys/5" for ::1 at 2020-04-02 16:01:24 -0600
+Processing by ToysController#update as */*
+  Parameters: {"cat_id"=>5, "id"=>"5", "toy"=>{"cat_id"=>5}}
+  [1m[36mToy Load (0.3ms)[0m  [1m[34mSELECT  "toys".* FROM "toys" WHERE "toys"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:28
+Unpermitted parameter: :cat_id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:30
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:30
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/toys_controller.rb:30
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/toys/1" for ::1 at 2020-04-02 16:06:31 -0600
+Processing by ToysController#show as */*
+  Parameters: {"cat_id"=>5, "id"=>"1", "toy"=>{"cat_id"=>5}}
+  [1m[36mToy Load (0.8ms)[0m  [1m[34mSELECT  "toys".* FROM "toys" WHERE "toys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:7
+Completed 200 OK in 14ms (Views: 0.5ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/toys/1" for ::1 at 2020-04-02 16:06:35 -0600
+Processing by ToysController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mToy Load (0.4ms)[0m  [1m[34mSELECT  "toys".* FROM "toys" WHERE "toys"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:7
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cats/1" for ::1 at 2020-04-02 16:06:56 -0600
+Processing by CatsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (0.2ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:14
+Completed 200 OK in 15ms (Views: 0.6ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/cats/1/toys" for ::1 at 2020-04-02 16:06:59 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/cats/1/toys"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cats/1/toys" for ::1 at 2020-04-02 16:07:30 -0600
+Processing by ToysController#index as */*
+  Parameters: {"cat_id"=>"1"}
+  [1m[36mToy Load (0.4ms)[0m  [1m[34mSELECT "toys".* FROM "toys"[0m
+  ↳ app/controllers/toys_controller.rb:3
+Completed 200 OK in 28ms (Views: 14.3ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/cats/1/toys" for ::1 at 2020-04-02 16:10:47 -0600
+Processing by ToysController#index as */*
+  Parameters: {"cat_id"=>"1"}
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:4
+  [1m[36mToy Load (0.7ms)[0m  [1m[34mSELECT "toys".* FROM "toys" WHERE "toys"."cat_id" = $1[0m  [["cat_id", 1]]
+  ↳ app/controllers/toys_controller.rb:5
+Completed 200 OK in 36ms (Views: 11.1ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/cats/3/toys" for ::1 at 2020-04-02 16:11:23 -0600
+Processing by ToysController#index as */*
+  Parameters: {"cat_id"=>"3"}
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:4
+  [1m[36mToy Load (0.2ms)[0m  [1m[34mSELECT "toys".* FROM "toys" WHERE "toys"."cat_id" = $1[0m  [["cat_id", 3]]
+  ↳ app/controllers/toys_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/cats/3/toys" for ::1 at 2020-04-02 16:20:00 -0600
+Processing by ToysController#create as */*
+  Parameters: {"cat"=>{"ttype"=>"yarnball", "name"=>"Mr. Yarn"}, "cat_id"=>"3", "toy"=>{}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 3.6ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: toy:
+  app/controllers/toys_controller.rb:49:in `toy_params'
+  app/controllers/toys_controller.rb:37:in `create'
+
+Started POST "/cats/3/toys" for ::1 at 2020-04-02 16:20:50 -0600
+Processing by ToysController#create as */*
+  Parameters: {"cat"=>{"ttype"=>"yarnball", "name"=>"Mr. Yarn"}, "cat_id"=>"3", "toy"=>{}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 2.3ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: toy:
+  app/controllers/toys_controller.rb:49:in `toy_params'
+  app/controllers/toys_controller.rb:37:in `create'
+
+Started POST "/cats/3/toys" for ::1 at 2020-04-02 16:21:06 -0600
+Processing by ToysController#create as */*
+  Parameters: {"cat"=>{"ttype"=>"yarnball", "name"=>"Mr. Yarn"}, "cat_id"=>"3", "toy"=>{}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: toy:
+  app/controllers/toys_controller.rb:49:in `toy_params'
+  app/controllers/toys_controller.rb:37:in `create'
+
+Started POST "/cats/3/toys" for ::1 at 2020-04-02 16:22:48 -0600
+Processing by ToysController#create as */*
+  Parameters: {"cat"=>{"ttype"=>"string", "name"=>"Mr. Yarn"}, "cat_id"=>"3", "toy"=>{}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: toy:
+  app/controllers/toys_controller.rb:49:in `toy_params'
+  app/controllers/toys_controller.rb:37:in `create'
+
+Started POST "/cats/3/toys" for ::1 at 2020-04-02 16:23:21 -0600
+Processing by ToysController#create as */*
+  Parameters: {"toy"=>{"ttype"=>"string", "name"=>"Mr. Yarn"}, "cat_id"=>"3"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:39
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:39
+  [1m[36mToy Create (0.8ms)[0m  [1m[32mINSERT INTO "toys" ("cat_id", "name", "ttype", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["cat_id", 3], ["name", "Mr. Yarn"], ["ttype", "string"], ["created_at", "2020-04-02 22:23:21.185574"], ["updated_at", "2020-04-02 22:23:21.185574"]]
+  ↳ app/controllers/toys_controller.rb:39
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/toys_controller.rb:39
+Completed 200 OK in 56ms (Views: 0.5ms | ActiveRecord: 9.6ms)
+
+
+Started POST "/cats/3/toys" for ::1 at 2020-04-02 16:23:29 -0600
+Processing by ToysController#create as */*
+  Parameters: {"toy"=>{"ttype"=>"string", "name"=>"Mr. Yarn"}, "cat_id"=>"3"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:39
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:39
+  [1m[36mToy Create (0.4ms)[0m  [1m[32mINSERT INTO "toys" ("cat_id", "name", "ttype", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["cat_id", 3], ["name", "Mr. Yarn"], ["ttype", "string"], ["created_at", "2020-04-02 22:23:29.186340"], ["updated_at", "2020-04-02 22:23:29.186340"]]
+  ↳ app/controllers/toys_controller.rb:39
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/toys_controller.rb:39
+Completed 200 OK in 49ms (Views: 0.7ms | ActiveRecord: 13.7ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 16:26:01 -0600
+Processing by ToysController#create as */*
+  Parameters: {"toy"=>{"ttype"=>"yarnball", "name"=>"Mr. Yarn", "cat_id"=>"string"}}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:38
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:38
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/toys_controller.rb:38
+Completed 422 Unprocessable Entity in 40ms (Views: 0.3ms | ActiveRecord: 12.0ms)
+
+
+Started POST "/toys" for ::1 at 2020-04-02 16:26:14 -0600
+Processing by ToysController#create as */*
+  Parameters: {"toy"=>{"ttype"=>"yarnball", "name"=>"Mr. Yarn", "cat_id"=>5}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/toys_controller.rb:38
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/toys_controller.rb:38
+  [1m[36mToy Create (0.5ms)[0m  [1m[32mINSERT INTO "toys" ("cat_id", "name", "ttype", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["cat_id", 5], ["name", "Mr. Yarn"], ["ttype", "yarnball"], ["created_at", "2020-04-02 22:26:14.237856"], ["updated_at", "2020-04-02 22:26:14.237856"]]
+  ↳ app/controllers/toys_controller.rb:38
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/toys_controller.rb:38
+Completed 200 OK in 17ms (Views: 0.6ms | ActiveRecord: 2.0ms)
+
+
