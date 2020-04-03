@@ -71,16 +71,23 @@ class CatsController < ApplicationController
     #show a form to edit an existing cat
     # @/cats/:id/edit
 
+    @cat = Cat.find(params[:id])
+
+    render :edit
   end
 
   def update
     # ...
     #Cant shouldnt eb able to update self to become admin...
-    cat = Cat.find(params[:id])
+    @cat = Cat.find(params[:id])
     # if i upload an admin attribute, this tries to set
     # cat.admin, but i dont want this
 
-    cat.update(params[:cat])
+    if @cat.update(cat_params)
+      redirect_to cat_url(@cat)
+    else
+      render :edit
+    end
   end
 
   def destroy
