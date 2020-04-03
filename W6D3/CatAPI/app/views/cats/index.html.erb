@@ -1,0 +1,34 @@
+<h1>All teh cats!</h1>
+
+<ul>
+
+    <% # ERB is embedded ruby, which we turned this into by adding .erb to file type %>
+    <% # We cna use ERB to generate HTML or JSON or whatever wee want %>
+
+
+    <% # Examples of the ways we can embed ruby commands into the HTML %>
+    <li><%= ["this", "is", "so", "cool"].join(", ") %></li>
+
+    <li><%= "Supercool".upcase %></li>
+
+<% # Using a URL helper below %>
+    <% @cats.all.each do |cat| %>
+    <li>This is the cats name:
+        <a href="<%= cat_url(cat) %>"><%= cat.name %></a>
+        
+        <form action="<%= cat_url(cat) %>" method="POST">
+        <% # This hidden request isnt seen, we use it to tell rails about DELETE with _method %>
+            <input type="hidden" name="_method" value="DELETE">
+
+            <input type="submit" value="Destroy Cat!">
+        </form>
+    </li> 
+    <% end %>   
+
+    
+    <li>DFirst can getre</li>
+    <li>Second cat HERE!</li>
+</ul>
+
+
+<a href="<%= new_cat_url %>">Make a new cat!</a>
