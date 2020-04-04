@@ -72,6 +72,7 @@ Rails.application.routes.draw do
   #id you already ahve ability id, you will be calling direct
   # patch 'superheroes/2/abilities/6' <--- if you have id, shoudl vbe able to make change without it. being specified as a superhero
 
+  #Dont do it in this old style below, do as above
   get "superheroes", to: "superheroes#index"
   get "superheroes/:id", to: "superheroes#show"
   post "superheroes", to: "superheroes#create"
