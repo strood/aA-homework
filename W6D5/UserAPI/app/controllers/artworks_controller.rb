@@ -5,8 +5,10 @@ class ArtworksController < ApplicationController
   #     could always take your artist_id and upload new artworks in your name.
   #     For now, let's assume the users of our service aren't malicious :-)
   def index
-    #GET /artworks
-    render json: Artwork.all
+    # called through :users :artworks,:index - listing all artworks owned by a user
+    #   and shared with a user
+
+    render json: Artwork.artworks_for_user_id(params[:user_id])
   end
 
   def create
