@@ -59,7 +59,7 @@ class UsersController < ApplicationController
     if user.destroy!
       redirect_to "/users"
     else
-      render plain: "Unable to destroy!"
+      render json: user.errors.full_messages, status: :unprocessable_entity
     end
   end
 
