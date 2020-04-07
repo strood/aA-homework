@@ -1,5 +1,5 @@
 class Like < ApplicationRecord
-  validates :user_id, presence: true
+  validates :user_id, uniqueness: { scope: [:imageable_id, :imageable_type] }
   #   Below line redundant as its indexed so auto-checked by rails
   #   validates :imageable, presence: true
 

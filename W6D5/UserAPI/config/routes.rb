@@ -18,22 +18,28 @@ Rails.application.routes.draw do
   resources :users do
     resources :artworks, only: [:index]
     resources :comments, only: [:index]
-    resources :likes, only: [:index]
   end
 
-  resources :artworks, only: [:create, :show, :update, :destroy]
+  # TAKE NOTE OF HOW THIS IS WRITTEN< CAN WRITE ALL LIKE THIS
+  resources :artworks, only: [:create, :show, :update, :destroy] do
+    member do
+      post :like, to: "artworks#like", as: "like"
+      post :unlike, to: "artworks#unlike", as: "unlike"
+    end
+  end
 
   resources :artworks do
     resources :comments, only: [:index]
-    resources :likes, only: [:index]
+  end
+
+  resources :comments, only: [:index, :create, :destroy] do
+    member do
+      post :like, to: "comments#like", as: "like"
+      post :unlike, to: "comments#unlike", as: "unlike"
+    end
   end
 
   resources :artwork_shares, only: [:create, :destroy]
 
-  resources :comments, only: [:create, :destroy]
-
-  resources :comments do
-    resources :likes, only: [:index]
-  end
   # root to: ("/users")
 end
