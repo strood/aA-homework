@@ -10,8 +10,18 @@ class UsersController < ApplicationController
 
   def index
     # GET /users
-    # returns our users in JSON format
-    render json: User.all
+    # returns our users in JSON format if no query present in request params
+    # if query present, return that specific user
+    if params[:username]
+      user = User.find_by(username: params[:username])
+      if user
+        render json: user
+      else
+        render plain: "No User by that name"
+      end
+    else
+      render json: User.all
+    end
   end
 
   def create
