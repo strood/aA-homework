@@ -33,6 +33,10 @@ class Artwork < ApplicationRecord
   has_many :likes,
            as: :imageable
 
+  has_many :likers,
+           through: :likes,
+           source: :liker
+
   def self.artworks_for_user_id(user_id)
     Artwork
       .left_outer_joins(:artwork_share)

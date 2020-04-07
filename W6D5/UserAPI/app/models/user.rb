@@ -33,4 +33,14 @@ class User < ApplicationRecord
            foreign_key: :user_id,
            class_name: :Like,
            dependent: :destroy
+
+  has_many :liked_comments,
+           through: :likes,
+           source: :imageable,
+           source_type: :"Comment"
+
+  has_many :liked_artworks,
+           through: :likes,
+           source: :imageable,
+           source_type: :"Artwork"
 end
