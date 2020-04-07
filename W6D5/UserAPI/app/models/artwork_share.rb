@@ -7,10 +7,12 @@
 #  artwork_id :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  favorite   :boolean
 #
 class ArtworkShare < ApplicationRecord
   validates :user_id, :artwork_id, presence: true
   validates :user_id, uniqueness: { scope: :artwork_id }
+  validates :favorite, inclusion: { in: [true, false] }
 
   belongs_to :viewer,
              primary_key: :id,

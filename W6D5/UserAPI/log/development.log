@@ -5710,3 +5710,516 @@ puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
 puma (3.12.4) lib/puma/server.rb:476:in `process_client'
 puma (3.12.4) lib/puma/server.rb:334:in `block in run'
 puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/46/artworks" for ::1 at 2020-04-07 15:52:59 -0600
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by ArtworksController#index as HTML
+  Parameters: {"user_id"=>"46"}
+  [1m[36mArtwork Load (1.4ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artworks.artist_id = '46') OR (artwork_shares.user_id = '46'))[0m
+  ↳ app/controllers/artworks_controller.rb:11
+Completed 200 OK in 42ms (Views: 13.1ms | ActiveRecord: 6.4ms)
+
+
+  [1m[36mArtworkShare Load (0.3ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares"[0m
+Started GET "/users/38/artworks" for ::1 at 2020-04-07 15:53:44 -0600
+Processing by ArtworksController#index as HTML
+  Parameters: {"user_id"=>"38"}
+  [1m[36mArtwork Load (0.8ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artworks.artist_id = '38') OR (artwork_shares.user_id = '38'))[0m
+  ↳ app/controllers/artworks_controller.rb:11
+Completed 200 OK in 30ms (Views: 28.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/44/artworks" for ::1 at 2020-04-07 15:54:09 -0600
+Processing by ArtworksController#index as HTML
+  Parameters: {"user_id"=>"44"}
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artworks.artist_id = '44') OR (artwork_shares.user_id = '44'))[0m
+  ↳ app/controllers/artworks_controller.rb:11
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.6ms)
+
+
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/strood/.rbenv/versions/2.5.1/bin/annotate:23
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes"[0m
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" ORDER BY "comments"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" ORDER BY "comments"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/comments/2/likes" for ::1 at 2020-04-07 16:08:57 -0600
+  
+ActionController::RoutingError (No route matches [POST] "/comments/2/likes"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/comments/2/like" for ::1 at 2020-04-07 16:09:01 -0600
+Processing by CommentsController#like as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "id"=>"2"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:40
+  [1m[36mLike Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" IS NULL AND "likes"."imageable_id" = $1 AND "likes"."imageable_type" = $2 LIMIT $3[0m  [["imageable_id", 2], ["imageable_type", "Comment"], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:40
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:40
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:40
+Completed 422 Unprocessable Entity in 47ms (ActiveRecord: 16.3ms)
+
+
+
+ActiveRecord::RecordInvalid - Validation failed: Liker must exist, Imageable must exist:
+  app/controllers/comments_controller.rb:40:in `like'
+
+Started POST "/comments/2/like?user_id=37" for ::1 at 2020-04-07 16:10:04 -0600
+Processing by CommentsController#like as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"37", "id"=>"2"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:40
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."imageable_id" = $2 AND "likes"."imageable_type" = $3 LIMIT $4[0m  [["user_id", 37], ["imageable_id", 2], ["imageable_type", "Comment"], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:40
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:40
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:40
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:40
+Completed 422 Unprocessable Entity in 52ms (ActiveRecord: 8.8ms)
+
+
+
+ActiveRecord::RecordInvalid - Validation failed: Imageable must exist:
+  app/controllers/comments_controller.rb:40:in `like'
+
+Started POST "/comments/2/like?user_id=37&id=2" for ::1 at 2020-04-07 16:10:29 -0600
+Processing by CommentsController#like as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"37", "id"=>"2"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:40
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."imageable_id" = $2 AND "likes"."imageable_type" = $3 LIMIT $4[0m  [["user_id", 37], ["imageable_id", 2], ["imageable_type", "Comment"], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:40
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:40
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:40
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:40
+Completed 422 Unprocessable Entity in 6ms (ActiveRecord: 1.1ms)
+
+
+
+ActiveRecord::RecordInvalid - Validation failed: Imageable must exist:
+  app/controllers/comments_controller.rb:40:in `like'
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started POST "/comments/2/like?user_id=38" for ::1 at 2020-04-07 16:13:35 -0600
+Processing by CommentsController#like as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"38", "id"=>"2"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:40
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."imageable_id" = $2 AND "likes"."imageable_type" = $3 LIMIT $4[0m  [["user_id", 38], ["imageable_id", 2], ["imageable_type", "Comment"], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:40
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:40
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:40
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:40
+Completed 422 Unprocessable Entity in 54ms (ActiveRecord: 17.3ms)
+
+
+
+ActiveRecord::RecordInvalid - Validation failed: Imageable must exist:
+  app/controllers/comments_controller.rb:40:in `like'
+
+Started POST "/comments/2/like?user_id=38" for ::1 at 2020-04-07 16:14:31 -0600
+Processing by CommentsController#like as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"38", "id"=>"2"}
+Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 4.2ms)
+
+
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Started POST "/comments/4/like?user_id=38" for ::1 at 2020-04-07 16:15:01 -0600
+Processing by CommentsController#like as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"38", "id"=>"4"}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/comments/4/like?user_id=38" for ::1 at 2020-04-07 16:15:12 -0600
+Processing by CommentsController#like as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"38", "id"=>"4"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:41
+  [1m[36mLike Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."imageable_id" = $2 AND "likes"."imageable_type" = $3 LIMIT $4[0m  [["user_id", 38], ["imageable_id", 4], ["imageable_type", "Comment"], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:41
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:41
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:41
+  [1m[36mLike Create (0.9ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "imageable_type", "imageable_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 38], ["imageable_type", "Comment"], ["imageable_id", 4], ["created_at", "2020-04-07 22:15:12.523642"], ["updated_at", "2020-04-07 22:15:12.523642"]]
+  ↳ app/controllers/comments_controller.rb:41
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:41
+Completed 200 OK in 70ms (Views: 0.7ms | ActiveRecord: 16.6ms)
+
+
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT "likes".* FROM "likes"[0m
+Started POST "/comments/4/like?user_id=37" for ::1 at 2020-04-07 16:15:47 -0600
+Processing by CommentsController#like as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"37", "id"=>"4"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:41
+  [1m[36mLike Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."imageable_id" = $2 AND "likes"."imageable_type" = $3 LIMIT $4[0m  [["user_id", 37], ["imageable_id", 4], ["imageable_type", "Comment"], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:41
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:41
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:41
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "imageable_type", "imageable_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 37], ["imageable_type", "Comment"], ["imageable_id", 4], ["created_at", "2020-04-07 22:15:47.409865"], ["updated_at", "2020-04-07 22:15:47.409865"]]
+  ↳ app/controllers/comments_controller.rb:41
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:41
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 2.2ms)
+
+
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT "likes".* FROM "likes"[0m
+Started GET "/users/37/likes" for ::1 at 2020-04-07 16:16:29 -0600
+Processing by LikesController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"37", "like"=>{}}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - uninitialized constant LikesController::Likes:
+  app/controllers/likes_controller.rb:3:in `index'
+
+Started GET "/users/37/likes" for ::1 at 2020-04-07 16:17:02 -0600
+Processing by LikesController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"37", "like"=>{}}
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 LIMIT $2[0m  [["user_id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:3
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/users/38/likes" for ::1 at 2020-04-07 16:17:19 -0600
+Processing by LikesController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"38", "like"=>{}}
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 LIMIT $2[0m  [["user_id", 38], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:3
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = $1[0m  [["user_id", 38]]
+Started GET "/users/38/likes" for ::1 at 2020-04-07 16:18:21 -0600
+Processing by LikesController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"38", "like"=>{}}
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 2.2ms)
+
+
+
+NoMethodError - undefined method `find_all' for #<Class:0x000055c78d718838>
+Did you mean?  find_each:
+  app/controllers/likes_controller.rb:3:in `index'
+
+Started GET "/users/38/likes" for ::1 at 2020-04-07 16:18:28 -0600
+Processing by LikesController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"38", "like"=>{}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 2.0ms)
+
+
+
+ArgumentError - unknown keyword: user_id:
+  app/controllers/likes_controller.rb:3:in `index'
+
+Started GET "/users/38/likes" for ::1 at 2020-04-07 16:18:42 -0600
+Processing by LikesController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"38", "like"=>{}}
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 LIMIT $2[0m  [["user_id", 38], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:3
+Completed 200 OK in 8ms (Views: 0.4ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/users/38/likes" for ::1 at 2020-04-07 16:19:29 -0600
+Processing by LikesController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"38", "like"=>{}}
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = $1[0m  [["user_id", 38]]
+  ↳ app/controllers/likes_controller.rb:6
+Completed 200 OK in 10ms (Views: 7.1ms | ActiveRecord: 4.3ms)
+
+
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT "likes".* FROM "likes"[0m
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT "likes".* FROM "likes"[0m
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes"[0m
+Started GET "/users/37/likes" for ::1 at 2020-04-07 16:20:45 -0600
+Processing by LikesController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"37", "like"=>{}}
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = $1[0m  [["user_id", 37]]
+  ↳ app/controllers/likes_controller.rb:6
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/37/likes" for ::1 at 2020-04-07 16:21:19 -0600
+Processing by LikesController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"37", "like"=>{}}
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 LIMIT $2[0m  [["user_id", 37], ["LIMIT", 11]]
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 3.2ms)
+
+
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 LIMIT $2[0m  [["user_id", 37], ["LIMIT", 11]]
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+
+NoMethodError - undefined method `imageable' for #<Like::ActiveRecord_Relation:0x00007f2fc8278090>:
+  app/controllers/likes_controller.rb:6:in `index'
+
+Started GET "/users/37/likes" for ::1 at 2020-04-07 16:21:39 -0600
+Processing by LikesController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"37", "like"=>{}}
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = $1[0m  [["user_id", 37]]
+  ↳ app/controllers/likes_controller.rb:6
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 3.7ms)
+
+
+
+TypeError - no implicit conversion of Symbol into Integer:
+  app/controllers/likes_controller.rb:6:in `index'
+
+Started GET "/users/37/likes" for ::1 at 2020-04-07 16:21:49 -0600
+Processing by LikesController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user_id"=>"37", "like"=>{}}
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = $1[0m  [["user_id", 37]]
+  ↳ app/controllers/likes_controller.rb:6
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 3.9ms)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7063385886326289345)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddFavoriteToArtwork (20200407223207)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "artwork_shares" ADD "favorite" boolean[0m
+  ↳ db/migrate/20200407223207_add_favorite_to_artwork.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "artworks" ADD "favorite" boolean[0m
+  ↳ db/migrate/20200407223207_add_favorite_to_artwork.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200407223207"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7063385886326289345)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/strood/.rbenv/versions/2.5.1/bin/annotate:23
+  [1m[36mArtworkShare Load (0.3ms)[0m  [1m[34mSELECT  "artwork_shares".* FROM "artwork_shares" ORDER BY "artwork_shares"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7063385886326289345)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddFavoriteToArtwork (20200407223207)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "artworks" DROP COLUMN "favorite"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "artwork_shares" DROP COLUMN "favorite"[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20200407223207"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7063385886326289345)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7063385886326289345)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddFavoriteToArtwork (20200407223207)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (4.9ms)[0m  [1m[35mALTER TABLE "artwork_shares" ADD "favorite" boolean DEFAULT FALSE[0m
+  ↳ db/migrate/20200407223207_add_favorite_to_artwork.rb:3
+  [1m[35m (5.4ms)[0m  [1m[35mALTER TABLE "artworks" ADD "favorite" boolean DEFAULT FALSE[0m
+  ↳ db/migrate/20200407223207_add_favorite_to_artwork.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200407223207"]]
+  ↳ bin/rails:9
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7063385886326289345)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mArtworkShare Load (0.4ms)[0m  [1m[34mSELECT  "artwork_shares".* FROM "artwork_shares" ORDER BY "artwork_shares"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/artwork_shares/42/favorite" for ::1 at 2020-04-07 16:57:39 -0600
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by ArtworkSharesController#favorite as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "id"=>"42", "artwork_share"=>{}}
+  [1m[36mArtworkShare Load (0.5ms)[0m  [1m[34mSELECT  "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:31
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artwork_shares_controller.rb:33
+  [1m[36mArtworkShare Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "artwork_shares" WHERE "artwork_shares"."user_id" = $1 AND "artwork_shares"."id" != $2 AND "artwork_shares"."artwork_id" = $3 LIMIT $4[0m  [["user_id", 44], ["id", 42], ["artwork_id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:33
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:33
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:33
+  [1m[36mArtworkShare Update (0.5ms)[0m  [1m[33mUPDATE "artwork_shares" SET "favorite" = $1, "updated_at" = $2 WHERE "artwork_shares"."id" = $3[0m  [["favorite", true], ["updated_at", "2020-04-07 22:57:39.525372"], ["id", 42]]
+  ↳ app/controllers/artwork_shares_controller.rb:33
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/artwork_shares_controller.rb:33
+Completed 200 OK in 57ms (Views: 0.5ms | ActiveRecord: 15.8ms)
+
+
+  [1m[36mArtworkShare Load (1.0ms)[0m  [1m[34mSELECT  "artwork_shares".* FROM "artwork_shares" ORDER BY "artwork_shares"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 AND "artworks"."favorite" = $2[0m  [["artist_id", 44], ["favorite", true]]
+  [1m[36mArtwork Load (1.8ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" INNER JOIN "artwork_shares" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "artwork_shares"."user_id" = $1 AND (artwork_shares.favorite = true)[0m  [["user_id", 44]]
+  [1m[36mArtwork Load (0.7ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1[0m  [["artist_id", 44]]
+Started POST "/artworks/29/favorite" for ::1 at 2020-04-07 16:59:12 -0600
+
+AbstractController::ActionNotFound - The action 'favorite' could not be found for ArtworksController:
+
+Started POST "/artworks/29/favorite" for ::1 at 2020-04-07 17:00:05 -0600
+Processing by ArtworksController#favorite as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "id"=>"29", "artwork"=>{}}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:75
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artworks_controller.rb:77
+  [1m[36mArtwork Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "artworks" WHERE "artworks"."artist_id" = $1 AND "artworks"."id" != $2 AND "artworks"."title" = $3 LIMIT $4[0m  [["artist_id", 44], ["id", 29], ["title", "Regional Carnage"], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:77
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:77
+  [1m[36mArtwork Update (0.4ms)[0m  [1m[33mUPDATE "artworks" SET "favorite" = $1, "updated_at" = $2 WHERE "artworks"."id" = $3[0m  [["favorite", true], ["updated_at", "2020-04-07 23:00:06.075859"], ["id", 29]]
+  ↳ app/controllers/artworks_controller.rb:77
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/artworks_controller.rb:77
+Completed 200 OK in 29ms (Views: 0.6ms | ActiveRecord: 9.6ms)
+
+
+  [1m[36mArtwork Load (0.9ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 AND "artworks"."favorite" = $2[0m  [["artist_id", 44], ["favorite", true]]
+Started POST "/artworks/29/unfavorite" for ::1 at 2020-04-07 17:02:36 -0600
+Processing by ArtworksController#unfavorite as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "id"=>"29", "artwork"=>{}}
+No template found for ArtworksController#unfavorite, rendering head :no_content
+Completed 204 No Content in 19ms (ActiveRecord: 1.8ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 AND "artworks"."favorite" = $2[0m  [["artist_id", 44], ["favorite", true]]
+Started POST "/artworks/29/unfavorite" for ::1 at 2020-04-07 17:03:32 -0600
+Processing by ArtworksController#unfavorite as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "id"=>"29", "artwork"=>{}}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:87
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artworks_controller.rb:89
+  [1m[36mArtwork Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "artworks" WHERE "artworks"."artist_id" = $1 AND "artworks"."id" != $2 AND "artworks"."title" = $3 LIMIT $4[0m  [["artist_id", 44], ["id", 29], ["title", "Regional Carnage"], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:89
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/artworks_controller.rb:89
+  [1m[36mArtwork Update (0.4ms)[0m  [1m[33mUPDATE "artworks" SET "favorite" = $1, "updated_at" = $2 WHERE "artworks"."id" = $3[0m  [["favorite", false], ["updated_at", "2020-04-07 23:03:32.667537"], ["id", 29]]
+  ↳ app/controllers/artworks_controller.rb:89
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/artworks_controller.rb:89
+Completed 200 OK in 29ms (Views: 0.6ms | ActiveRecord: 7.9ms)
+
+
+  [1m[36mArtwork Load (1.2ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 AND "artworks"."favorite" = $2[0m  [["artist_id", 44], ["favorite", true]]
+  [1m[36mArtwork Load (0.7ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" INNER JOIN "artwork_shares" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "artwork_shares"."user_id" = $1 AND (artwork_shares.favorite = true)[0m  [["user_id", 44]]
+Started POST "/artwork_shares/29/unfavorite" for ::1 at 2020-04-07 17:04:09 -0600
+Processing by ArtworkSharesController#unfavorite as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "id"=>"29", "artwork_share"=>{}}
+  [1m[36mArtworkShare Load (0.4ms)[0m  [1m[34mSELECT  "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:43
+Completed 404 Not Found in 6ms (ActiveRecord: 6.5ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find ArtworkShare with 'id'=29:
+  app/controllers/artwork_shares_controller.rb:43:in `unfavorite'
+
+Started POST "/artwork_shares/26/unfavorite" for ::1 at 2020-04-07 17:04:18 -0600
+Processing by ArtworkSharesController#unfavorite as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "id"=>"26", "artwork_share"=>{}}
+  [1m[36mArtworkShare Load (0.3ms)[0m  [1m[34mSELECT  "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:43
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find ArtworkShare with 'id'=26:
+  app/controllers/artwork_shares_controller.rb:43:in `unfavorite'
+
+  [1m[36mArtworkShare Load (1.2ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares"[0m
+  [1m[36mArtwork Load (1.5ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" INNER JOIN "artwork_shares" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "artwork_shares"."user_id" = $1 AND (artwork_shares.favorite = true)[0m  [["user_id", 44]]
+Started POST "/artwork_shares/42/unfavorite" for ::1 at 2020-04-07 17:04:58 -0600
+Processing by ArtworkSharesController#unfavorite as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "id"=>"42", "artwork_share"=>{}}
+  [1m[36mArtworkShare Load (0.2ms)[0m  [1m[34mSELECT  "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:43
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artwork_shares_controller.rb:45
+  [1m[36mArtworkShare Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "artwork_shares" WHERE "artwork_shares"."user_id" = $1 AND "artwork_shares"."id" != $2 AND "artwork_shares"."artwork_id" = $3 LIMIT $4[0m  [["user_id", 44], ["id", 42], ["artwork_id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:45
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:45
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:45
+  [1m[36mArtworkShare Update (0.7ms)[0m  [1m[33mUPDATE "artwork_shares" SET "favorite" = $1, "updated_at" = $2 WHERE "artwork_shares"."id" = $3[0m  [["favorite", false], ["updated_at", "2020-04-07 23:04:58.412139"], ["id", 42]]
+  ↳ app/controllers/artwork_shares_controller.rb:45
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/artwork_shares_controller.rb:45
+Completed 200 OK in 28ms (Views: 1.0ms | ActiveRecord: 4.2ms)
+
+
+  [1m[36mArtwork Load (1.3ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" INNER JOIN "artwork_shares" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "artwork_shares"."user_id" = $1 AND (artwork_shares.favorite = true)[0m  [["user_id", 44]]
+  [1m[36mArtwork Load (1.0ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 AND "artworks"."favorite" = $2[0m  [["artist_id", 44], ["favorite", true]]

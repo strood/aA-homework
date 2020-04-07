@@ -20,18 +20,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:index]
   end
 
-  # TAKE NOTE OF HOW THIS IS WRITTEN< CAN WRITE ALL LIKE THIS
-  resources :artworks, only: [:create, :show, :update, :destroy] do
-    member do
-      post :like, to: "artworks#like", as: "like"
-      post :unlike, to: "artworks#unlike", as: "unlike"
-    end
-  end
-
-  resources :artworks do
-    resources :comments, only: [:index]
-  end
-
   resources :comments, only: [:index, :create, :destroy] do
     member do
       post :like, to: "comments#like", as: "like"
@@ -39,7 +27,26 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :artwork_shares, only: [:create, :destroy]
+  # TAKE NOTE OF HOW THIS IS WRITTEN< CAN WRITE ALL LIKE THIS
+  resources :artworks, only: [:create, :show, :update, :destroy] do
+    member do
+      post :like, to: "artworks#like", as: "like"
+      post :unlike, to: "artworks#unlike", as: "unlike"
+      post :favorite, to: "artworks#favorite", as: "favorite"
+      post :unfavorite, to: "artworks#unfavorite", as: "unfavorite"
+    end
+  end
+
+  resources :artworks do
+    resources :comments, only: [:index]
+  end
+
+  resources :artwork_shares, only: [:create, :destroy] do
+    member do
+      post :favorite, to: "artwork_shares#favorite", as: "favorite"
+      post :unfavorite, to: "artwork_shares#unfavorite", as: "unfavorite"
+    end
+  end
 
   # root to: ("/users")
 end

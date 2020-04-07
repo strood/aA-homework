@@ -37,6 +37,7 @@ class CommentsController < ApplicationController
 
   def like
     like = Like.new(user_id: params[:user_id], imageable_id: params[:id], imageable_type: "Comment")
+
     if like.save!
       render json: like
     else

@@ -8,10 +8,12 @@
 #  artist_id  :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  favorite   :boolean
 #
 class Artwork < ApplicationRecord
   validates :title, :image_url, :artist_id, presence: true
   validates :artist_id, uniqueness: { scope: :title }
+  validates :favorite, inclusion: { in: [true, false] }
 
   belongs_to :artist,
              primary_key: :id,
