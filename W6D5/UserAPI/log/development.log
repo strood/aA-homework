@@ -4918,3 +4918,492 @@ Processing by CommentsController#index as */*
 Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/users" for ::1 at 2020-04-06 19:10:20 -0600
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:14
+Completed 200 OK in 18ms (Views: 6.4ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/artworks" for ::1 at 2020-04-06 19:10:43 -0600
+Processing by ArtworksController#index as HTML
+  [1m[36mArtwork Load (1.5ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artworks.artist_id = NULL) OR (artwork_shares.user_id = NULL))[0m
+  ↳ app/controllers/artworks_controller.rb:11
+Completed 200 OK in 41ms (Views: 20.7ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/artwork" for ::1 at 2020-04-06 19:10:51 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/artwork"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/35/artworks" for ::1 at 2020-04-06 19:11:07 -0600
+Processing by ArtworksController#index as HTML
+  Parameters: {"user_id"=>"35"}
+  [1m[36mArtwork Load (0.8ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artworks.artist_id = '35') OR (artwork_shares.user_id = '35'))[0m
+  ↳ app/controllers/artworks_controller.rb:11
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/35/comments" for ::1 at 2020-04-06 19:11:23 -0600
+Processing by CommentsController#index as HTML
+  Parameters: {"user_id"=>"35"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:8
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 35]]
+  ↳ app/controllers/comments_controller.rb:8
+Completed 200 OK in 19ms (Views: 5.2ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/artworks/40/comments" for ::1 at 2020-04-06 19:11:37 -0600
+Processing by CommentsController#index as HTML
+  Parameters: {"artwork_id"=>"40"}
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:10
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Artwork with 'id'=40:
+  app/controllers/comments_controller.rb:10:in `index'
+
+Started POST "/__better_errors/8638fa1850b52228/variables" for ::1 at 2020-04-06 19:11:38 -0600
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+Started GET "/artworks/31/comments" for ::1 at 2020-04-06 19:12:08 -0600
+Processing by CommentsController#index as HTML
+  Parameters: {"artwork_id"=>"31"}
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:10
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = $1[0m  [["artwork_id", 31]]
+  ↳ app/controllers/comments_controller.rb:10
+Completed 200 OK in 20ms (Views: 10.4ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/users" for ::1 at 2020-04-07 11:21:59 -0600
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:19
+Completed 200 OK in 30ms (Views: 12.4ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/users" for ::1 at 2020-04-07 11:22:30 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:19
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users?username=Brenda" for ::1 at 2020-04-07 11:23:02 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Brenda", "user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+Completed 404 Not Found in 12ms (ActiveRecord: 0.5ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find User with 'id'=Brenda:
+  app/controllers/users_controller.rb:16:in `index'
+
+Started GET "/users?username=Brenda" for ::1 at 2020-04-07 11:26:02 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Brenda", "user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 200 OK in 12ms (Views: 9.9ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/users?username=Brenda" for ::1 at 2020-04-07 11:26:23 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Brenda", "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 200 OK in 7ms (Views: 4.5ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/users?username=Brenda" for ::1 at 2020-04-07 11:26:55 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Brenda", "user"=>{}}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users?username=Brenda" for ::1 at 2020-04-07 11:27:22 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Brenda", "user"=>{}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = username)[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 200 OK in 9ms (Views: 5.2ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/users?username=%22Brenda%22" for ::1 at 2020-04-07 11:27:40 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"\"Brenda\"", "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = username)[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users?username=%22Brenda%22" for ::1 at 2020-04-07 11:27:44 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"\"Brenda\"", "user"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = username)[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users?username=%22Brenda%22" for ::1 at 2020-04-07 11:28:06 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"\"Brenda\"", "user"=>{}}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = Brenda)[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 3.5ms)
+
+
+
+PG::UndefinedColumn - ERROR:  column "brenda" does not exist
+LINE 1: SELECT "users".* FROM "users" WHERE (username = Brenda)
+                                                        ^
+:
+  app/controllers/users_controller.rb:17:in `index'
+
+Started GET "/users?username=%22Brenda%22" for ::1 at 2020-04-07 11:28:22 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"\"Brenda\"", "user"=>{}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = :username)[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 3.1ms)
+
+
+
+PG::SyntaxError - ERROR:  syntax error at or near ":"
+LINE 1: SELECT "users".* FROM "users" WHERE (username = :username)
+                                                        ^
+:
+  app/controllers/users_controller.rb:17:in `index'
+
+Started GET "/users?username=%22Brenda%22" for ::1 at 2020-04-07 11:28:39 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"\"Brenda\"", "user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = username)[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 200 OK in 9ms (Views: 5.8ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/users?username=%22Brenda%22" for ::1 at 2020-04-07 11:29:12 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"\"Brenda\"", "user"=>{}}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users?username=%22Brenda%22" for ::1 at 2020-04-07 11:29:30 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"\"Brenda\"", "user"=>{}}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users?username=Brenda" for ::1 at 2020-04-07 11:29:45 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Brenda", "user"=>{}}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users?username=Brenda" for ::1 at 2020-04-07 11:30:11 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Brenda", "user"=>{}}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = Brenda)[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 3.6ms)
+
+
+
+PG::UndefinedColumn - ERROR:  column "brenda" does not exist
+LINE 1: SELECT "users".* FROM "users" WHERE (username = Brenda)
+                                                        ^
+:
+  app/controllers/users_controller.rb:17:in `index'
+
+Started GET "/users?username=Brenda" for ::1 at 2020-04-07 11:30:28 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Brenda", "user"=>{}}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username == Brenda)[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 3.5ms)
+
+
+
+PG::UndefinedColumn - ERROR:  column "brenda" does not exist
+LINE 1: SELECT "users".* FROM "users" WHERE (username == Brenda)
+                                                         ^
+:
+  app/controllers/users_controller.rb:17:in `index'
+
+Started GET "/users?username=Brenda" for ::1 at 2020-04-07 11:30:40 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Brenda", "user"=>{}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = Brenda)[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 3.0ms)
+
+
+
+PG::UndefinedColumn - ERROR:  column "brenda" does not exist
+LINE 1: SELECT "users".* FROM "users" WHERE (username = Brenda)
+                                                        ^
+:
+  app/controllers/users_controller.rb:17:in `index'
+
+Started GET "/users?username=Brenda" for ::1 at 2020-04-07 11:30:56 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Brenda", "user"=>{}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (:username = Brenda)[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 3.8ms)
+
+
+
+PG::SyntaxError - ERROR:  syntax error at or near ":"
+LINE 1: SELECT "users".* FROM "users" WHERE (:username = Brenda)
+                                             ^
+:
+  app/controllers/users_controller.rb:17:in `index'
+
+Started GET "/users?username=%22Brenda%22" for ::1 at 2020-04-07 11:31:17 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"\"Brenda\"", "user"=>{}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (:username = "Brenda")[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 1.6ms)
+
+
+
+PG::SyntaxError - ERROR:  syntax error at or near ":"
+LINE 1: SELECT "users".* FROM "users" WHERE (:username = "Brenda")
+                                             ^
+:
+  app/controllers/users_controller.rb:17:in `index'
+
+Started GET "/users?username=%22Brenda%22" for ::1 at 2020-04-07 11:31:21 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"\"Brenda\"", "user"=>{}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = "Brenda")[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 3.3ms)
+
+
+
+PG::UndefinedColumn - ERROR:  column "Brenda" does not exist
+LINE 1: SELECT "users".* FROM "users" WHERE (username = "Brenda")
+                                                        ^
+:
+  app/controllers/users_controller.rb:17:in `index'
+
+Started GET "/users?username=%22Brenda%22" for ::1 at 2020-04-07 11:32:18 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"\"Brenda\"", "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 200 OK in 8ms (Views: 5.4ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/users?username=Brenda" for ::1 at 2020-04-07 11:32:25 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Brenda", "user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users?username=Brenda" for ::1 at 2020-04-07 11:32:51 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Brenda", "user"=>{}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = Kevin)[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 3.2ms)
+
+
+
+PG::UndefinedColumn - ERROR:  column "kevin" does not exist
+LINE 1: SELECT "users".* FROM "users" WHERE (username = Kevin)
+                                                        ^
+:
+  app/controllers/users_controller.rb:17:in `index'
+
+Started GET "/users?username=Brenda" for ::1 at 2020-04-07 11:33:00 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Brenda", "user"=>{}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username == Kevin)[0m
+  ↳ app/controllers/users_controller.rb:17
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 4.0ms)
+
+
+
+PG::UndefinedColumn - ERROR:  column "kevin" does not exist
+LINE 1: SELECT "users".* FROM "users" WHERE (username == Kevin)
+                                                         ^
+:
+  app/controllers/users_controller.rb:17:in `index'
+
+Started GET "/users?username=Brenda" for ::1 at 2020-04-07 11:33:48 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Brenda", "user"=>{}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 1.8ms)
+
+
+
+TypeError - no implicit conversion of Symbol into Integer:
+  app/controllers/users_controller.rb:16:in `index'
+
+Started GET "/users?username=Brenda" for ::1 at 2020-04-07 11:35:42 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Brenda", "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Brenda"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/users?username=Rupert" for ::1 at 2020-04-07 11:36:08 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Rupert", "user"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Rupert"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users?username=Rupert" for ::1 at 2020-04-07 11:37:13 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Rupert", "user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Rupert"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users?username=Fred" for ::1 at 2020-04-07 11:37:21 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Fred", "user"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Fred"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users?key=Fred" for ::1 at 2020-04-07 11:37:32 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "key"=>"Fred", "user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:23
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users?username=Kevin" for ::1 at 2020-04-07 11:37:44 -0600
+Processing by UsersController#index as */*
+  Parameters: {"comment"=>{"user_id"=>39, "artwork_id"=>26, "body"=>"Whoah we have some comments!"}, "username"=>"Kevin", "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Kevin"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.4ms)
+
+
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7063385886326289345)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateLikes (20200407175449)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "user_id" integer NOT NULL, "imageable_type" character varying, "imageable_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20200407175449_create_likes.rb:3
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_imageable_type_and_imageable_id" ON "likes"  ("imageable_type", "imageable_id")[0m
+  ↳ db/migrate/20200407175449_create_likes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200407175449"]]
+  ↳ bin/rails:9
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(7063385886326289345)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes"[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mArtwork Load (1.4ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArtwork Load (1.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mLike Create (1.5ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "imageable_type", "imageable_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 37], ["imageable_type", "Artwork"], ["imageable_id", 26], ["created_at", "2020-04-07 18:15:20.675734"], ["updated_at", "2020-04-07 18:15:20.675734"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT "likes".* FROM "likes"[0m
+  [1m[36mArtwork Load (1.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[36mArtwork Load (0.9ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."imageable_id" = $1 AND "likes"."imageable_type" = $2[0m  [["imageable_id", 26], ["imageable_type", "Artwork"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = $1[0m  [["user_id", 37]]
+  [1m[36mArtwork Load (0.9ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mComment Load (1.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" ORDER BY "comments"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Create (0.8ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "imageable_type", "imageable_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 38], ["imageable_type", "Comment"], ["imageable_id", 1], ["created_at", "2020-04-07 18:19:21.847104"], ["updated_at", "2020-04-07 18:19:21.847104"]]
+  [1m[35m (8.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" ORDER BY "likes"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (1.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."imageable_id" = $1 AND "likes"."imageable_type" = $2[0m  [["imageable_id", 1], ["imageable_type", "Comment"]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = $1[0m  [["user_id", 38]]
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT "likes".* FROM "likes"[0m
