@@ -27,7 +27,8 @@ class Artwork < ApplicationRecord
   has_many :comments,
            primary_key: :id,
            foreign_key: :artwork_id,
-           class_name: :Comment
+           class_name: :Comment,
+           dependent: :destroy
 
   def self.artworks_for_user_id(user_id)
     Artwork

@@ -14,7 +14,7 @@ class Comment < ApplicationRecord
   validates :artwork_id, presence: true #<< checks if its an index, that its present
   validates :body, presence: true
 
-  belongs_to :commenter,
+  belongs_to :author,
              primary_key: :id,
              foreign_key: :user_id,
              class_name: :User
