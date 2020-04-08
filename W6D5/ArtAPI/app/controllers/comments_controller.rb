@@ -1,15 +1,16 @@
 class CommentsController < ApplicationController
   def index
-    # called through GET    /artworks/:artwork_id/comments(.:format)
-    # OR GET    /users/:user_id/comments(.:format)
+    # called through GET    /artworks/:artwork_id/comments(.:format) - return art comments
+    # OR GET    /users/:user_id/comments(.:format) - return suer comments
+    # Or GET   /comments(.:format)  - return all
     # filter vbasded on where tis coming from and retrurn correct list of comments
-
+    #NOTE!!!  does not grab from URL, must submit user_id or artwork_id as json param
     if params[:user_id]
       render json: User.find(params[:user_id]).comments
     elsif params[:artwork_id]
       render json: Artwork.find(params[:artwork_id]).comments
     else
-      render plain: "Error returning comments"
+      render json: Comment.all
     end
   end
 
@@ -36,6 +37,7 @@ class CommentsController < ApplicationController
   end
 
   def like
+    # POST   /comments/:id/like
     like = Like.new(user_id: params[:user_id], imageable_id: params[:id], imageable_type: "Comment")
 
     if like.save!
@@ -46,6 +48,7 @@ class CommentsController < ApplicationController
   end
 
   def unlike
+    # POST   /comments/:id/unlike
     like = Like.find_by(user_id: params[:user_id], imageable_id: params[:id], imageable_type: "Comment")
 
     if like.destroy!

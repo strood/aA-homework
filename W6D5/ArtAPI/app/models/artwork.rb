@@ -40,7 +40,10 @@ class Artwork < ApplicationRecord
            through: :likes,
            source: :liker
 
-  has_many :artwork_collections
+  has_many :artwork_collections,
+           primary_key: :id,
+           foreign_key: :artwork_id,
+           class_name: :ArtworkCollection
 
   def self.artworks_for_user_id(user_id)
     Artwork

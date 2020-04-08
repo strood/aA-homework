@@ -13,12 +13,12 @@ Rails.application.routes.draw do
   # Old method above, below we limit with only, generate PUT and PATCH w/ :update.
   #  we want. See CatAPI for further nesting in W6D3.
 
-  resources :users, only: [:index, :create, :show, :update, :destroy]
-
-  resources :users do
-    resources :artworks, only: [:index]
-    resources :comments, only: [:index]
-    resources :collections, only: [:index]
+  resources :users, only: [:index, :create, :show, :update, :destroy] do
+    member do
+      resources :artworks, only: [:index]
+      resources :comments, only: [:index]
+      resources :collections, only: [:index]
+    end
   end
 
   resources :comments, only: [:index, :create, :destroy] do
@@ -31,15 +31,12 @@ Rails.application.routes.draw do
   # TAKE NOTE OF HOW THIS IS WRITTEN< CAN WRITE ALL LIKE THIS
   resources :artworks, only: [:create, :show, :update, :destroy] do
     member do
+      resources :comments, only: [:index]
       post :like, to: "artworks#like", as: "like"
       post :unlike, to: "artworks#unlike", as: "unlike"
       post :favorite, to: "artworks#favorite", as: "favorite"
       post :unfavorite, to: "artworks#unfavorite", as: "unfavorite"
     end
-  end
-
-  resources :artworks do
-    resources :comments, only: [:index]
   end
 
   resources :artwork_shares, only: [:create, :destroy] do
@@ -52,7 +49,7 @@ Rails.application.routes.draw do
   resources :collections, only: [:create, :show, :destroy] do
     resources :artworks, only: [:index] do
       post :add, to: "collections#add_artwork", as: "add"
-      post :remocve, to: "collections#remove_artwork", as: "remove"
+      post :remove, to: "collections#remove_artwork", as: "remove"
     end
   end
 

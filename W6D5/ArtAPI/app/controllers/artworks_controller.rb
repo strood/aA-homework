@@ -6,9 +6,14 @@ class ArtworksController < ApplicationController
   #     For now, let's assume the users of our service aren't malicious :-)
   def index
     # called through :users :artworks,:index - listing all artworks owned by a user
+    # OR GET    /collections/:collection_id/artworks(.:format)
     #   and shared with a user
 
-    render json: Artwork.artworks_for_user_id(params[:user_id])
+    if params[:collection_id]
+      render json: Artwork.artworks_for_collection_id(params[:collection_id])
+    else
+      render json: Artwork.artworks_for_user_id(params[:user_id])
+    end
   end
 
   def create

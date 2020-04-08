@@ -11,5 +11,8 @@
 class ArtworkCollection < ApplicationRecord
   belongs_to :collection
 
-  has_many :artworks
+  has_many :artworks,
+           primary_key: :id,
+           foreign_key: :artwork_id,
+           class_name: :Artwork
 end
