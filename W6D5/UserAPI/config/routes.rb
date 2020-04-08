@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :artworks, only: [:index]
     resources :comments, only: [:index]
+    resources :collections, only: [:index]
   end
 
   resources :comments, only: [:index, :create, :destroy] do
@@ -45,6 +46,13 @@ Rails.application.routes.draw do
     member do
       post :favorite, to: "artwork_shares#favorite", as: "favorite"
       post :unfavorite, to: "artwork_shares#unfavorite", as: "unfavorite"
+    end
+  end
+
+  resources :collections, only: [:create, :show, :destroy] do
+    resources :artworks, only: [:index] do
+      post :add, to: "collections#add_artwork", as: "add"
+      post :remocve, to: "collections#remove_artwork", as: "remove"
     end
   end
 

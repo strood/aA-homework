@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_223207) do
+ActiveRecord::Schema.define(version: 2020_04_08_020936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artwork_collections", force: :cascade do |t|
+    t.integer "artwork_id", null: false
+    t.integer "collection_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artwork_id", "collection_id"], name: "index_artwork_collections_on_artwork_id_and_collection_id", unique: true
+  end
 
   create_table "artwork_shares", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -32,6 +40,14 @@ ActiveRecord::Schema.define(version: 2020_04_07_223207) do
     t.datetime "updated_at", null: false
     t.boolean "favorite", default: false
     t.index ["artist_id", "title"], name: "index_artworks_on_artist_id_and_title", unique: true
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "user_id"], name: "index_collections_on_name_and_user_id", unique: true
   end
 
   create_table "comments", force: :cascade do |t|
