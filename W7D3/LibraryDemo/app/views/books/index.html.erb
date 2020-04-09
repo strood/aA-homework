@@ -1,8 +1,14 @@
 <h1> All the books</h1>
 
 <ul>
-  <% @books.each do |book| %>
-      <li>Title: <%= book.title %></li>
-      <br>
-  <% end %>
+<!--  <%# @books.each do |book| %>
+        <%# Can pull in a partial where we are foing these tedious things, maybe in many palces through site. %>
+      <%# render 'book', book: book %>
+      <!-- <br> -->
+  <%# end %>
+
+
+  <%# Factored out code above, as ruby/rails allows us to make shorthand out of this %>
+
+  <%= render @books %>
 </ul>
