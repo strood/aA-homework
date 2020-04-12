@@ -2,12 +2,12 @@
 
 <form action="/cats" method="post">
   <label for="name">Name:</label>
-  <input id="name" type="text" name="cat[name]" value=" <%= @cat.name %> ">
+  <input id="name" type="text" name="cat[name]" value="<%=@cat.name%>">
 
   <br>
 
   <label for="birth_datedate">Birth Date:</label>
-  <input id="birth_date"type="date" name="cat[birth_date]" value=" <%= @cat.birth_date %> ">
+  <input id="birth_date"type="date" name="cat[birth_date]" value="<%=@cat.birth_date%>">
 
   <br>
 
@@ -17,30 +17,23 @@
     <% Cat::COLORS.each do |color| %>
       <option value="<%=color%>"><%=color%></option>
     <% end %>
-
-
-    <!-- <option value="Black">Black</option>
-    <option value="Brown">Brown</option>
-    <option value="White">White</option>
-    <option value="Grey">Grey</option>
-    <option value="Mixed">Mixed</option> -->
   </select>
 
   <br>
 
   <label for="sex">Sex:</label>
-  <input id="sexM" type="radio" name="sex" value="M">
+  <input id="sexM" type="radio" name="cat[sex]" value="M">
   <label for="sexM">M</label>
-  <input id="sexF" type="radio" name="sex" value="F">
+  <input id="sexF" type="radio" name="cat[sex]" value="F">
   <label for="sexF">F</label>
 
   <br>
 
-  <label for="name">Description:</label>
-  <textarea name="name" value="Your cats description...">
+  <label for="description">Description:</label>
+  <textarea name="cat[description]" placeholder="A brief description of your cat...">
 
   </textarea>
   <br>
 
-  <button type="button" name="button">Make Cat!</button>
+  <input type="submit" value="Make Cat!">
 </form>
