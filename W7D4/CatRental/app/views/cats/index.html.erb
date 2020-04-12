@@ -2,6 +2,12 @@
 
 <ul>
   <% @cats.each do |cat| %>
-    <li><%=cat.name%> - About me: <a href="cats/<%=cat.id%>">Here!</a></li>
+    <li><%=cat.name%> - <a href="cats/<%=cat.id%>">About me</a></li>
   <% end %>
 </ul>
+
+
+<br>
+
+<a href=" <%= new_cat_url %> ">Make a new cat!</a>
+<%# FIgure out how to get this button to bring me to the new cat page, and see how well i did with it %>
