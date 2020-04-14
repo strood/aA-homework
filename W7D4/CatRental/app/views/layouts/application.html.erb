@@ -5,11 +5,19 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+    <header>
+      <h1>All the cats!</h1>
+      <ul>
+        <li><a href="#">Sign In</a></li>
+        <li><a href="#">Sing Up</a></li>
+      </ul>
+    </header>
+
     <%= yield %>
   </body>
 </html>
