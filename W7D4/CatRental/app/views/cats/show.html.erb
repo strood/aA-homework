@@ -28,7 +28,37 @@
   </tbody>
 </table>
 
+  <br>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="4">Rental Requests</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cat.rental_requests.order('start_date').each do |request| %>
+      <tr>
+        <td>Start Date: <%= request.start_date %></td>
+        <td>End Date: <%= request.end_date %></td>
+        <td>Status: <%= request.status %> </td>
+        <td>
+          <% if request.pending? %>
+            <form action="<%=approve_cat_rental_request_url(request)%>" method="post">
+              <input type="submit" name="approve" value="Approve Request">
+            </form>
+            <form action="<%=deny_cat_rental_request_url(request)%>" method="post">
+              <input type="submit" name="deny" value="Deny Request">
+            </form>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <br>
 
 <a href=" <%= edit_cat_url %> ">Edit Cat</a>
 <a href=" <%= cats_url %> ">All Cats</a>
+<a href=" <%= new_cat_rental_request_url %>">New Rental Request</a>
