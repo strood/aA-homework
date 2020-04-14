@@ -6,16 +6,16 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
   </head>
 
   <body>
-    <header>
-      <h1>All the cats!</h1>
-      <ul>
-        <li><a href="#">Sign In</a></li>
-        <li><a href="#">Sing Up</a></li>
-      </ul>
+    <header class="main-header">
+      <h1 class="main-title"><a href="<%= cats_url %>">Catz4Rent</a></h1>
+      <div class="head-div">
+        <a class="si-button" href="#">Sign In</a>
+        <a class="su-button" href="#">Sing Up</a>
+      </div>
     </header>
 
     <%= yield %>

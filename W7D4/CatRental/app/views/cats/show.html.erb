@@ -1,64 +1,74 @@
-<h1>About Me</h1>
 
 
-<table>
-  <thead>
-    <tr>
-    <th colspan="2"><%= @cat.name %></th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Age:</td>
-      <td><%= @cat.age %></td>
-    </tr>
-    <tr>
-      <td>Color:</td>
-      <td><%= @cat.color %></td>
-    </tr>
-    <tr>
-      <td>Sex:</td>
-      <td><%= @cat.sex %></td>
-    </tr>
-    <tr>
-      <td>Description:</td>
-      <td><%= @cat.description %></td>
-    </tr>
+<main>
+  <section>
+    <header>About Me</header>
 
-  </tbody>
-</table>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2"><%= @cat.name %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Age:</td>
+          <td><%= @cat.age %></td>
+        </tr>
+        <tr>
+          <td>Color:</td>
+          <td><%= @cat.color %></td>
+        </tr>
+        <tr>
+          <td>Sex:</td>
+          <td><%= @cat.sex %></td>
+        </tr>
+        <tr>
+          <td>Description:</td>
+          <td><%= @cat.description %></td>
+        </tr>
 
-  <br>
+      </tbody>
+    </table>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="4">Rental Requests</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @cat.rental_requests.order('start_date').each do |request| %>
-      <tr>
-        <td>Start Date: <%= request.start_date %></td>
-        <td>End Date: <%= request.end_date %></td>
-        <td>Status: <%= request.status %> </td>
-        <td>
-          <% if request.pending? %>
-            <form action="<%=approve_cat_rental_request_url(request)%>" method="post">
-              <input type="submit" name="approve" value="Approve Request">
-            </form>
-            <form action="<%=deny_cat_rental_request_url(request)%>" method="post">
-              <input type="submit" name="deny" value="Deny Request">
-            </form>
+
+  </section>
+  <section>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="4">Rental Requests</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cat.rental_requests.order('start_date').each do |request| %>
+        <tr>
+          <td>Start Date: <%= request.start_date %></td>
+          <td>End Date: <%= request.end_date %></td>
+          <td>Status: <%= request.status %> </td>
+          <td>
+            <% if request.pending? %>
+              <form action="<%=approve_cat_rental_request_url(request)%>" method="post">
+                <input type="submit" name="approve" value="Approve Request">
+              </form>
+              <form action="<%=deny_cat_rental_request_url(request)%>" method="post">
+                <input type="submit" name="deny" value="Deny Request">
+              </form>
+              <% end %>
+            </td>
+          </tr>
           <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </tbody>
+      </table>
 
-<br>
+      <br>
 
-<a href=" <%= edit_cat_url %> ">Edit Cat</a>
-<a href=" <%= cats_url %> ">All Cats</a>
-<a href=" <%= new_cat_rental_request_url %>">New Rental Request</a>
+      <a href=" <%= edit_cat_url %> ">Edit Cat</a>
+      <a href=" <%= cats_url %> ">All Cats</a>
+      <a href=" <%= new_cat_rental_request_url %>">New Rental Request</a>
+
+
+
+
+  </section>
+</main>
