@@ -1,58 +1,70 @@
 
 
-<main>
-  <section>
-    <header>About Me</header>
+<main class="self-main">
+    <header class="self-header">
+      <h2>About Me</h2>
+      <div class="head-div">
+        <a href=" <%= edit_cat_url %> ">Edit Cat</a>
+        <a href=" <%= cats_url %> ">All Cats</a>
+      </div>
+    </header>
 
-    <table>
+    <section class="self-section">
+      <div class="self-cat-div">
+        <img class="self-cat-pic" src="https://placekitten.com/200/287" alt="cats personal photo">
+        <h2><%= @cat.name %></h2>
+        <table class="cat-stats">
+          <thead>
+            <tr>
+              <th colspan="1">Attribute</th>
+              <th colspan="1">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Age:</td>
+              <td><%= @cat.age %></td>
+            </tr>
+            <tr>
+              <td>Color:</td>
+              <td><%= @cat.color %></td>
+            </tr>
+            <tr>
+              <td>Sex:</td>
+              <td><%= @cat.sex %></td>
+            </tr>
+            <tr>
+              <td>Description:</td>
+              <td><%= @cat.description %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  <section class="self-section">
+    <h2>Rental Requests</h2>
+    <table class="cat-rental">
       <thead>
         <tr>
-          <th colspan="2"><%= @cat.name %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Age:</td>
-          <td><%= @cat.age %></td>
-        </tr>
-        <tr>
-          <td>Color:</td>
-          <td><%= @cat.color %></td>
-        </tr>
-        <tr>
-          <td>Sex:</td>
-          <td><%= @cat.sex %></td>
-        </tr>
-        <tr>
-          <td>Description:</td>
-          <td><%= @cat.description %></td>
-        </tr>
-
-      </tbody>
-    </table>
-
-
-  </section>
-  <section>
-    <table>
-      <thead>
-        <tr>
-          <th colspan="4">Rental Requests</th>
+          <th colspan="1">Start Date:</th>
+          <th colspan="1">End Date: </th>
+          <th colspan="1">Status: </th>
+          <th colspan="1">Action:</th>
         </tr>
       </thead>
       <tbody>
         <% @cat.rental_requests.order('start_date').each do |request| %>
         <tr>
-          <td>Start Date: <%= request.start_date %></td>
-          <td>End Date: <%= request.end_date %></td>
-          <td>Status: <%= request.status %> </td>
-          <td>
+          <td><%= request.start_date %></td>
+          <td><%= request.end_date %></td>
+          <td><%= request.status %> </td>
+          <td class="action-td">
             <% if request.pending? %>
               <form action="<%=approve_cat_rental_request_url(request)%>" method="post">
-                <input type="submit" name="approve" value="Approve Request">
+                <input class="button" type="submit" name="approve" value="Approve">
               </form>
               <form action="<%=deny_cat_rental_request_url(request)%>" method="post">
-                <input type="submit" name="deny" value="Deny Request">
+                <input class="button" type="submit" name="deny" value="Deny">
               </form>
               <% end %>
             </td>
@@ -60,15 +72,9 @@
           <% end %>
         </tbody>
       </table>
-
-      <br>
-
-      <a href=" <%= edit_cat_url %> ">Edit Cat</a>
-      <a href=" <%= cats_url %> ">All Cats</a>
-      <a href=" <%= new_cat_rental_request_url %>">New Rental Request</a>
-
-
-
+      <div class="">
+        <a href=" <%= new_cat_rental_request_url %>">New Rental Request</a>
+      </div>
 
   </section>
 </main>

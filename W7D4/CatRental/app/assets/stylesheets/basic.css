@@ -64,6 +64,9 @@ footer {
 
 /* Universal compoents, across many pages */
 
+.cat-div h4 {
+  font-size: 24px;
+}
 
 /* Index.html.erb components */
 
@@ -98,15 +101,11 @@ footer {
   background: rgba(58, 41, 21, 0.3)
 }
 
-.cat-div {
+.index-cat-div {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10%;
-}
-
-.cat-div h4 {
-  font-size: 24px;
 }
 
 .index-cat-pic {
@@ -116,66 +115,135 @@ footer {
    border: 1px solid black;
  }
 
-/* Layout
 
-body {
-    font-family: sans-serif;
-    background: lightgray;
+/* show.html.erb components */
+
+ .self-main {
+   display: flex;
+   flex-direction: column;
+   margin-left: 25%;
+   margin-right: 25%;
+ }
+
+ .self-header {
+   display: flex;
+   justify-content: space-between;
+   background: rgba(58, 41, 21, 0.5)
+ }
+
+ .self-section {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-around;
+   padding: 5%;
+ }
+
+ .self-cat-pic {
     display: flex;
-    flex-wrap: wrap;
+    flex: 1 1 30%;
+    border: 1px solid black;
   }
 
-  header,
-  aside,
-  section,
-  footer {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 20px;
-  }
-
-  header,
-  footer{
-    margin: 20px 0;
-  }
-  header, footer, aside, section {
-      flex: 1 100%;
-  }
-  header ul li {
-    margin-left: 50px;
-  }
-
-  article,
-  aside li {
-    margin: 15px 0;
-  }
-
-  header,
-  header ul,
-  footer {
+  .self-cat-div {
     display: flex;
-  }
-  header,
-  footer {
-    justify-content: space-between;
-  }
-
-  header ul,
-  footer ul {
+    flex-direction: column;
     align-items: center;
   }
 
-  @media all and (min-width: 600px) {
-    aside {
-      flex: 1;
-      order: 1;
-      margin-right: 20px;
-    }
 
-    section {
-      flex: 3;
-      order: 2;
-    }
-    footer {
-        order: 3;
-    }
-  } */
+  /* cat_rental_request/new.html.erb components */
+
+   .new-request-main {
+     display: flex;
+     flex-direction: column;
+     margin-left: 25%;
+     margin-right: 25%;
+     height: 86vh;
+   }
+
+   .new-request-header {
+     display: flex;
+     justify-content: space-between;
+     background: rgba(58, 41, 21, 0.5)
+   }
+
+   .new-request-section {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     flex-wrap: wrap;
+     justify-content: space-around;
+     padding: 5%;
+   }
+
+
+/* CAT TABLES */
+
+.cat-stats {
+  background: rgba(58, 41, 21, 0.5);
+}
+
+table td {
+  border: 1px solid black;
+}
+
+.cat-rental {
+ background: rgba(58, 41, 21, 0.5);
+ width: 100%;
+}
+
+.action-td {
+  text-align: center;
+}
+
+
+/* Input attributes */
+
+input {
+  style: none;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid yellow;
+  height: 40px;
+  color: yellow;
+}
+
+select {
+  style: none;
+  background: rgba(58, 41, 21, 0.5);
+  border: none;
+  color: yellow;
+  -webkit-appearance: none;
+}
+
+textarea {
+  style: none;
+  background: rgba(58, 41, 21, 0.5);
+  border: none;
+  color: yellow;
+}
+
+.button {
+  border: 1px solid yellow;
+  margin: 10px;
+  display: block;
+  background: rgba(58, 41, 21, 0.5);
+  color: yellow;
+}
+
+.sex-label {
+  margin-right: 15px;
+}
+
+/* MEDIA QUERIES */
+
+@media all and (max-width: 1075px) {
+
+  .self-main {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}

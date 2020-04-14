@@ -10,52 +10,56 @@
   <% header_text = "Create a new cat" %>
 <% end %>
 
-<main>
-  <section>
-    <header>
-      <%= header_text %>
+<main class="new-request-main">
+    <header class="new-request-header">
+      <h2><%= header_text %></h2>
     </header>
-    <form action="<%=action_url  %>" method="post">
 
-      <% if cat.persisted? %>
-      <input type="hidden" name="_method" value="PATCH">
-      <h2> <%= @cat.name %> </h2>
-      <% end %>
+    <section class="new-request-section">
+      <form action="<%=action_url  %>" method="post">
 
-      <label for="name">Name:</label>
-      <input id="name" type="text" name="cat[name]" value="<%=cat.name%>">
-
-      <br>
-
-      <label for="cat_birth_date">Birth Date:</label>
-      <input id="cat_birth_date" type="date" name="cat[birth_date]" value="<%=cat.birth_date%>">
-
-      <br>
-
-      <label for="color">Color:</label>
-      <select class="" id="color" name="cat[color]">
-        <option value="none">--Select Color--</option>
-        <% Cat::COLORS.each do |color| %>
-        <option value="<%=color%>" <%= cat.color == color ? "selected" : "" %> ><%=color%></option>
+        <% if cat.persisted? %>
+        <input type="hidden" name="_method" value="PATCH">
         <% end %>
-      </select>
 
-      <br>
+        <h2> <%= @cat.name %> </h2>
 
+        <br>
 
-      <input id="cat_sex_male" type="radio" name="cat[sex]" value="M" <%= cat.sex == "M" ? "checked" : "" %>>
-      <label for="cat_sex_male">M</label>
-      <input id="cat_sex_female" type="radio" name="cat[sex]" value="F" <%= cat.sex == "F" ? "checked" : "" %>>
-      <label for="cat_sex_female">F</label>
+        <label for="name">Name:</label>
+        <input id="name" type="text" name="cat[name]" value="<%=cat.name%>">
 
-      <br>
+        <br>
 
-      <label for="description">Description:</label>
-      <textarea name="cat[description]" placeholder="A brief description of your cat..."><%=cat.description%></textarea>
-      <br>
+        <label for="cat_birth_date">Birth Date:</label>
+        <input id="cat_birth_date" type="date" name="cat[birth_date]" value="<%=cat.birth_date%>">
 
-      <input type="submit" value="<%= button_text %>">
-    </form>
+        <br>
+
+        <label for="color">Color:</label>
+        <select class="" id="color" name="cat[color]">
+          <option value="none">--Select Color--</option>
+          <% Cat::COLORS.each do |color| %>
+          <option value="<%=color%>" <%= cat.color == color ? "selected" : "" %> ><%=color%></option>
+          <% end %>
+        </select>
+
+        <br>
+
+        <label class="sex-label" for="sex">Sex:</label>
+        <input id="cat_sex_male" type="radio" name="cat[sex]" value="M" <%= cat.sex == "M" ? "checked" : "" %>>
+        <label for="cat_sex_male">M</label>
+        <input id="cat_sex_female" type="radio" name="cat[sex]" value="F" <%= cat.sex == "F" ? "checked" : "" %>>
+        <label for="cat_sex_female">F</label>
+
+        <br>
+
+        <label for="description">Description:</label>
+        <textarea name="cat[description]" placeholder="A brief description of your cat..."><%=cat.description%></textarea>
+        <br>
+
+        <input class="button" type="submit" value="<%= button_text %>">
+      </form>
 
   </section>
 </main>
