@@ -1,16 +1,28 @@
 class User < ApplicationRecord
+  #gives me access to @password instance variable
   attr_reader :password
 
   validates :username, presence: true, uniqueness: true
+
+  #Changes default error message so it doesnt say pasword_digest, but Password
   validates :password_digest, presence: { message: "Password can\'t be blank"}
+
+  #Either checks our @password instance variable on the first input to validate
+  # length, or on future request when its pulled from db, it will appear
+  # as nil, so will still pass.
   validates :password, length: { minimum:6, allow_nil: true}
   validates :session_token, presence: true, uniqueness: true
 
+  #makes sure a session token gets set, if not already
+  after_initialize :ensure_session_token
+
+  #before anythign validated, form submitted ect, check for
+  # session token
   before_validation :ensure_session_token
 
-  def self.find_by_credentials(uname, pword)
-      user = User.find_by(username: uname)
-      return user if user && BCrypt::Password.new(user.passwrod_digest).is_poassword?(password)
+  def self.find_by_credentials(username, password)
+      user = User.find_by(username: username)
+      return user if user && user.is_password?(password)
   end
 
   def self.generate_session_token
@@ -24,9 +36,14 @@ class User < ApplicationRecord
     self.session_token
   end
 
+  private
+
   def ensure_session_token
+    # we must be sure to use the ||= operator instead of = or ||, otherwise
+    # we will end up with a new session token every time we create
+    # a new instance of the User class. This includes finding it in the DB!
     self.session_token ||= User.generate_session_token
-    #way to just call it once, cached in a sense
+
   end
 
 
