@@ -7,6 +7,7 @@ class Cat < ApplicationRecord
     "M",
     "F",
   ].freeze
+
   COLORS = [
     "Black",
     "Brown",
@@ -14,6 +15,7 @@ class Cat < ApplicationRecord
     "Grey",
     "Mixed",
   ].freeze
+
   validates :name, presence: true
   validates :birth_date, presence: true
   validates :color, presence: true

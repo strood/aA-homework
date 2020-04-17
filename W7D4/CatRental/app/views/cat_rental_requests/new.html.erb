@@ -8,22 +8,33 @@
 
     <form action="<%=cat_rental_requests_url%>" method="post">
 
-      <label for="cat_id">Desired Cat:</label>
-      <select class="" name="cat_rental_request[cat_id]" id="cat_id">
-        <option value="none">--Select Cat--</option>
+      <label for="cat_rental_request_cat_id">Desired Cat:</label>
+      <select name="cat_rental_request[cat_id]"
+                id="cat_rental_request_cat_id">
+        <option></option>
         <% Cat.all.each do |cat| %>
-          <option value="<%=cat.id%>" <%= @cat_rental_request.cat_id == cat.id ? "selected" : "" %> > <%=cat.name%> </option>
-          <% end %>
-        </select>
+      <% selected = @rental_request.cat_id == cat.id %>
+      <option <%= selected ? "selected" : "" %>
+              value="<%= cat.id %>">
+        <%= cat.name %>
+      </option>
+    <% end %>
+  </select>
         <br>
 
-        <label for="start_date">Start Date:</label>
-        <input type="date" name="cat_rental_request[start_date]" value="<%=@cat_rental_request.start_date%>">
+        <label for="cat_rental_request_start_date">Start Date:</label>
+        <input type="date"
+              name="cat_rental_request[start_date]"
+              value="<%=@rental_request.start_date%>"
+              id="cat_rental_request_start_date">
 
         <br>
 
-        <label for="end_date">End Date:</label>
-        <input type="date" name="cat_rental_request[end_date]" value="<%=@cat_rental_request.end_date%>">
+        <label for="cat_rental_request_end_date">End Date:</label>
+        <input type="date"
+               name="cat_rental_request[end_date]"
+               value="<%=@rental_request.end_date%>"
+               id="cat_rental_request_end_date">
 
         <input class="button" type="submit" value="Submit Request">
       </form>

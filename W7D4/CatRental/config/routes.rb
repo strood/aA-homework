@@ -9,4 +9,6 @@ Rails.application.routes.draw do
       post 'deny'
     end
   end
+
+  root to: redirect('/cats')
 end
