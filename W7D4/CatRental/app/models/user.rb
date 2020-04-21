@@ -1,3 +1,4 @@
+
 class User < ApplicationRecord
   #gives me access to @password instance variable
   attr_reader :password
@@ -9,7 +10,7 @@ class User < ApplicationRecord
   #Either checks our @password instance variable on the first input to validate
     # length, or on future request when its pulled from db, it will appear
     # as nil, so will still pass.
-  validates :password, length: { minimum:6, allow_nil:true }
+  validates :password, length: { minimum:6, allow_nil: true }
 
   # line below is correct but i still need to add the method
   after_initialize :ensure_session_token
@@ -20,12 +21,32 @@ class User < ApplicationRecord
 
 
   def self.find_by_credentials(user_name, password)
-    user = User.find_by(username: user_name)
+    user = User.find_by(user_name: user_name)
     return user if user && user.is_password?(password)
   end
 
+
+  # Helper methods to make interacting with User object easier.
+  # we make @password an instance variable, but never save to db, so we can still
+  # validate it above to ensure length.
+
+  # validations do not need to check only database columns; you can apply a validation to any attribute.
+  # the password will be around when first signing in, but upod further
+  # instances it wont exist
+
+  def password=(password)
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
+  end
+
+  def is_password?(password)
+    #turining our stored string digest back into obj so we can call method to
+    #compare to submitted password
+    BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
   def self.generate_session_token
-    SecureRandom::urlsafe_base64
+    SecureRandom.urlsafe_base64(16)
   end
 
   def reset_session_token!
@@ -40,23 +61,5 @@ class User < ApplicationRecord
     self.session_token ||= User.generate_session_token
   end
 
-  # Helper methods to make interacting with User object easier.
-  # we make @password an instance variable, but never save to db, so we can still
-  # validate it above to ensure length.
-
-  # validations do not need to check only database columns; you can apply a validation to any attribute.
-  # the password will be around when first signing in, but upod further
-  # instances it wont exist
-
-  def password=(password)
-    @password = password
-    self.password_digest = BCrypt::Passwword.create(password)
-  end
-
-  def is_password?(password)
-    #turining our stored string digest back into obj so we can call method to
-    #compare to submitted password
-    BCrypt::Password.new(self.password_digest).is_password(password)
-  end
 
 end
