@@ -13880,3 +13880,2641 @@ Migrating to CreateUsers (20200417232251)
   ↳ bin/rails:9
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 11:58:27 -0600
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.9ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 107ms (Views: 95.0ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/cats/2" for 127.0.0.1 at 2020-04-20 12:10:24 -0600
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCat Load (0.8ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:10
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (1.1ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY start_date[0m  [["cat_id", 2]]
+  ↳ app/views/cats/show.html.erb:56
+  Rendered cats/show.html.erb within layouts/application (209.7ms)
+Completed 200 OK in 226ms (Views: 209.4ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 12:10:37 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.1ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 20ms (Views: 17.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/cat_rental_requests/new" for 127.0.0.1 at 2020-04-20 12:10:39 -0600
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:15
+  Rendered cat_rental_requests/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/cats/2" for 127.0.0.1 at 2020-04-20 12:10:43 -0600
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCat Load (0.7ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:10
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (0.8ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY start_date[0m  [["cat_id", 2]]
+  ↳ app/views/cats/show.html.erb:56
+  Rendered cats/show.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 13:07:05 -0600
+Processing by UsersController#new as HTML
+Redirected to 
+Completed 500 Internal Server Error in 128ms (ActiveRecord: 3.9ms)
+
+
+
+NoMethodError - undefined method `new_url' for #<UsersController:0x00007f2c2030ed48>
+Did you mean?  new_cat_url:
+  app/controllers/users_controller.rb:6:in `new'
+
+Started POST "/__better_errors/7982d4722c89d3b0/variables" for 127.0.0.1 at 2020-04-20 13:07:05 -0600
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 13:07:26 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 22ms (Views: 6.8ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 14:37:20 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 28ms (Views: 19.0ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/cats/new" for 127.0.0.1 at 2020-04-20 14:37:22 -0600
+Processing by CatsController#new as HTML
+  Rendering cats/new.html.erb within layouts/application
+  Rendered cats/_form.html.erb (1.8ms)
+  Rendered cats/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cats/2" for 127.0.0.1 at 2020-04-20 14:37:24 -0600
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:10
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (0.4ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY start_date[0m  [["cat_id", 2]]
+  ↳ app/views/cats/show.html.erb:56
+  Rendered cats/show.html.erb within layouts/application (23.5ms)
+Completed 200 OK in 32ms (Views: 26.7ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 14:37:27 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 16ms (Views: 5.0ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 14:37:29 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/69879dac51e5907d/variables" for 127.0.0.1 at 2020-04-20 14:37:29 -0600
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 14:38:58 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 14:39:00 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/41da116b026d825d/variables" for 127.0.0.1 at 2020-04-20 14:39:00 -0600
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 14:39:23 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/c848b200908b97bf/variables" for 127.0.0.1 at 2020-04-20 14:39:23 -0600
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 14:39:25 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/ecf2967edfc91b3e/variables" for 127.0.0.1 at 2020-04-20 14:39:25 -0600
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 14:39:56 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 13ms (Views: 3.8ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 14:39:57 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.8ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 27ms (Views: 15.3ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 14:39:57 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/c691769eee611529/variables" for 127.0.0.1 at 2020-04-20 14:39:57 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 14:41:30 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 17ms (Views: 10.9ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/cats/new" for 127.0.0.1 at 2020-04-20 14:41:32 -0600
+Processing by CatsController#new as HTML
+  Rendering cats/new.html.erb within layouts/application
+  Rendered cats/_form.html.erb (1.4ms)
+  Rendered cats/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 14:41:32 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 27ms (Views: 24.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 14:41:33 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/5ffd809ed98224e1/variables" for 127.0.0.1 at 2020-04-20 14:41:33 -0600
+Started POST "/__better_errors/5ffd809ed98224e1/eval" for 127.0.0.1 at 2020-04-20 14:41:44 -0600
+Started POST "/__better_errors/5ffd809ed98224e1/eval" for 127.0.0.1 at 2020-04-20 14:41:48 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 14:43:55 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 14ms (Views: 11.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 14:43:56 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/57f3580a1eda67ab/variables" for 127.0.0.1 at 2020-04-20 14:43:56 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 14:52:10 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 18ms (Views: 11.2ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 14:52:11 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/dd41f06d697a24f1/variables" for 127.0.0.1 at 2020-04-20 14:52:11 -0600
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 14:53:05 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 22ms (Views: 6.2ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 14:53:07 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.0ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 21ms (Views: 18.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 14:53:09 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 14:56:17 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 15ms (Views: 10.0ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 14:56:19 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 14ms (Views: 4.5ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 14:57:27 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 14:57:42 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>" b1d4CTqVUAhguJdhyZdMGsC8CiD2KSiU0qwp5j5j7RX1u7PQxlOo/j5FjI94ri+bkGsRtQRO5kHHAtj7KMl+JQ== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/__better_errors/3818bb5f02aa01f8/variables" for 127.0.0.1 at 2020-04-20 14:57:42 -0600
+Started POST "/users" for 127.0.0.1 at 2020-04-20 14:58:02 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>" b1d4CTqVUAhguJdhyZdMGsC8CiD2KSiU0qwp5j5j7RX1u7PQxlOo/j5FjI94ri+bkGsRtQRO5kHHAtj7KMl+JQ== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+
+ActiveModel::UnknownAttributeError - unknown attribute 'password' for User.:
+  app/controllers/users_controller.rb:8:in `create'
+
+Started POST "/__better_errors/09039a3664575dcb/variables" for 127.0.0.1 at 2020-04-20 14:58:02 -0600
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 14:59:48 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 13ms (Views: 4.4ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 14:59:52 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>" GY4DZ93k8HXSTyMaNB5JnQnJUpJIu97nNV/Ry8R+kD2DYsi+ISIIg4yyOPSFJyocWR5JB7rcEDIg8SDW0tQDDQ== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+
+ActiveModel::UnknownAttributeError - unknown attribute 'username' for User.:
+  app/controllers/users_controller.rb:8:in `create'
+
+Started POST "/__better_errors/1cae1a2790cb0928/variables" for 127.0.0.1 at 2020-04-20 14:59:52 -0600
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 15:00:08 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 12ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 15:00:14 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>" 462AEa0ZefDduYwkzoAnfz7mtyPIP5timGz7ZheSu7p5QUvIUd+BBoNEl8p/uUT+bjGstjpYVbeNwgp7ATgoig== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+
+ActiveModel::UnknownAttributeError - unknown attribute 'password' for User.:
+  app/controllers/users_controller.rb:8:in `create'
+
+Started POST "/__better_errors/c758275e8a236afc/variables" for 127.0.0.1 at 2020-04-20 15:00:14 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 15:00:44 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 15ms (Views: 10.2ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 15:00:46 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/65f0a918fb65dbf6/variables" for 127.0.0.1 at 2020-04-20 15:00:46 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 15:03:02 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 15:03:02 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 15:03:05 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/13846160fc8d2e6b/variables" for 127.0.0.1 at 2020-04-20 15:03:05 -0600
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 15:04:39 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/0a03420fd2aaac08/variables" for 127.0.0.1 at 2020-04-20 15:04:39 -0600
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 15:04:45 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 15:04:49 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>" KQwuci03Tk8baHcY80JIhBA7W0ayBY/+uW1ftWEbzMiz4OWr0fG2uUWVbPZCeysFQOxA00BiQSusw66od7Ff+A== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+
+ActiveModel::UnknownAttributeError - unknown attribute 'password' for User.:
+  app/controllers/users_controller.rb:8:in `create'
+
+Started POST "/__better_errors/8bf48eb711b74800/variables" for 127.0.0.1 at 2020-04-20 15:04:49 -0600
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:00:16 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.3ms)
+Completed 500 Internal Server Error in 166ms (ActiveRecord: 4.1ms)
+
+
+
+NameError - undefined local variable or method `session_token' for #<UsersController:0x00007f2c21e627c0>
+Did you mean?  session:
+  app/controllers/application_controller.rb:10:in `current_user'
+  app/views/layouts/application.html.erb:17:in `_app_views_layouts_application_html_erb___1743640039657797557_69913759880780'
+
+Started POST "/__better_errors/fa086bfb196d2480/variables" for 127.0.0.1 at 2020-04-20 17:00:16 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:00:17 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.8ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (8.6ms)
+Completed 500 Internal Server Error in 179ms (ActiveRecord: 2.7ms)
+
+
+
+NameError - undefined local variable or method `session_token' for #<CatsController:0x00007f2c20435d70>
+Did you mean?  session:
+  app/controllers/application_controller.rb:10:in `current_user'
+  app/views/layouts/application.html.erb:17:in `_app_views_layouts_application_html_erb___1743640039657797557_69913760087260'
+  app/controllers/cats_controller.rb:6:in `index'
+
+Started POST "/__better_errors/a264505df15f0f3b/variables" for 127.0.0.1 at 2020-04-20 17:00:18 -0600
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:01:39 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 11ms (Views: 3.3ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:01:41 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 18ms (Views: 11.9ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/cats/2" for 127.0.0.1 at 2020-04-20 17:01:43 -0600
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCat Load (0.2ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:10
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (1.2ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY start_date[0m  [["cat_id", 2]]
+  ↳ app/views/cats/show.html.erb:56
+  Rendered cats/show.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 17ms (Views: 12.1ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/cats/2/edit" for 127.0.0.1 at 2020-04-20 17:01:45 -0600
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:37
+  Rendering cats/edit.html.erb within layouts/application
+  Rendered cats/_form.html.erb (0.8ms)
+  Rendered cats/edit.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:01:47 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:01:48 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:01:49 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 8ms (Views: 7.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:01:50 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/c5fd265beea98229/variables" for 127.0.0.1 at 2020-04-20 17:01:50 -0600
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:01:57 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:02:02 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>" Y631jDCcS/xz0NE0dLHpN7hCn3Hb3fs8SfkORqgHn+v5QT5VzFqzCi0tytrFiIq26JWE5Cm6NelcV/9bvq0M2w== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+
+ActiveModel::UnknownAttributeError - unknown attribute 'password' for User.:
+  app/controllers/users_controller.rb:8:in `create'
+
+Started POST "/__better_errors/fb1c9c0669990c0c/variables" for 127.0.0.1 at 2020-04-20 17:02:02 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:03:19 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 12ms (Views: 9.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:03:21 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 11ms (Views: 3.6ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:03:24 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>" 46guaZT5OsKjADWJ0TDWwwXZDl4OyzqFAE0tWd2Z6Hl5ROWwaD/CNP39LmdgCbVCVQ4Vy/ys9FAV49xEyzN7SQ== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActiveModel::UnknownAttributeError - unknown attribute 'password' for User.:
+  app/controllers/users_controller.rb:8:in `create'
+
+Started POST "/__better_errors/a7597a49e00fb300/variables" for 127.0.0.1 at 2020-04-20 17:03:24 -0600
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:03:27 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/02fd4f62fbf1a5d6/variables" for 127.0.0.1 at 2020-04-20 17:03:27 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:07:07 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 16ms (Views: 11.1ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:07:09 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 13ms (Views: 4.3ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:07:13 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>" n/6xKQt6eqx1rit+672OVtLkOwdJATZp/Wd5WkZrZNkFEnrw97yCWitTMJBahO3XgjMgkrtm+LzoyYhHUMH36Q== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/__better_errors/0fecc00c4d293dc6/variables" for 127.0.0.1 at 2020-04-20 17:07:13 -0600
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:07:27 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>" n/6xKQt6eqx1rit+672OVtLkOwdJATZp/Wd5WkZrZNkFEnrw97yCWitTMJBahO3XgjMgkrtm+LzoyYhHUMH36Q== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - uninitialized constant User::BCrypt:
+  app/models/user.rb:38:in `password='
+  app/controllers/users_controller.rb:8:in `create'
+
+Started POST "/__better_errors/d446b262aa1f9a57/variables" for 127.0.0.1 at 2020-04-20 17:07:27 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:08:39 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (9.2ms)
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:08:40 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:08:44 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>" HSCk39yR2Bb5ZZLqPI1lE2GHakqJjo+GTwgSHsu51RuHzG8GIFcg4KeYiQSNtAaSMVBx33vpQVNapuMD3RNGKw== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - uninitialized constant User::BCrypt:
+  app/models/user.rb:38:in `password='
+  app/controllers/users_controller.rb:8:in `create'
+
+Started POST "/__better_errors/aa469278540c2ee1/variables" for 127.0.0.1 at 2020-04-20 17:08:44 -0600
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:10:07 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>" HSCk39yR2Bb5ZZLqPI1lE2GHakqJjo+GTwgSHsu51RuHzG8GIFcg4KeYiQSNtAaSMVBx33vpQVNapuMD3RNGKw== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - uninitialized constant User::BCrypt:
+  app/models/user.rb:38:in `password='
+  app/controllers/users_controller.rb:8:in `create'
+
+Started POST "/__better_errors/347ef8d5a8e527b5/variables" for 127.0.0.1 at 2020-04-20 17:10:07 -0600
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:12:06 -0600
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+
+Bootsnap::LoadPathCache::FallbackScan - :
+  app/models/application_record.rb:1:in `<top (required)>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/users_controller.rb:4:in `new'
+
+Started POST "/__better_errors/6512eac86baf09fe/variables" for 127.0.0.1 at 2020-04-20 17:12:06 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:12:23 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 22ms (Views: 15.9ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:12:24 -0600
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+
+Bootsnap::LoadPathCache::FallbackScan - :
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/users_controller.rb:4:in `new'
+
+Started POST "/__better_errors/b9c261f15cf0d746/variables" for 127.0.0.1 at 2020-04-20 17:12:24 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:14:39 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 12ms (Views: 9.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:14:40 -0600
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+
+Bootsnap::LoadPathCache::FallbackScan - :
+  app/models/user.rb:4:in `<class:User>'
+  app/models/user.rb:2:in `<top (required)>'
+  app/controllers/users_controller.rb:4:in `new'
+
+Started POST "/__better_errors/b876aff2c5634058/variables" for 127.0.0.1 at 2020-04-20 17:14:40 -0600
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:14:56 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 15ms (Views: 4.1ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:15:01 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>" VoCHUXzi03S/KG7aDptj6Qo+iktrGEnwzdmWs+A9A23MbEyIgCQrguHVdTS/ogBoWumR3pl/hyXYd2eu9peQXQ== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - uninitialized constant User::BCrypt:
+  app/models/user.rb:39:in `password='
+  app/controllers/users_controller.rb:8:in `create'
+
+Started POST "/__better_errors/cb5c485314080d35/variables" for 127.0.0.1 at 2020-04-20 17:15:01 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:22:08 -0600
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (9.2ms)
+Completed 200 OK in 157ms (Views: 148.8ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:22:10 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 14ms (Views: 4.2ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:22:14 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>" RVvJzq+UAI/GOxzDm+VcBc2+gK0u1TY+bRJVlaA710rftwIXU1L4eZjGBy0q3D+EnWmbONyy+Ot4vKSItpFEeg== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (2.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "wrOrWqd13XJMu1W9xaqUCw"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 300ms (Views: 3.3ms | ActiveRecord: 3.3ms)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:24:31 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:24:34 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/bd982b8de68110b5/variables" for 127.0.0.1 at 2020-04-20 17:24:34 -0600
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:24:36 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:24:46 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"y9odzOpsSfIYRk8Cc2rUNFn7yvYqmx//4lEO2vHzBNNRNtYVFqqxBEa7VOzCU7e1CSzRY9j80Sr3///H51mX4w==", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TUjUcTOSiLNKlUD65hjPJg"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 199ms (Views: 3.8ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:25:30 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/128ca4f2f3c92ba3/variables" for 127.0.0.1 at 2020-04-20 17:25:30 -0600
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:25:52 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"y9odzOpsSfIYRk8Cc2rUNFn7yvYqmx//4lEO2vHzBNNRNtYVFqqxBEa7VOzCU7e1CSzRY9j80Sr3///H51mX4w==", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "x7Lf_44G0W3_3lyfrCBf4w"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 202ms (Views: 3.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:25:53 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 23ms (Views: 14.4ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:25:54 -0600
+
+NameError - uninitialized constant SessionController:
+
+Started POST "/__better_errors/38871833242eaa8e/variables" for 127.0.0.1 at 2020-04-20 17:25:54 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:26:11 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 15ms (Views: 10.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:26:11 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:26:12 -0600
+Processing by SessionController#new as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+
+ActionView::MissingTemplate - Missing template session/new, application/new with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/strood/Dev/aA-homework/W7D4/CatRental/app/views"
+:
+  app/controllers/session_controller.rb:6:in `new'
+
+Started POST "/__better_errors/b8ae2f0eee5c2173/variables" for 127.0.0.1 at 2020-04-20 17:26:12 -0600
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:26:34 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 17ms (Views: 16.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:26:35 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 18ms (Views: 15.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:26:36 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:26:37 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.1ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 24ms (Views: 21.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:26:38 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 10ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:26:39 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:26:39 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:26:41 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 30ms (Views: 27.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:26:42 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:26:43 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 24ms (Views: 20.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:26:43 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 22ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:26:44 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 24ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:26:44 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 14ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:26:45 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 16ms (Views: 14.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:26:49 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"r6l/9yYoLRQapdz9jfQ5vS8PP+jBuuhdvDAoy28N2Fo1RbQu2u7V4kRYxxM8zVo8f9gkfTPdJoipntnWeadLag==", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ivvvpSzA9MAJO-9CO9uUuA"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 215ms (Views: 3.9ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:27:41 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"r6l/9yYoLRQapdz9jfQ5vS8PP+jBuuhdvDAoy28N2Fo1RbQu2u7V4kRYxxM8zVo8f9gkfTPdJoipntnWeadLag==", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ZRZ7GkSMW9ycNOxo5c7fJA"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:11
+Unpermitted parameter: :username
+Completed 500 Internal Server Error in 230ms (ActiveRecord: 3.7ms)
+
+
+
+ActionView::MissingTemplate - Missing template users/create, application/create with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/strood/Dev/aA-homework/W7D4/CatRental/app/views"
+:
+  app/controllers/users_controller.rb:17:in `create'
+
+Started POST "/__better_errors/5f24c665f83b9113/variables" for 127.0.0.1 at 2020-04-20 17:27:41 -0600
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:27:51 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"r6l/9yYoLRQapdz9jfQ5vS8PP+jBuuhdvDAoy28N2Fo1RbQu2u7V4kRYxxM8zVo8f9gkfTPdJoipntnWeadLag==", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "I6SxYyy-3yaiaAcw1MM4RA"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:11
+Unpermitted parameter: :username
+Completed 200 OK in 200ms (Views: 0.1ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:27:59 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"r6l/9yYoLRQapdz9jfQ5vS8PP+jBuuhdvDAoy28N2Fo1RbQu2u7V4kRYxxM8zVo8f9gkfTPdJoipntnWeadLag==", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :username
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "9o4XvlXowPJx_CFpHTe7mg"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:11
+Unpermitted parameter: :username
+Completed 200 OK in 223ms (Views: 0.1ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:28:10 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"r6l/9yYoLRQapdz9jfQ5vS8PP+jBuuhdvDAoy28N2Fo1RbQu2u7V4kRYxxM8zVo8f9gkfTPdJoipntnWeadLag==", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 201ms (ActiveRecord: 2.8ms)
+
+
+
+ActiveModel::UnknownAttributeError - unknown attribute 'username' for User.:
+  app/controllers/users_controller.rb:9:in `create'
+
+Started POST "/__better_errors/d902395c2d6b7e03/variables" for 127.0.0.1 at 2020-04-20 17:28:10 -0600
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:28:34 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:28:37 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"ohmr7j0hc/rGBxKmbdrDOMYX4fzIAVxGW+LRSgNdYkw49WA3weeLDJj6CUjc46C5lsD6aTpmkpNOTCBXFffxfA==", "user"=>{"user_name"=>"Janet", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :user_name
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "C5eio-YT02ouNzyT_6_q3w"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:11
+Unpermitted parameter: :user_name
+Completed 200 OK in 207ms (Views: 0.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:29:26 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 16ms (Views: 5.7ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 17:29:32 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"1Jp0wH2hDJHSpImW4eoZ9ynAiG9avyeUor48cxSlfQpOdr8ZgWf0Z4xZknhQ03p2eReT+qjY6UG3EM1uAg/uOg==", "user"=>{"user_name"=>"Janet", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Janet"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "abmI4RqcVpMuZJdSfoeMKw"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_name", "Janet"], ["password_digest", "$2a$12$7zlGYZCXc7bPVrW2A/hC7e0V7iGU6fFbP.JYxdcgK.6R.8uAWo5OW"], ["session_token", "abmI4RqcVpMuZJdSfoeMKw"], ["created_at", "2020-04-20 23:29:32.854116"], ["updated_at", "2020-04-20 23:29:32.854116"]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Janet"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["updated_at", "2020-04-20 23:29:32.859312"], ["id", 1]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 205ms (ActiveRecord: 4.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:29:32 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (7.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 2.7ms)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"destroy", :controller=>"session"}, missing required keys: [:id]:
+  app/views/layouts/application.html.erb:19:in `_app_views_layouts_application_html_erb___3834619635690297599_69951505071600'
+  app/controllers/cats_controller.rb:6:in `index'
+
+Started POST "/__better_errors/673778776bf54b46/variables" for 127.0.0.1 at 2020-04-20 17:29:32 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:31:03 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (4.0ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.1ms)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"destroy", :controller=>"session"}, missing required keys: [:id]:
+  app/views/layouts/application.html.erb:19:in `_app_views_layouts_application_html_erb___3834619635690297599_69951566709500'
+  app/controllers/cats_controller.rb:6:in `index'
+
+Started POST "/__better_errors/0557295bfdca6b53/variables" for 127.0.0.1 at 2020-04-20 17:31:03 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:31:06 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (3.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.7ms)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"destroy", :controller=>"session"}, missing required keys: [:id]:
+  app/views/layouts/application.html.erb:19:in `_app_views_layouts_application_html_erb___3834619635690297599_69951567872720'
+  app/controllers/cats_controller.rb:6:in `index'
+
+Started POST "/__better_errors/fa85ebbe9d7924df/variables" for 127.0.0.1 at 2020-04-20 17:31:06 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:31:59 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:32:07 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:32:20 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:32:22 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:32:44 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:35:19 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 500 Internal Server Error in 183ms (ActiveRecord: 0.6ms)
+
+
+
+NoMethodError - undefined method `id' for #<#<Class:0x00007f3db53b8a18>:0x00007f3dac2f8348>:
+  app/views/layouts/application.html.erb:19:in `_app_views_layouts_application_html_erb___3834619635690297599_69951429240260'
+  app/controllers/cats_controller.rb:6:in `index'
+
+Started POST "/__better_errors/5d04ff32eb09569b/variables" for 127.0.0.1 at 2020-04-20 17:35:20 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:35:32 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (4.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 1.0ms)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"destroy", :controller=>"session"}, missing required keys: [:id]:
+  app/views/layouts/application.html.erb:19:in `_app_views_layouts_application_html_erb___3834619635690297599_69951569959620'
+  app/controllers/cats_controller.rb:6:in `index'
+
+Started POST "/__better_errors/1311e3fb3e8dae9f/variables" for 127.0.0.1 at 2020-04-20 17:35:32 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:37:02 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/session/e724e9686d5df13a1502e96650fae0de" for 127.0.0.1 at 2020-04-20 17:37:05 -0600
+  
+ActionController::RoutingError (No route matches [POST] "/session/e724e9686d5df13a1502e96650fae0de"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:37:41 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (3.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:37:42 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (4.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 17ms (Views: 14.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/session/e724e9686d5df13a1502e96650fae0de" for 127.0.0.1 at 2020-04-20 17:37:43 -0600
+  
+ActionController::RoutingError (No route matches [POST] "/session/e724e9686d5df13a1502e96650fae0de"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/session/e724e9686d5df13a1502e96650fae0de" for 127.0.0.1 at 2020-04-20 17:37:56 -0600
+  
+ActionController::RoutingError (No route matches [POST] "/session/e724e9686d5df13a1502e96650fae0de"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:37:59 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (4.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.9ms)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"destroy", :controller=>"session"}, missing required keys: [:id]:
+  app/views/layouts/application.html.erb:19:in `_app_views_layouts_application_html_erb___3834619635690297599_69951564996320'
+  app/controllers/cats_controller.rb:6:in `index'
+
+Started POST "/__better_errors/c030fa155495d34a/variables" for 127.0.0.1 at 2020-04-20 17:37:59 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:38:19 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 500 Internal Server Error in 310ms (ActiveRecord: 0.6ms)
+
+
+
+NameError - undefined local variable or method `user' for #<#<Class:0x00007f3db53b8a18>:0x00007f3dac387098>
+Did you mean?  super:
+  app/views/layouts/application.html.erb:19:in `_app_views_layouts_application_html_erb___3834619635690297599_69951429540940'
+  app/controllers/cats_controller.rb:6:in `index'
+
+Started POST "/__better_errors/5f5b4a5186e35309/variables" for 127.0.0.1 at 2020-04-20 17:38:19 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:38:41 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (3.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 13ms (Views: 11.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:38:43 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/session/1" for 127.0.0.1 at 2020-04-20 17:38:44 -0600
+  
+ActionController::RoutingError (No route matches [POST] "/session/1"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:41:27 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (3.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/session/e724e9686d5df13a1502e96650fae0de" for 127.0.0.1 at 2020-04-20 17:41:29 -0600
+  
+ActionController::RoutingError (No route matches [POST] "/session/e724e9686d5df13a1502e96650fae0de"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:42:14 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/session/e724e9686d5df13a1502e96650fae0de" for 127.0.0.1 at 2020-04-20 17:42:15 -0600
+  
+ActionController::RoutingError (No route matches [POST] "/session/e724e9686d5df13a1502e96650fae0de"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:42:25 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/session/e724e9686d5df13a1502e96650fae0de?_method=DELETE&_method=sJykVZg48tWUynaP5v83qDj6BYsZaIndxH1dQee6pFwqcG%2BMZP4KI8o3bWFXxlQpaC0eHusPRwjR06xc8RA3bA%3D%3D" for 127.0.0.1 at 2020-04-20 17:42:26 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/session/e724e9686d5df13a1502e96650fae0de"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:42:38 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (3.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/session/e724e9686d5df13a1502e96650fae0de?_method=DELETE&_method=tZXV1DHA35mS%2BID32hvGU7x7Bl%2FQpyK7yLNEbku%2FlDsveR4NzQYnb8wFmxlrIqXS7KwdyiLA7G7dHbVzXRUHCw%3D%3D" for 127.0.0.1 at 2020-04-20 17:42:39 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/session/e724e9686d5df13a1502e96650fae0de"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:43:46 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/session/e724e9686d5df13a1502e96650fae0de" for 127.0.0.1 at 2020-04-20 17:43:48 -0600
+Processing by SessionController#destroy as HTML
+  Parameters: {"id"=>"e724e9686d5df13a1502e96650fae0de"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iRHITa8d6h8Cl1mOConLqA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Janet"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "DsGN-kkjypCnQ0Zw5P6ukg"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "DsGN-kkjypCnQ0Zw5P6ukg"], ["updated_at", "2020-04-20 23:43:48.273036"], ["id", 1]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 6ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:43:48 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:43:51 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-20 17:43:55 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" CHuqyT6mshhu+5AmvNzBl1Ax6tjduQIolxiKZRGssD+Sl2EQwmBK7jAGi8gN5aIWAObxTS/ezP2Ctnt4BwYjDw== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+
+PG::UndefinedColumn - ERROR:  column users.username does not exist
+LINE 1: SELECT  "users".* FROM "users" WHERE "users"."username" = $1...
+                                             ^
+HINT:  Perhaps you meant to reference the column "users.user_name".
+:
+  app/models/user.rb:24:in `find_by_credentials'
+  app/controllers/session_controller.rb:11:in `create'
+
+Started POST "/__better_errors/a2b54e37c044d72d/variables" for 127.0.0.1 at 2020-04-20 17:43:55 -0600
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:49:00 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-20 17:49:06 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" pi3Rsqn/tHkqoGe2OqCYjnhyL1x7E1m8SWrBan9qX2E8wRprVTlMj3RdfFiLmfsPKKU0yYl0l2lcxDB3acDMUQ== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Janet"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 5.2ms)
+
+
+
+NoMethodError - undefined method `is_password' for "$2a$12$7zlGYZCXc7bPVrW2A/hC7e0V7iGU6fFbP.JYxdcgK.6R.8uAWo5OW":BCrypt::Password
+Did you mean?  is_password?:
+  app/models/user.rb:45:in `is_password?'
+  app/models/user.rb:25:in `find_by_credentials'
+  app/controllers/session_controller.rb:11:in `create'
+
+Started POST "/__better_errors/270eabe5958cdcbf/variables" for 127.0.0.1 at 2020-04-20 17:49:06 -0600
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:49:28 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-20 17:49:32 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" GbhDEWlV60mGVT6zxKY8Szts4AXMjp1GDCiYGO5IayaDVIjIlZMTv9ioJV11n1/Ka7v7kD7pU5MZhmkF+OL4Fg== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Janet"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Janet"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "ODSuEJd1bZR7P_YQk83fkg"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "ODSuEJd1bZR7P_YQk83fkg"], ["updated_at", "2020-04-20 23:49:32.350887"], ["id", 1]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Completed 500 Internal Server Error in 363ms (ActiveRecord: 5.9ms)
+
+
+
+NameError - undefined local variable or method `catus_url' for #<SessionController:0x00007f3db5c10198>
+Did you mean?  cats_url
+               cat_url:
+  app/controllers/session_controller.rb:30:in `create'
+
+Started POST "/__better_errors/98d6a7a1ed9675ff/variables" for 127.0.0.1 at 2020-04-20 17:49:32 -0600
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:49:45 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-20 17:49:49 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" nITjwQqBlpZko/r+xras47JCLtVLbWE7Rw++AwcUqRIGaCgY9kduYDpe4RB3j89i4pU1QLkKr+5SoU8eEb46Ig== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Janet"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Janet"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "2O9paPyfja7mDU1dhNx_JA"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "2O9paPyfja7mDU1dhNx_JA"], ["updated_at", "2020-04-20 23:49:49.444714"], ["id", 1]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 217ms (ActiveRecord: 6.4ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:49:49 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (7.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2O9paPyfja7mDU1dhNx_JA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 13ms (Views: 9.0ms | ActiveRecord: 2.3ms)
+
+
+Started DELETE "/session/e724e9686d5df13a1502e96650fae0de" for 127.0.0.1 at 2020-04-20 17:49:55 -0600
+Processing by SessionController#destroy as HTML
+  Parameters: {"id"=>"e724e9686d5df13a1502e96650fae0de"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2O9paPyfja7mDU1dhNx_JA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Janet"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "ee1Btg9StabNUhMzYh4cBA"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "ee1Btg9StabNUhMzYh4cBA"], ["updated_at", "2020-04-20 23:49:55.259274"], ["id", 1]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 22ms (ActiveRecord: 4.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:49:55 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:49:57 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 17:49:58 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 17:50:00 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 17:59:12 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 18:01:04 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 18:01:10 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"oPHC+nGmvgjYgPtrmV/T5rNRxBu4sOtDuAWRyZU7zAY6HQkjjWBG/oZ94IUoZrBn44bfjkrXJZatq2DUg5FfNg==", "user"=>{"user_name"=>"Fawn", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Fawn"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "d9KiHEBjQbab31ADYNLQBg"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_name", "Fawn"], ["password_digest", "$2a$12$.2.E6sGKwgUUY26rKexlUOHb/YXWSwwQCnbQtHZ.5mugDOAolf7OO"], ["session_token", "d9KiHEBjQbab31ADYNLQBg"], ["created_at", "2020-04-21 00:01:10.494276"], ["updated_at", "2020-04-21 00:01:10.494276"]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Fawn"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "B5YMXbglPdCbE_5hL3l-kw"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "B5YMXbglPdCbE_5hL3l-kw"], ["updated_at", "2020-04-21 00:01:10.499162"], ["id", 2]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 206ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 18:01:10 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.2ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "B5YMXbglPdCbE_5hL3l-kw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/session/e724e9686d5df13a1502e96650fae0de" for 127.0.0.1 at 2020-04-20 18:01:14 -0600
+Processing by SessionController#destroy as HTML
+  Parameters: {"id"=>"e724e9686d5df13a1502e96650fae0de"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "B5YMXbglPdCbE_5hL3l-kw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Fawn"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "jYbi0E-8P8yihtGqI85t0g"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "jYbi0E-8P8yihtGqI85t0g"], ["updated_at", "2020-04-21 00:01:14.301854"], ["id", 2]]
+  ↳ app/models/user.rb:54
+  [1m[35m (7.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 17ms (ActiveRecord: 9.9ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 18:01:14 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 18:01:16 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-20 18:01:21 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" DlskzQVVhKc09lOFv/ccsJZNtQyrd1juZihllnVbO+yUt+8U+ZN8UWoLSGsOzn8xxpqumVkQljtzhpSLY/Go3A== ", "user"=>{"username"=>"Fawn", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Fawn"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Fawn"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "60RgdQkVQxZ_MsIshKJRAg"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "60RgdQkVQxZ_MsIshKJRAg"], ["updated_at", "2020-04-21 00:01:21.874916"], ["id", 2]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 193ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 18:01:21 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "60RgdQkVQxZ_MsIshKJRAg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 18:03:12 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (3.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "60RgdQkVQxZ_MsIshKJRAg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 1.3ms)
+
+
+Started DELETE "/session/e724e9686d5df13a1502e96650fae0de" for 127.0.0.1 at 2020-04-20 18:03:14 -0600
+Processing by SessionController#destroy as HTML
+  Parameters: {"id"=>"e724e9686d5df13a1502e96650fae0de"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "60RgdQkVQxZ_MsIshKJRAg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Fawn"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "V2WDz1RVVrl6BdQ8WVDmAA"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "V2WDz1RVVrl6BdQ8WVDmAA"], ["updated_at", "2020-04-21 00:03:14.545877"], ["id", 2]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 6ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 18:03:14 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-20 18:03:42 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" bnlQV6xJGga6Cf80CMPEIJzyRnG2pazrVUCZ+nTOCJX0lZuOUI/i8OT05Nq5+qehzCVd5ETCYj5A7mjnYmSbpQ== ", "user"=>{"username"=>"Fawn", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Fawn"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Fawn"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "an1BwLDK3R3bJLl0laZkEQ"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "an1BwLDK3R3bJLl0laZkEQ"], ["updated_at", "2020-04-21 00:03:42.901033"], ["id", 2]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 203ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 18:03:42 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (4.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "an1BwLDK3R3bJLl0laZkEQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 18ms (Views: 15.7ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/session/e724e9686d5df13a1502e96650fae0de" for 127.0.0.1 at 2020-04-20 18:03:56 -0600
+Processing by SessionController#destroy as HTML
+  Parameters: {"id"=>"e724e9686d5df13a1502e96650fae0de"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "an1BwLDK3R3bJLl0laZkEQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Fawn"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "ouPYSGuQixH5LN0QhEd_5w"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "ouPYSGuQixH5LN0QhEd_5w"], ["updated_at", "2020-04-21 00:03:56.552600"], ["id", 2]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 6ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 18:03:56 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 18:03:57 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-20 18:03:58 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-20 18:04:03 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"TAQZuPy/1EY7m8/DfT1KwCLH76PFe/8D5lnash1+yDvW6NJhAHkssGVm1C3MBClBchD0NjccMdbz9yuvC9RbCw==", "user"=>{"user_name"=>"Joe", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Joe"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "RIvE30NRnEWN27vdIV9QXA"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:11
+Completed 200 OK in 201ms (Views: 0.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 18:04:22 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-20 18:04:25 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" 1nmYbSR5P7V2SLcQrreTmaUTFxoBAt08yFtTrAYzkSlMlVO02L/HQyi1rP4fjvAY9cQMj/NlE+nd9aKxEJkCGQ== ", "user"=>{"username"=>"Fawn", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Fawn"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+Completed 200 OK in 194ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-20 18:05:52 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" 1nmYbSR5P7V2SLcQrreTmaUTFxoBAt08yFtTrAYzkSlMlVO02L/HQyi1rP4fjvAY9cQMj/NlE+nd9aKxEJkCGQ== ", "user"=>{"username"=>"Fawn", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Fawn"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+Completed 200 OK in 191ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-20 18:06:18 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" 1nmYbSR5P7V2SLcQrreTmaUTFxoBAt08yFtTrAYzkSlMlVO02L/HQyi1rP4fjvAY9cQMj/NlE+nd9aKxEJkCGQ== ", "user"=>{"username"=>"Fawn", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Fawn"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 207ms (Views: 1.1ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 18:06:29 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 18ms (Views: 12.4ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 19:52:04 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (2.2ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 22ms (Views: 19.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 19:52:07 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 20ms (Views: 18.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-20 19:52:16 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" 0brASUAQcasJpy8yWZDKnmUqIVtL0S8C62n0/yataJhLVguQvNaJXVdaNNzoqakfNf06zrm24df+xwXiMAf7qA== ", "user"=>{"username"=>"Fawn", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Fawn"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Fawn"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "nHP501N08OELCx1_pz_4wg"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "nHP501N08OELCx1_pz_4wg"], ["updated_at", "2020-04-21 01:52:16.632661"], ["id", 2]]
+  ↳ app/models/user.rb:54
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 203ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 19:52:16 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (1.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "nHP501N08OELCx1_pz_4wg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/session/e724e9686d5df13a1502e96650fae0de" for 127.0.0.1 at 2020-04-20 19:52:21 -0600
+Processing by SessionController#destroy as HTML
+  Parameters: {"id"=>"e724e9686d5df13a1502e96650fae0de"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "nHP501N08OELCx1_pz_4wg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Fawn"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "vCQ6P15_YU9YZMMZnJp7zg"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "vCQ6P15_YU9YZMMZnJp7zg"], ["updated_at", "2020-04-21 01:52:21.606794"], ["id", 2]]
+  ↳ app/models/user.rb:54
+  [1m[35m (8.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 28ms (ActiveRecord: 13.3ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-20 19:52:21 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-20 19:52:25 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.8ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 22ms (Views: 20.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-21 11:56:48 -0600
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.9ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 119ms (Views: 107.8ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-21 11:56:50 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.7ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 17ms (Views: 14.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-21 11:56:54 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-21 11:56:59 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" 75e3K7i4ClVHIrZMMTrkZASkmYd1qaj574KNhBdU0yQQUycqfEBwjaVFv69JKNdzcQg3JjoQCqUqZVuWq03pwA== ", "user"=>{"username"=>"Fawn", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Fawn"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Fawn"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "5nE7DuzIkN-uhqT7f5DxPA"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "5nE7DuzIkN-uhqT7f5DxPA"], ["updated_at", "2020-04-21 17:57:00.059757"], ["id", 2]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 231ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-21 11:57:00 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (1.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5nE7DuzIkN-uhqT7f5DxPA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/cat_rental_requests/new" for 127.0.0.1 at 2020-04-21 11:57:03 -0600
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:15
+  Rendered cat_rental_requests/new.html.erb within layouts/application (2.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5nE7DuzIkN-uhqT7f5DxPA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 32ms (Views: 9.2ms | ActiveRecord: 5.5ms)
+
+
+Started POST "/cat_rental_requests" for 127.0.0.1 at 2020-04-21 11:57:08 -0600
+Processing by CatRentalRequestsController#create as HTML
+  Parameters: {"cat_rental_request"=>{"cat_id"=>"2", "start_date"=>"2020-04-29", "end_date"=>"2020-04-30"}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cat_rental_requests_controller.rb:9
+  [1m[36mCatRentalRequest Exists (3.9ms)[0m  [1m[34mSELECT  1 AS one FROM "cat_rental_requests" WHERE "cat_rental_requests"."id" IS NOT NULL AND "cat_rental_requests"."cat_id" = $1 AND NOT (start_date > '2020-04-30' OR end_date < '2020-04-29') AND "cat_rental_requests"."status" = $2 LIMIT $3[0m  [["cat_id", 2], ["status", "APPROVED"], ["LIMIT", 1]]
+  ↳ app/models/cat_rental_request.rb:42
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cat_rental_requests_controller.rb:9
+  [1m[36mCatRentalRequest Create (1.9ms)[0m  [1m[32mINSERT INTO "cat_rental_requests" ("cat_id", "start_date", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["cat_id", 2], ["start_date", "2020-04-29"], ["end_date", "2020-04-30"], ["created_at", "2020-04-21 17:57:08.486645"], ["updated_at", "2020-04-21 17:57:08.486645"]]
+  ↳ app/controllers/cat_rental_requests_controller.rb:9
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cat_rental_requests_controller.rb:9
+Redirected to http://localhost:3000/cats/2
+Completed 302 Found in 34ms (ActiveRecord: 7.6ms)
+
+
+Started GET "/cats/2" for 127.0.0.1 at 2020-04-21 11:57:08 -0600
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:10
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (0.5ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY start_date[0m  [["cat_id", 2]]
+  ↳ app/views/cats/show.html.erb:56
+  Rendered cats/show.html.erb within layouts/application (183.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5nE7DuzIkN-uhqT7f5DxPA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 192ms (Views: 188.5ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/cat_rental_requests/19/approve" for 127.0.0.1 at 2020-04-21 11:57:12 -0600
+Processing by CatRentalRequestsController#approve as HTML
+  Parameters: {"approve"=>"Approve", "id"=>"19"}
+  [1m[36mCatRentalRequest Load (0.8ms)[0m  [1m[34mSELECT  "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/cat_rental_requests_controller.rb:40
+  [1m[36mCat Load (0.7ms)[0m  [1m[34mSELECT "cats".* FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/cat_rental_requests_controller.rb:40
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/cat_rental_request.rb:73
+  [1m[36mCatRentalRequest Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "cat_rental_requests" WHERE "cat_rental_requests"."id" != $1 AND "cat_rental_requests"."cat_id" = $2 AND NOT (start_date > '2020-04-30' OR end_date < '2020-04-29') AND "cat_rental_requests"."status" = $3 LIMIT $4[0m  [["id", 19], ["cat_id", 2], ["status", "APPROVED"], ["LIMIT", 1]]
+  ↳ app/models/cat_rental_request.rb:42
+  [1m[36mCACHE CatRentalRequest Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "cat_rental_requests" WHERE "cat_rental_requests"."id" != $1 AND "cat_rental_requests"."cat_id" = $2 AND NOT (start_date > '2020-04-30' OR end_date < '2020-04-29') AND "cat_rental_requests"."status" = $3 LIMIT $4[0m  [["id", 19], ["cat_id", 2], ["status", "APPROVED"], ["LIMIT", 1]]
+  ↳ app/models/cat_rental_request.rb:42
+  [1m[36mCatRentalRequest Update (0.6ms)[0m  [1m[33mUPDATE "cat_rental_requests" SET "status" = $1, "updated_at" = $2 WHERE "cat_rental_requests"."id" = $3[0m  [["status", "APPROVED"], ["updated_at", "2020-04-21 17:57:12.917084"], ["id", 19]]
+  ↳ app/models/cat_rental_request.rb:76
+  [1m[36mCatRentalRequest Load (0.6ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."id" != $1 AND "cat_rental_requests"."cat_id" = $2 AND NOT (start_date > '2020-04-30' OR end_date < '2020-04-29') AND "cat_rental_requests"."status" = $3[0m  [["id", 19], ["cat_id", 2], ["status", "PENDING"]]
+  ↳ app/models/cat_rental_request.rb:77
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/cat_rental_request.rb:73
+Redirected to http://localhost:3000/cats/2
+Completed 302 Found in 30ms (ActiveRecord: 4.7ms)
+
+
+Started GET "/cats/2" for 127.0.0.1 at 2020-04-21 11:57:12 -0600
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:10
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (0.5ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY start_date[0m  [["cat_id", 2]]
+  ↳ app/views/cats/show.html.erb:56
+  Rendered cats/show.html.erb within layouts/application (3.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5nE7DuzIkN-uhqT7f5DxPA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 11ms (Views: 8.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/cats/2/edit" for 127.0.0.1 at 2020-04-21 11:57:17 -0600
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCat Load (1.0ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:37
+  Rendering cats/edit.html.erb within layouts/application
+  Rendered cats/_form.html.erb (2.2ms)
+  Rendered cats/edit.html.erb within layouts/application (5.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5nE7DuzIkN-uhqT7f5DxPA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 22ms (Views: 17.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-21 11:57:18 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (5.8ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5nE7DuzIkN-uhqT7f5DxPA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 20ms (Views: 17.6ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/session/fb536cb4cb57f0a31512bbf2c11d7f1c" for 127.0.0.1 at 2020-04-21 11:57:20 -0600
+Processing by SessionController#destroy as HTML
+  Parameters: {"id"=>"fb536cb4cb57f0a31512bbf2c11d7f1c"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5nE7DuzIkN-uhqT7f5DxPA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Fawn"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "V2hj6qjQ6junNqjUvyJqgQ"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "V2hj6qjQ6junNqjUvyJqgQ"], ["updated_at", "2020-04-21 17:57:20.936799"], ["id", 2]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 8ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-21 11:57:20 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-21 11:57:27 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" Pu1RgQm7TWRtTQGvBMR04Ad7i/qwYXCkWzMn4GNyJ3HBKcGAzUM3vI8qCEx81kf3ctclW//Y0vie1PHy32sdlQ== ", "user"=>{"username"=>"Fawn", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Fawn"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 209ms (Views: 5.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-21 11:57:39 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" Pu1RgQm7TWRtTQGvBMR04Ad7i/qwYXCkWzMn4GNyJ3HBKcGAzUM3vI8qCEx81kf3ctclW//Y0vie1PHy32sdlQ== ", "user"=>{"username"=>"Fawn", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Fawn"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Fawn"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "_rRO6I_Ubu2Lq96yaqENMg"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "_rRO6I_Ubu2Lq96yaqENMg"], ["updated_at", "2020-04-21 17:57:40.181697"], ["id", 2]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 209ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-21 11:57:40 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_rRO6I_Ubu2Lq96yaqENMg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/session/fb536cb4cb57f0a31512bbf2c11d7f1c" for 127.0.0.1 at 2020-04-21 11:59:05 -0600
+Processing by SessionController#destroy as HTML
+  Parameters: {"id"=>"fb536cb4cb57f0a31512bbf2c11d7f1c"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "_rRO6I_Ubu2Lq96yaqENMg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Fawn"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "djwYJqi_VQLALTkgpxZpaA"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "djwYJqi_VQLALTkgpxZpaA"], ["updated_at", "2020-04-21 17:59:05.698023"], ["id", 2]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 8ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-21 11:59:05 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-21 12:00:13 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-21 12:00:20 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"27irFaSm0kyDZeBQBixCsHOfbpDyJw5Lv7oGpk5bxd0kfDsUYF6olGEC6bN+PnGnBjPAMb2erBd6XdC08kL/OQ==", "user"=>{"user_name"=>"Frog", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Frog"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hwPDTXibGAZKVd6SPxaQxA"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_name", "Frog"], ["password_digest", "$2a$12$CO1CFPUVbnaV2gE6djKqWOCpXWeokwpstKt9sIkQunT1vHSMakEge"], ["session_token", "hwPDTXibGAZKVd6SPxaQxA"], ["created_at", "2020-04-21 18:00:20.890546"], ["updated_at", "2020-04-21 18:00:20.890546"]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Frog"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "dhLqwJqJHGfloqYPXrMlZg"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "dhLqwJqJHGfloqYPXrMlZg"], ["updated_at", "2020-04-21 18:00:20.895354"], ["id", 3]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 211ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-21 12:00:20 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.2ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (1.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "dhLqwJqJHGfloqYPXrMlZg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Frog"], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "dhLqwJqJHGfloqYPXrMlZg"], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["password_digest", "$2a$12$50GzIADyuQnR0X5cJrGt6uVvhmeEwTbwc8DR09U/5.lzVZ.Eh2BMK"], ["updated_at", "2020-04-21 18:04:09.093845"], ["id", 3]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Frog"], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "dhLqwJqJHGfloqYPXrMlZg"], ["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["password_digest", "$2a$12$CwfudAGrr0VZRqG6AxunMerHkh7KOXf/9Y4os/Mno4wyzR6eD9Gfe"], ["updated_at", "2020-04-21 18:04:54.840128"], ["id", 3]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/cats" for 127.0.0.1 at 2020-04-21 12:21:40 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (10.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "dhLqwJqJHGfloqYPXrMlZg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 24ms (Views: 15.6ms | ActiveRecord: 6.5ms)
+
+
+Started DELETE "/session/fb536cb4cb57f0a31512bbf2c11d7f1c" for 127.0.0.1 at 2020-04-21 12:21:43 -0600
+Processing by SessionController#destroy as HTML
+  Parameters: {"id"=>"fb536cb4cb57f0a31512bbf2c11d7f1c"}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/__better_errors/e3bb6ee358f6af7a/variables" for 127.0.0.1 at 2020-04-21 12:21:43 -0600
+Started GET "/cats" for 127.0.0.1 at 2020-04-21 12:23:00 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (11.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "dhLqwJqJHGfloqYPXrMlZg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 28ms (Views: 18.8ms | ActiveRecord: 6.2ms)
+
+
+Started DELETE "/session/fb536cb4cb57f0a31512bbf2c11d7f1c" for 127.0.0.1 at 2020-04-21 12:23:02 -0600
+Processing by SessionController#destroy as HTML
+  Parameters: {"id"=>"fb536cb4cb57f0a31512bbf2c11d7f1c"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "dhLqwJqJHGfloqYPXrMlZg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Frog"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "YJJ-oN9UaMzaN_HjS1__4g"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "YJJ-oN9UaMzaN_HjS1__4g"], ["updated_at", "2020-04-21 18:23:02.980449"], ["id", 3]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 9ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-21 12:23:02 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-21 12:23:13 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" nEP5DEKfLt24LUaeYSjBn5QsodHwKMWqTrjjj6J6c/9jh2kNhmdUBVpKT30ZOvKI4YAPcL+RZ/aLXzWdHmNJGw== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Janet"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Janet"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "HEhKt-zoEl2GVUFepBR7Rw"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "HEhKt-zoEl2GVUFepBR7Rw"], ["updated_at", "2020-04-21 18:23:13.820157"], ["id", 1]]
+  ↳ app/models/user.rb:54
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:54
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 200ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-21 12:23:13 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.2ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (1.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "HEhKt-zoEl2GVUFepBR7Rw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-21 12:23:32 -0600
+Processing by SessionController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "HEhKt-zoEl2GVUFepBR7Rw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Redirected to http://localhost:3000/cats
+Filter chain halted as :require_no_user! rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-21 12:23:32 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (2.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "HEhKt-zoEl2GVUFepBR7Rw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/session/create" for 127.0.0.1 at 2020-04-21 12:23:42 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/session/create"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/user/new" for 127.0.0.1 at 2020-04-21 12:23:58 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/user/new"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'

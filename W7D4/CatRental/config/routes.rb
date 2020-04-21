@@ -10,5 +10,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: [:new, :create]
+
+  # A visitor to your site implicitly has their own session (it's stored in their browser),
+  # so there's no need to create routes for different sessions. Only new, create, and destroy are needed.
+  resources :session, only: [:new, :create, :destroy]
+
   root to: redirect('/cats')
 end

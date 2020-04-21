@@ -13,8 +13,19 @@
     <header class="main-header">
       <h1 class="main-title"><a href="<%= cats_url %>">Catz4Rent</a></h1>
       <div class="head-div">
-        <a class="si-button" href="#">Sign In</a>
-        <a class="su-button" href="#">Sing Up</a>
+        <!-- edit what is displayed in header based on if logged in or not -->
+        <% if !current_user.nil? %>
+          Hello: <%= current_user.user_name %>
+          <form action="<%= session_url(session.id) %>" method="post">
+            <input type="hidden" name="_method" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="_method" value="DELETE">
+
+            <input type="submit" value="Logout">
+          </form>
+        <% else %>
+          <a class="si-button" href="<%= new_session_url %>">Sign In</a>
+          <a class="su-button" href="<%= new_user_url %>">Sing Up</a>
+        <% end %>
       </div>
     </header>
 
