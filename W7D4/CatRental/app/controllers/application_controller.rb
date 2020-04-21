@@ -9,9 +9,6 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
 
   private
-  def require_no_user!
-    redirect_to cats_url if current_user
-  end
 
   def current_user
     return nil unless session[:session_token]
@@ -29,6 +26,10 @@ class ApplicationController < ActionController::Base
   def logout_user!
     current_user.reset_session_token!
     session[:session_token] = nil
+  end
+
+  def require_no_user!
+    redirect_to cats_url if current_user
   end
 
   def require_user!

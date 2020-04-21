@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # Requires no user to be logged in if going to create or new pages
+  before_action :require_no_user!, only: [:create, :new]
 
   def new
     @user = User.new

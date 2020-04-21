@@ -1,5 +1,6 @@
 class SessionController < ApplicationController
-  before_action :require_no_user!, only: %i(create new)
+  # Requires no user to be logged in if going to create or new pages
+  before_action :require_no_user!, only: [:create, :new]
 
   def new
     # sends us to a log in page to enter credentials
