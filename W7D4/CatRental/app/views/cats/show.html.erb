@@ -49,7 +49,7 @@
     <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: name %>
     <% end %>
-    
+
   <section class="self-section">
     <header>
       <h2>Rental Requests</h2>
@@ -57,6 +57,7 @@
     <table class="cat-rental">
       <thead>
         <tr>
+          <th colspan="1">Renter:</th>
           <th colspan="1">Start Date:</th>
           <th colspan="1">End Date: </th>
           <th colspan="1">Status: </th>
@@ -64,13 +65,17 @@
         </tr>
       </thead>
       <tbody>
-        <% @cat.rental_requests.order('start_date').each do |request| %>
+        <!-- Using includes on this line allows us to eager load in requesters so  -->
+        <!-- we avoid an n+1 quey for pulling in his name each time. We will eager load it Instead -->\
+        <!--  of default lazy load -->
+        <% @cat.rental_requests.includes(:requester).order('start_date').each do |request| %>
         <tr>
+          <td><%= request.requester.user_name %></td>
           <td><%= request.start_date %></td>
           <td><%= request.end_date %></td>
           <td><%= request.status %> </td>
           <td class="action-td">
-            <% if request.pending? && current_user.owns_cat?(current_cat) %>
+            <% if request.pending? && current_user && current_user.owns_cat?(current_cat) %>
               <form action="<%=approve_cat_rental_request_url(request)%>" method="post">
                 <input class="button" type="submit" name="approve" value="Approve">
               </form>

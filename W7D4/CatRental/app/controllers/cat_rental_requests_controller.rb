@@ -8,7 +8,10 @@ class CatRentalRequestsController < ApplicationController
 
   def create
     @rental_request = CatRentalRequest.new(cat_rental_request_params)
-
+    # Once again here usintg the current_use instead of trusting the users
+    # to not be malicious when entering in the user id for the rental
+    # otherwise they may be able tro tamper and mak requests for others.
+    @rental_request.user_id = current_user.id
     if @rental_request.save
       redirect_to cat_url(@rental_request.cat)
     else

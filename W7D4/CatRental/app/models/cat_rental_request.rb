@@ -13,6 +13,9 @@ class CatRentalRequest < ApplicationRecord
   validates :start_date, :end_date, :status, presence: true
   validates :status, inclusion: STATUSES
 
+  # validates nobody tampered with user, and is submitting an invalid user.
+  validate :requester_exists?
+
   # validate :request_in_future
   validate :start_must_come_before_end
   before_commit :does_not_overlap_approved_request
@@ -23,6 +26,12 @@ class CatRentalRequest < ApplicationRecord
              primary_key: :id,
              foreign_key: :cat_id,
              class_name: :Cat
+
+  belongs_to :requester,
+            primary_key: :id,
+            foreign_key: :user_id,
+            class_name: :User
+
 
 
   # We look at the overlapping requests that wouldnt be overlapping, and work
@@ -94,6 +103,10 @@ class CatRentalRequest < ApplicationRecord
           end
         end
     end
+  end
+
+  def requester_exists?
+    errors[:user] << 'must be valid' unless User.exists?(id: user_id)
   end
 
   def deny!
