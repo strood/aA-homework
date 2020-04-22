@@ -1,6 +1,9 @@
 class CatRentalRequestsController < ApplicationController
+  before_action :require_user!, only: [:new, :create, :approve, :deny]
+  before_action :require_owns_cat!, only: [:approve, :deny]
+
   def new
-    @rental_request = CatRentalRequest.new
+    @rental_request = CatRentalRequest.new(cat_id: params[:cat_id])
   end
 
   def create
@@ -9,24 +12,26 @@ class CatRentalRequestsController < ApplicationController
     if @rental_request.save
       redirect_to cat_url(@rental_request.cat)
     else
+      flash.now[:error_message] = @rental_request.errors.full_messages
       render :new
     end
   end
 
   def approve
-    @cat_rental_request = current_cat_rental_request
+    @rental_request = current_cat_rental_request
 
-    if @cat_rental_request.approve!
+    if @rental_request.approve
       redirect_to cat_url(current_cat)
     else
-      render :show
+      flash.now[:error_message] = @rental_request.errors.full_messages
+      redirect_to cat_url(current_cat), flash: { error_message: 'Request cannot overlap approved request' }
     end
   end
 
   def deny
-    @cat_rental_request = current_cat_rental_request
+    @rental_request = current_cat_rental_request
 
-    if @cat_rental_request.deny!
+    if @rental_request.deny!
       redirect_to cat_url(current_cat)
     else
       render :show
@@ -36,8 +41,12 @@ class CatRentalRequestsController < ApplicationController
   private
 
   def current_cat_rental_request
-    @cat_rental_request ||=
+    @rental_request ||=
         CatRentalRequest.includes(:cat).find(params[:id])
+  end
+
+  def require_owns_cat!
+    redirect_to cat_url(current_cat) unless current_user.owns_cat?(current_cat)
   end
 
   def current_cat

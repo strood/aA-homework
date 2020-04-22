@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   # available in our other controllers.
   # Expose current_user method to the views
   helper_method :current_user
+  helper_method :current_cat
   helper_method :logged_in?
 
   private
@@ -13,6 +14,11 @@ class ApplicationController < ActionController::Base
   def current_user
     return nil unless session[:session_token]
     @current_user ||= User.find_by(session_token: session[:session_token])
+  end
+
+  def current_cat
+    return nil unless params[:id]
+    @current_cat ||= Cat.find(params[:id])
   end
 
   def logged_in?
@@ -32,8 +38,13 @@ class ApplicationController < ActionController::Base
     redirect_to cats_url if current_user
   end
 
+
   def require_user!
     redirect_to new_session_url if current_user.nil?
   end
+  #defined in cats controller so i have access to all teh info i need
+  # def require_owns_cats!
+  #   redirect_to cat_url unless current_user.cats.includes(current_cat)
+  # end
 
 end

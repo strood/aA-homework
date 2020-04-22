@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       redirect_to cats_url
     else
       #  Wil add in error to flash here
-      render json: user_params
+      redirect_to new_user_url, flash: { error_message: "Invalid Credentials"}
     end
   end
 

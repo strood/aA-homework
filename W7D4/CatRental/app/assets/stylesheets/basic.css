@@ -21,6 +21,12 @@ a {
 
 /* Layout Basics */
 
+.error_message {
+  color: red;
+  display: flex;
+  justify-content: center
+}
+
 
 html,
 body {

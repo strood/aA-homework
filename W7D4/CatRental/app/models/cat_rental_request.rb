@@ -1,19 +1,21 @@
 class CatRentalRequest < ApplicationRecord
+  include ActionView::Helpers::DateHelper
   STATUSES = [
     "PENDING",
     "APPROVED",
     "DENIED",
   ].freeze
 
-  validates :cat_id, presence: true
-  validates :start_date, presence: true
-  validates :end_date, presence: true
-  validates :status, presence: true
+
+  # N.B. Remember, Rails 5 automatically validates the presence of
+  # belongs_to associations, so we can leave the validation of cat and
+  # user out here.
+  validates :start_date, :end_date, :status, presence: true
   validates :status, inclusion: STATUSES
 
-
+  # validate :request_in_future
   validate :start_must_come_before_end
-  validate :does_not_overlap_approved_request
+  before_commit :does_not_overlap_approved_request
 
   after_initialize :assign_pending_status
 
@@ -22,6 +24,10 @@ class CatRentalRequest < ApplicationRecord
              foreign_key: :cat_id,
              class_name: :Cat
 
+
+  # We look at the overlapping requests that wouldnt be overlapping, and work
+  # backwards from there to find which are overlapping. Done usingf start and
+  #  end dates, and comparing to make sure the start is not less than end, visa versa
   def overlapping_requests
     CatRentalRequest
       .where.not(id: self.id)
@@ -39,10 +45,12 @@ class CatRentalRequest < ApplicationRecord
   end
 
   def does_not_overlap_approved_request
+    # Dont bother searching if alreaady denied
+    return if self.denied?
+
     unless overlapping_approved_requests.exists?
-      return true
+      errors[:request] << 'conflicts with existing approved request'
     end
-    false
   end
 
   def pending?
@@ -62,24 +70,29 @@ class CatRentalRequest < ApplicationRecord
   end
 
   def start_must_come_before_end
-    return if start_date < end_date
-      errors[:start_date] << 'must come before end date'
-      errors[:end_date] << 'must come after start date'
+    errors[:start_date] << 'must be specified' unless start_date
+    errors[:end_date] << 'must be specified' unless end_date
+    if start_date && end_date
+      errors[:start_date] << 'must come before end date' if start_date > end_date
+      errors[:request] << 'must be in the future' if start_date < Time.now
+    end
   end
 
 
-  def approve!
+  def approve
     # This transaction means all or nothing, wont save anything if whole thing doesnt work.
-    transaction do
-      if self.does_not_overlap_approved_request
-        self.status = "APPROVED"
-        self.save!
-        self.overlapping_pending_requests.each do |req|
-          req.deny!
+    raise 'not pending' unless self.status == 'PENDING'
+
+    if does_not_overlap_approved_request
+      transaction do
+          self.status = "APPROVED"
+          self.save!
+
+          # Automatically deny any overlapping pending requests.
+          self.overlapping_pending_requests.each do |req|
+            req.deny!
+          end
         end
-      else
-        raise "Error approving due to overlap with approved requests"
-      end
     end
   end
 

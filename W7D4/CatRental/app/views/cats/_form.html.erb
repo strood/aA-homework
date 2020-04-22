@@ -20,9 +20,12 @@
 
         <% if cat.persisted? %>
         <input type="hidden" name="_method" value="PATCH">
+        <h2> <%= @cat.name %> </h2>
         <% end %>
 
-        <h2> <%= @cat.name %> </h2>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg.first, class: name %>
+        <% end %>
 
         <br>
 
@@ -40,7 +43,8 @@
         <select class="" id="color" name="cat[color]">
           <option value="none">--Select Color--</option>
           <% Cat::COLORS.each do |color| %>
-          <option value="<%=color%>" <%= cat.color == color ? "selected" : "" %> ><%=color%></option>
+          <% selected = cat.color == color %>
+          <option value="<%=color%>" <%= selected ? "selected" : "" %> ><%=color%></option>
           <% end %>
         </select>
 

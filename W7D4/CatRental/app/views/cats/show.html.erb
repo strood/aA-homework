@@ -4,7 +4,11 @@
     <header class="self-header">
       <h2>About Me</h2>
       <div class="head-div">
-        <a href=" <%= edit_cat_url %> ">Edit Cat</a>
+        <!-- Hides the edit button if you dont own the cat -->
+        <!-- NOTE: Need to protect more than here, Controller filters to protect from malicious users -->
+        <% if current_user && current_user.owns_cat?(current_cat)%>
+          <a href=" <%= edit_cat_url %> ">Edit Cat</a>
+        <% end %>
         <a href=" <%= cats_url %> ">All Cats</a>
       </div>
     </header>
@@ -41,8 +45,15 @@
         </table>
       </div>
     </section>
+
+    <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: name %>
+    <% end %>
+    
   <section class="self-section">
-    <h2>Rental Requests</h2>
+    <header>
+      <h2>Rental Requests</h2>
+    </header>
     <table class="cat-rental">
       <thead>
         <tr>
@@ -59,7 +70,7 @@
           <td><%= request.end_date %></td>
           <td><%= request.status %> </td>
           <td class="action-td">
-            <% if request.pending? %>
+            <% if request.pending? && current_user.owns_cat?(current_cat) %>
               <form action="<%=approve_cat_rental_request_url(request)%>" method="post">
                 <input class="button" type="submit" name="approve" value="Approve">
               </form>
@@ -72,8 +83,10 @@
           <% end %>
         </tbody>
       </table>
-      <div class="">
-        <a href=" <%= new_cat_rental_request_url %>">New Rental Request</a>
+      <div>
+        <!-- Able to pass params into query string to carry cat into request form w help from controllers
+              and my CatRentalRequest.new(cat_id: params[:cat_id]) creation when called new-->
+        <a href=" <%= new_cat_rental_request_url(cat_id: @cat.id) %>" value="cat[<%= params[:id] %>]">New Rental Request</a>
       </div>
 
   </section>

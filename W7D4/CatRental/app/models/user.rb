@@ -19,6 +19,19 @@ class User < ApplicationRecord
   # session token
   before_validation :ensure_session_token
 
+  has_many :cats,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :Cat,
+    dependent: :destroy
+
+    # Use this method in controller to make sure only if a person owns a cat
+    # then they are alolowed to approve, or denyt, or edit/update
+  def owns_cat?(cat)
+    cat.user_id == self.id
+  end
+
+
 
   def self.find_by_credentials(user_name, password)
     user = User.find_by(user_name: user_name)

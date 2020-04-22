@@ -5,6 +5,9 @@
     <h2>New Rental Request</h2>
   </header>
   <section class="new-request-section">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg.first, class: name %>
+    <% end %>
 
     <form action="<%=cat_rental_requests_url%>" method="post">
 
@@ -13,12 +16,12 @@
                 id="cat_rental_request_cat_id">
         <option></option>
         <% Cat.all.each do |cat| %>
-      <% selected = @rental_request.cat_id == cat.id %>
-      <option <%= selected ? "selected" : "" %>
+          <% selected = @rental_request.cat_id == cat.id %>
+            <option <%= selected ? "selected" : "" %>
               value="<%= cat.id %>">
-        <%= cat.name %>
-      </option>
-    <% end %>
+              <%= cat.name %>
+            </option>
+        <% end %>
   </select>
         <br>
 

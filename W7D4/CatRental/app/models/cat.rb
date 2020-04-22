@@ -22,6 +22,9 @@ class Cat < ApplicationRecord
   validates :sex, presence: true
   validates :sex, inclusion: SEXES
   validates :color, inclusion: COLORS
+  validates :owner, presence: true
+
+  validate :birth_in_past, if: -> { birth_date }
 
   has_many :rental_requests,
            primary_key: :id,
@@ -29,7 +32,20 @@ class Cat < ApplicationRecord
            class_name: :CatRentalRequest,
            dependent: :destroy
 
+  belongs_to :owner,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :User
+
   def age
     time_ago_in_words(birth_date)
+  end
+
+  private
+
+  def birth_in_past
+    if birth_date && birth_date > Time.now
+      errors[:birth_date] << "cant be in the future!"
+    end
   end
 end

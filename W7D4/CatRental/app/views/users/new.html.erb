@@ -1,13 +1,27 @@
-<h1>New User!</h1>
 
-<form action="<%= users_url %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <label for="user_username">Username</label>
-  <input type="text" name="user[user_name]" id="user_username">
+<main class="new-request-main">
 
-  <label for="user_password">Password</label>
-  <input type="password" name="user[password]" id="user_password">
+  <header class="new-request-header">
+    <h1>New User</h1>
+  </header>
 
-  <input type="submit" value="Create User!">
-</form>
+  <section class="new-request-session">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+    <% end %>
+
+    <form action="<%= users_url %>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+      <label for="user_username">Username</label>
+      <input type="text" name="user[user_name]" id="user_username">
+
+      <label for="user_password">Password</label>
+      <input type="password" name="user[password]" id="user_password">
+
+      <input type="submit" value="Create User!">
+    </form>
+  </section>
+
+</main>

@@ -16,8 +16,9 @@ class SessionController < ApplicationController
 
     if user.nil?
       # COuld do more here to redirect to create user
-      render plain: "Credentials were incorrect"
+      # render plain: "Credentials were incorrect"
       #  Will add an error to flash and redirect and display error later
+      redirect_to new_session_url, flash: { error_message: "Invalid Credentials" }
     else
       # We now need to reset the users session token, update the session[] hash w/
        # new one so rails, and user session on same page
