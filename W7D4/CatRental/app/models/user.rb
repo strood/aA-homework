@@ -69,6 +69,8 @@ class User < ApplicationRecord
   end
 
   def reset_session_token!
+    # Resets our session token and outputs it so we can pass it to our
+    #  session[:session_token] when creating a new session on login.
     self.session_token = User.generate_session_token
     self.save!
     self.session_token

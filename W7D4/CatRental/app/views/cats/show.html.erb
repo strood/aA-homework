@@ -61,12 +61,14 @@
           <th colspan="1">Start Date:</th>
           <th colspan="1">End Date: </th>
           <th colspan="1">Status: </th>
-          <th colspan="1">Action:</th>
+          <% if current_user && current_user.owns_cat?(current_cat) %>
+            <th colspan="1">Action:</th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
         <!-- Using includes on this line allows us to eager load in requesters so  -->
-        <!-- we avoid an n+1 quey for pulling in his name each time. We will eager load it Instead -->\
+        <!-- we avoid an n+1 quey for pulling in his name each time. We will eager load it Instead -->
         <!--  of default lazy load -->
         <% @cat.rental_requests.includes(:requester).order('start_date').each do |request| %>
         <tr>
@@ -74,16 +76,16 @@
           <td><%= request.start_date %></td>
           <td><%= request.end_date %></td>
           <td><%= request.status %> </td>
-          <td class="action-td">
-            <% if request.pending? && current_user && current_user.owns_cat?(current_cat) %>
-              <form action="<%=approve_cat_rental_request_url(request)%>" method="post">
-                <input class="button" type="submit" name="approve" value="Approve">
-              </form>
-              <form action="<%=deny_cat_rental_request_url(request)%>" method="post">
-                <input class="button" type="submit" name="deny" value="Deny">
-              </form>
-              <% end %>
-            </td>
+          <% if request.pending? && current_user && current_user.owns_cat?(current_cat) %>
+              <td class="action-td">
+                <form action="<%=approve_cat_rental_request_url(request)%>" method="post">
+                  <input class="button" type="submit" name="approve" value="Approve">
+                </form>
+                <form action="<%=deny_cat_rental_request_url(request)%>" method="post">
+                  <input class="button" type="submit" name="deny" value="Deny">
+                </form>
+              </td>
+            <% end %>
           </tr>
           <% end %>
         </tbody>
