@@ -105,6 +105,7 @@ class CatRentalRequest < ApplicationRecord
     end
   end
 
+
   def requester_exists?
     errors[:user] << 'must be valid' unless User.exists?(id: user_id)
   end

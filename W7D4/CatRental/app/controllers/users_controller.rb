@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # Requires no user to be logged in if going to create or new pages
   before_action :require_no_user!, only: [:create, :new]
+  before_action :require_user_is_current_user!, only: [:show]
 
   def new
     @user = User.new
@@ -18,6 +19,18 @@ class UsersController < ApplicationController
       #  Wil add in error to flash here
       redirect_to new_user_url, flash: { error_message: "Invalid Credentials"}
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
+
+    unless @user && @user == current_user
+      # if invalid user, or not the current user, redirect to index
+      redirect_to cats_url
+      return
+    end
+    # if its the current user viewing their own page, render
+    render :show
   end
 
   private

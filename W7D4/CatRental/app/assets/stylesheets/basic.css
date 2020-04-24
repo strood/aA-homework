@@ -61,10 +61,22 @@ footer {
   align-items: center;
 }
 
-.head-div a {
-  display: block;
-  padding: 20px;
+
+.button {
+  display: flex;
+  padding: 10px;
   background: rgba(0, 0, 0, 0.1);
+  align-content: center;
+}
+
+.logout_input {
+  border: 1px solid yellow;
+
+}
+
+.user_link {
+  padding: 10px;
+  background: rgba(0,0,0,0);
 }
 
 
@@ -157,6 +169,107 @@ footer {
     align-items: center;
   }
 
+  /* user show page customizations (Did a new style here instead of tables) */
+  /* Hopefully more dynamic. */
+  /* just using self-main and self-header as these are baked in to design */
+
+  .user-name-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: left;
+    padding: 5%;
+    padding-bottom: 0%;
+    padding-top: 0%;
+  }
+  .user-cats-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 5%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+  }
+  .user-requests-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 5%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+  }
+
+  .user-sessions-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 5%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+  }
+
+  /* going to display cats, requests, and sessions all in a similar mannar in this */
+  .user-cats-display-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1%;
+    margin: 1%;
+    border: solid 1px black;
+    background: rgba(58, 41, 21, 0.3)
+  }
+
+  .user-reqeusts-display-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1%;
+    margin: 1%;
+    border: solid 1px black;
+    background: rgba(58, 41, 21, 0.3)
+  }
+
+  .user-reqeusts-display-div p {
+    padding: 0;
+    margin: 0;
+    font-size: 21px;
+  }
+
+  .user-sessions-display-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    padding: 1%;
+    margin: 1%;
+    border: solid 1px black;
+    background: rgba(58, 41, 21, 0.3)
+  }
+
+  .user-sessions-display-div p {
+    padding: 0;
+    margin: 0;
+    font-size: 21px;
+  }
+
+  .user-name-section p,
+  .user-cats-section p {
+    margin: 1%;
+    padding: 0%;
+
+  }
+
+  .user-cats-section h2,
+  .user-requssts-section h2 {
+
+  }
+
+
 
   /* cat_rental_request/new.html.erb components */
 
@@ -165,7 +278,7 @@ footer {
      flex-direction: column;
      margin-left: 25%;
      margin-right: 25%;
-     height: 86vh;
+     height: 85.8vh;
    }
 
    .new-request-header {
@@ -251,5 +364,20 @@ textarea {
     flex-direction: column;
     margin-left: 0%;
     margin-right: 0%;
+  }
+
+  .welcome_message {
+    display: none;
+  }
+
+  .header-text {
+    display: none;
+  }
+
+  .start_header,
+  .end_header,
+  .start_data,
+  .end_data {
+    display: none;
   }
 }

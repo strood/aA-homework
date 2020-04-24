@@ -31,13 +31,33 @@ class User < ApplicationRecord
     class_name: :Cat,
     dependent: :destroy
 
+# Will add this in shortly when i create sessions
+  # has_many :sessions,
+  #     primary_key: :id,
+  #     foreign_key: :user_id,
+  #     class_name: :session,
+  #     dependent: :destroy
+
     # Use this method in controller to make sure only if a person owns a cat
     # then they are alolowed to approve, or denyt, or edit/update
   def owns_cat?(cat)
     cat.user_id == self.id
   end
 
+  def has_cats?
+    # checks if cats array is empty or not to determine
+     !self.cats.empty?
+  end
 
+  def has_requests?
+    # checks if requssts array is empty or not to determine
+     !self.requests.empty?
+  end
+
+  def has_sessions?
+    # checks if requssts array is empty or not to determine
+     !self.requests.empty?
+  end
 
   def self.find_by_credentials(user_name, password)
     user = User.find_by(user_name: user_name)

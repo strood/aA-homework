@@ -7,9 +7,9 @@
         <!-- Hides the edit button if you dont own the cat -->
         <!-- NOTE: Need to protect more than here, Controller filters to protect from malicious users -->
         <% if current_user && current_user.owns_cat?(current_cat)%>
-          <a href=" <%= edit_cat_url %> ">Edit Cat</a>
+          <a class="button" href="<%= edit_cat_url %> ">Edit Cat</a>
         <% end %>
-        <a href=" <%= cats_url %> ">All Cats</a>
+        <a class="button" href=" <%= cats_url %> ">All Cats</a>
       </div>
     </header>
 
@@ -58,8 +58,8 @@
       <thead>
         <tr>
           <th colspan="1">Renter:</th>
-          <th colspan="1">Start Date:</th>
-          <th colspan="1">End Date: </th>
+          <th class="start_header" colspan="1">Start Date:</th>
+          <th class="end_header" colspan="1">End Date: </th>
           <th colspan="1">Status: </th>
           <% if current_user && current_user.owns_cat?(current_cat) %>
             <th colspan="1">Action:</th>
@@ -73,8 +73,8 @@
         <% @cat.rental_requests.includes(:requester).order('start_date').each do |request| %>
         <tr>
           <td><%= request.requester.user_name %></td>
-          <td><%= request.start_date %></td>
-          <td><%= request.end_date %></td>
+          <td class="start_data"><%= request.start_date %></td>
+          <td class="end_data"><%= request.end_date %></td>
           <td><%= request.status %> </td>
           <% if request.pending? && current_user && current_user.owns_cat?(current_cat) %>
               <td class="action-td">
