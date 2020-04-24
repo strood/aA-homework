@@ -42967,3 +42967,182 @@ Processing by CatsController#show as HTML
 Completed 200 OK in 35ms (Views: 28.9ms | ActiveRecord: 3.8ms)
 
 
+Started GET "/cats" for 127.0.0.1 at 2020-04-24 13:59:28 -0600
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (2.1ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (16.1ms)
+Completed 200 OK in 176ms (Views: 159.6ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/cats/new" for 127.0.0.1 at 2020-04-24 13:59:35 -0600
+Processing by CatsController#new as HTML
+Redirected to http://localhost:3000/session/new
+Filter chain halted as :require_user! rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-24 13:59:35 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-24 13:59:40 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" /XSCtENmqut2tAAHSlnH2cs4V5es2K0q2T65i4THVGOfIsg/VBooC4f+4ZibSYMdj59t/ZwBx6zJIOi3myPHOQ== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/__better_errors/c62c6ac95d4bd046/variables" for 127.0.0.1 at 2020-04-24 13:59:40 -0600
+Started POST "/session" for 127.0.0.1 at 2020-04-24 14:00:40 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" /XSCtENmqut2tAAHSlnH2cs4V5es2K0q2T65i4THVGOfIsg/VBooC4f+4ZibSYMdj59t/ZwBx6zJIOi3myPHOQ== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Janet"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:63
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:95
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Janet"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:95
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "JDFE3mzYRGbU19GHxCGesA"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:95
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "JDFE3mzYRGbU19GHxCGesA"], ["updated_at", "2020-04-24 20:00:40.869015"], ["id", 1]]
+  ↳ app/models/user.rb:95
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:95
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 231ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-24 14:00:40 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (12.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "JDFE3mzYRGbU19GHxCGesA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 21ms (Views: 16.1ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/cats/new" for 127.0.0.1 at 2020-04-24 14:00:43 -0600
+Processing by CatsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "JDFE3mzYRGbU19GHxCGesA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+  Rendering cats/new.html.erb within layouts/application
+  Rendered cats/_form.html.erb (1.8ms)
+  Rendered cats/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 13ms (Views: 10.6ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/session/237dca37d97eabf4c764ff469b22796e" for 127.0.0.1 at 2020-04-24 14:07:45 -0600
+Processing by SessionController#destroy as HTML
+  Parameters: {"id"=>"237dca37d97eabf4c764ff469b22796e"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "JDFE3mzYRGbU19GHxCGesA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:95
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "Janet"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:95
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "sAJXpwzOAsiZtO8oIGRU8g"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:95
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "sAJXpwzOAsiZtO8oIGRU8g"], ["updated_at", "2020-04-24 20:07:45.789349"], ["id", 1]]
+  ↳ app/models/user.rb:95
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:95
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 23ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-24 14:07:45 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2020-04-24 14:07:47 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-04-24 14:08:01 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"HWnzZ1iT847nCUq894MHWAQZqX0oZfFJ/zcA0lEC/dl/P7nsT+9xbhZDqyMmk0OcQL6TFxi8m8/vKVHuTuZugw==", "user"=>{"user_name"=>"GI Joe", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "GI Joe"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "g74NvfTiZ9IINRlFAQVf3Q"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser Create (2.2ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_name", "GI Joe"], ["password_digest", "$2a$12$lleei05RSl1VsxteQQ.czOUAs0bgdVpAYJE2J351aEqZ.tEVWnOSi"], ["session_token", "g74NvfTiZ9IINRlFAQVf3Q"], ["created_at", "2020-04-24 20:08:01.526621"], ["updated_at", "2020-04-24 20:08:01.526621"]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:14
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:95
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "GI Joe"], ["id", 9], ["LIMIT", 1]]
+  ↳ app/models/user.rb:95
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "s9mwFpScD6lMdl4Guapy3Q"], ["id", 9], ["LIMIT", 1]]
+  ↳ app/models/user.rb:95
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "s9mwFpScD6lMdl4Guapy3Q"], ["updated_at", "2020-04-24 20:08:01.533043"], ["id", 9]]
+  ↳ app/models/user.rb:95
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:95
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 212ms (ActiveRecord: 5.3ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-24 14:08:01 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (12.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s9mwFpScD6lMdl4Guapy3Q"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 22ms (Views: 16.9ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/users/9" for 127.0.0.1 at 2020-04-24 14:08:03 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "s9mwFpScD6lMdl4Guapy3Q"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:25
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mCat Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cats" WHERE "cats"."user_id" = $1 LIMIT $2[0m  [["user_id", 9], ["LIMIT", 1]]
+  ↳ app/models/user.rb:49
+  [1m[36mCatRentalRequest Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM "cat_rental_requests" WHERE "cat_rental_requests"."user_id" = $1 LIMIT $2[0m  [["user_id", 9], ["LIMIT", 1]]
+  ↳ app/models/user.rb:54
+  Rendered users/show.html.erb within layouts/application (38.9ms)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 4.5ms)
+
+
+
+NoMethodError - undefined method `sessions' for #<User:0x00007fec10b7d0a0>
+Did you mean?  session_token:
+  app/models/user.rb:59:in `has_sessions?'
+  app/views/users/show.html.erb:2:in `_app_views_users_show_html_erb__2955572385825673399_70325935430820'
+  app/controllers/users_controller.rb:33:in `show'
+
+Started POST "/__better_errors/956ead16a9c68094/variables" for 127.0.0.1 at 2020-04-24 14:08:03 -0600
+  [1m[36mCat Load (0.2ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."user_id" = $1 LIMIT $2[0m  [["user_id", 9], ["LIMIT", 11]]
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Cat Load (0.0ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."user_id" = $1 LIMIT $2[0m  [["user_id", 9], ["LIMIT", 11]]
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mCatRentalRequest Load (0.2ms)[0m  [1m[34mSELECT  "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."user_id" = $1 LIMIT $2[0m  [["user_id", 9], ["LIMIT", 11]]
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE CatRentalRequest Load (0.0ms)[0m  [1m[34mSELECT  "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."user_id" = $1 LIMIT $2[0m  [["user_id", 9], ["LIMIT", 11]]
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98

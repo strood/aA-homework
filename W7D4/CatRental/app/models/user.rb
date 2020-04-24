@@ -55,7 +55,8 @@ class User < ApplicationRecord
   end
 
   def has_sessions?
-    # checks if requssts array is empty or not to determine
+    # checks if sessions array is empty or not to determine
+    # Set ar requests atm while i set up sessions
      !self.requests.empty?
   end
 

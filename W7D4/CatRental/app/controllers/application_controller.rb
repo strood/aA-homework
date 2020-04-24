@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # REMOVE THIS FOR PRODUCTION< JUST BAVOIDS US HAVING AUTHENTICITY ISSUES WHNE TESTING
   skip_before_action :verify_authenticity_token
+    # protect_from_forgery with: :exception
 
   #This line makes it available in our views too, by default it is
   # available in our other controllers.
