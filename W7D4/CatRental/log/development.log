@@ -43146,3 +43146,52 @@ Started POST "/__better_errors/956ead16a9c68094/variables" for 127.0.0.1 at 2020
   ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
   [1m[36mCACHE CatRentalRequest Load (0.0ms)[0m  [1m[34mSELECT  "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."user_id" = $1 LIMIT $2[0m  [["user_id", 9], ["LIMIT", 11]]
   ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Started GET "/cats/new" for 127.0.0.1 at 2020-04-26 19:53:41 -0600
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/strood/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#new as HTML
+Redirected to http://localhost:3000/session/new
+Filter chain halted as :require_user! rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-26 19:53:41 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 99ms (Views: 98.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2020-04-26 19:53:43 -0600
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:15
+  Rendered cats/index.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 28ms (Views: 16.3ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2020-04-26 19:53:44 -0600
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2020-04-26 19:53:48 -0600
+Processing by SessionController#create as HTML
+  Parameters: {"authenticity_token"=>" KoYYaZYOkar5c6yApJamAryjXCLtiSsiaq27bx+3zUDOjWqnzZH9r4QXNQsumoKZBFKxAmmAeS26j6F6r3FL1Q== ", "user"=>{"username"=>"Janet", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "Janet"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:64
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 6.0ms)
+
+
+
+NoMethodError - undefined method `session_token' for #<User:0x00007f4a381a4a30>:
+  app/models/user.rb:103:in `ensure_session_token'
+  app/models/user.rb:64:in `find_by_credentials'
+  app/controllers/session_controller.rb:12:in `create'
+
+Started POST "/__better_errors/26d54789f12560be/variables" for 127.0.0.1 at 2020-04-26 19:53:48 -0600
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
