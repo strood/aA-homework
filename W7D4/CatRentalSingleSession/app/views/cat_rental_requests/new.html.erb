@@ -1,0 +1,45 @@
+
+
+<main class="new-request-main">
+  <header class="new-request-header">
+    <h2>New Rental Request</h2>
+  </header>
+  <section class="new-request-section">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg.first, class: name %>
+    <% end %>
+
+    <form action="<%=cat_rental_requests_url%>" method="post">
+
+      <label for="cat_rental_request_cat_id">Desired Cat:</label>
+      <select name="cat_rental_request[cat_id]"
+                id="cat_rental_request_cat_id">
+        <option></option>
+        <% Cat.all.each do |cat| %>
+          <% selected = @rental_request.cat_id == cat.id %>
+            <option <%= selected ? "selected" : "" %>
+              value="<%= cat.id %>">
+              <%= cat.name %>
+            </option>
+        <% end %>
+  </select>
+        <br>
+
+        <label for="cat_rental_request_start_date">Start Date:</label>
+        <input type="date"
+              name="cat_rental_request[start_date]"
+              value="<%=@rental_request.start_date%>"
+              id="cat_rental_request_start_date">
+
+        <br>
+
+        <label for="cat_rental_request_end_date">End Date:</label>
+        <input type="date"
+               name="cat_rental_request[end_date]"
+               value="<%=@rental_request.end_date%>"
+               id="cat_rental_request_end_date">
+
+        <input class="button" type="submit" value="Submit Request">
+      </form>
+    </section>
+</main>

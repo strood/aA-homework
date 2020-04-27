@@ -1,0 +1,27 @@
+
+
+
+<main class="index-main">
+    <header class="index-header">
+      <h2>Our entire selection of cats:</h2>
+      <div class="head-div">
+      <a href=" <%= new_cat_url %> ">New Cat</a>
+      <a href=" <%= new_cat_rental_request_url %>">Rental Request</a>
+    </div>
+    </header>
+
+    <section class="index-section">
+
+          <% @cats.each do |cat| %>
+          <div  class="index-box">
+            <div class="index-cat-div">
+              <img class="index-cat-pic" src="https://placekitten.com/200/287" alt="cats personal photo">
+              <h4><%=cat.name%></h4>
+              <a href="<%=cat_url(cat.id)%>">About me</a>
+            </div>
+          </div>
+          <% end %>
+
+
+    </section>
+</main>

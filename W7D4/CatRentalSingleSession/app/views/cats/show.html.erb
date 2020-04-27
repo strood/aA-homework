@@ -1,0 +1,98 @@
+
+
+<main class="self-main">
+    <header class="self-header">
+      <h2>About Me</h2>
+      <div class="head-div">
+        <!-- Hides the edit button if you dont own the cat -->
+        <!-- NOTE: Need to protect more than here, Controller filters to protect from malicious users -->
+        <% if current_user && current_user.owns_cat?(current_cat)%>
+          <a href=" <%= edit_cat_url %> ">Edit Cat</a>
+        <% end %>
+        <a href=" <%= cats_url %> ">All Cats</a>
+      </div>
+    </header>
+
+    <section class="self-section">
+      <div class="self-cat-div">
+        <img class="self-cat-pic" src="https://placekitten.com/200/287" alt="cats personal photo">
+        <h2><%= @cat.name %></h2>
+        <table class="cat-stats">
+          <thead>
+            <tr>
+              <th colspan="1">Attribute</th>
+              <th colspan="1">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Age:</td>
+              <td><%= @cat.age %></td>
+            </tr>
+            <tr>
+              <td>Color:</td>
+              <td><%= @cat.color %></td>
+            </tr>
+            <tr>
+              <td>Sex:</td>
+              <td><%= @cat.sex %></td>
+            </tr>
+            <tr>
+              <td>Description:</td>
+              <td><%= @cat.description %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: name %>
+    <% end %>
+
+  <section class="self-section">
+    <header>
+      <h2>Rental Requests</h2>
+    </header>
+    <table class="cat-rental">
+      <thead>
+        <tr>
+          <th colspan="1">Renter:</th>
+          <th colspan="1">Start Date:</th>
+          <th colspan="1">End Date: </th>
+          <th colspan="1">Status: </th>
+          <th colspan="1">Action:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Using includes on this line allows us to eager load in requesters so  -->
+        <!-- we avoid an n+1 quey for pulling in his name each time. We will eager load it Instead -->\
+        <!--  of default lazy load -->
+        <% @cat.rental_requests.includes(:requester).order('start_date').each do |request| %>
+        <tr>
+          <td><%= request.requester.user_name %></td>
+          <td><%= request.start_date %></td>
+          <td><%= request.end_date %></td>
+          <td><%= request.status %> </td>
+          <td class="action-td">
+            <% if request.pending? && current_user && current_user.owns_cat?(current_cat) %>
+              <form action="<%=approve_cat_rental_request_url(request)%>" method="post">
+                <input class="button" type="submit" name="approve" value="Approve">
+              </form>
+              <form action="<%=deny_cat_rental_request_url(request)%>" method="post">
+                <input class="button" type="submit" name="deny" value="Deny">
+              </form>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div>
+        <!-- Able to pass params into query string to carry cat into request form w help from controllers
+              and my CatRentalRequest.new(cat_id: params[:cat_id]) creation when called new-->
+        <a href=" <%= new_cat_rental_request_url(cat_id: @cat.id) %>" value="cat[<%= params[:id] %>]">New Rental Request</a>
+      </div>
+
+  </section>
+</main>

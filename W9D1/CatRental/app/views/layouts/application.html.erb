@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CatRental</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+  </head>
+
+  <body>
+    <header class="main-header">
+      <h1 class="main-title"><a href="<%= cats_url %>">Catz4Rent</a></h1>
+      <div class="head-div">
+        <!-- edit what is displayed in header based on if logged in or not -->
+        <% if !current_user.nil? %>
+          <p class="welcome_message">Welcome</p>
+          <a class="user_link" href="<%= user_url(current_user.id) %>"><%= current_user.user_name %> </a>
+
+          <form action="<%= session_url(session.id) %>" method="post">
+            <input type="hidden" name="_method" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="_method" value="DELETE">
+
+            <input class="logout_input" type="submit" value="Logout">
+          </form>
+
+        <% else %>
+          <a class="button" href="<%= new_session_url %>">Sign In</a>
+          <a class="button" href="<%= new_user_url %>">Sing Up</a>
+        <% end %>
+      </div>
+    </header>
+
+    <%= yield %>
+  </body>
+</html>

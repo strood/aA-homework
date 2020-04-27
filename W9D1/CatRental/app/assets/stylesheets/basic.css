@@ -1,0 +1,383 @@
+/* Reset */
+
+h1,
+h2,
+ul {
+  margin: 0;
+  vertical-align: bottom;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  color: yellow;
+}
+
+
+/* Layout Basics */
+
+.error_message {
+  color: red;
+  display: flex;
+  justify-content: center
+}
+
+
+html,
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Sofia';
+    font-size: 22px;
+    background: rgba(200, 200, 150, 0.5);
+    padding: 0;
+    margin: 0;
+}
+
+header,
+section,
+footer {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+/* Application.html Main header components */
+.main-header {
+    display: flex;
+    margin-bottom: 2%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: rgba(58, 41, 21, 0.5)
+}
+
+.head-div {
+  display: flex;
+  align-items: center;
+}
+
+
+.button {
+  display: flex;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  align-content: center;
+}
+
+.logout_input {
+  border: 1px solid yellow;
+
+}
+
+.user_link {
+  padding: 10px;
+  background: rgba(0,0,0,0);
+}
+
+
+/* Universal compoents, across many pages */
+
+.cat-div h4 {
+  font-size: 24px;
+}
+
+/* Index.html.erb components */
+
+.index-main {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.index-header {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(58, 41, 21, 0.5)
+}
+
+.index-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.index-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1%;
+  margin: 1%;
+  border: solid 1px black;
+  background: rgba(58, 41, 21, 0.3)
+}
+
+.index-cat-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10%;
+}
+
+.index-cat-pic {
+   width: 80%;
+   height: 60%;
+   margin: 2%;
+   border: 1px solid black;
+ }
+
+
+/* show.html.erb components */
+
+ .self-main {
+   display: flex;
+   flex-direction: column;
+   margin-left: 25%;
+   margin-right: 25%;
+ }
+
+ .self-header {
+   display: flex;
+   justify-content: space-between;
+   background: rgba(58, 41, 21, 0.5)
+ }
+
+ .self-section {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-around;
+   padding: 5%;
+ }
+
+ .self-cat-pic {
+    display: flex;
+    flex: 1 1 30%;
+    border: 1px solid black;
+  }
+
+  .self-cat-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* user show page customizations (Did a new style here instead of tables) */
+  /* Hopefully more dynamic. */
+  /* just using self-main and self-header as these are baked in to design */
+
+  .user-name-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: left;
+    padding: 5%;
+    padding-bottom: 0%;
+    padding-top: 0%;
+  }
+  .user-cats-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 5%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+  }
+  .user-requests-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 5%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+  }
+
+  .user-sessions-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 5%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+  }
+
+  /* going to display cats, requests, and sessions all in a similar mannar in this */
+  .user-cats-display-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1%;
+    margin: 1%;
+    border: solid 1px black;
+    background: rgba(58, 41, 21, 0.3)
+  }
+
+  .user-reqeusts-display-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1%;
+    margin: 1%;
+    border: solid 1px black;
+    background: rgba(58, 41, 21, 0.3)
+  }
+
+  .user-reqeusts-display-div p {
+    padding: 0;
+    margin: 0;
+    font-size: 21px;
+  }
+
+  .user-sessions-display-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    padding: 1%;
+    margin: 1%;
+    border: solid 1px black;
+    background: rgba(58, 41, 21, 0.3)
+  }
+
+  .user-sessions-display-div p {
+    padding: 0;
+    margin: 0;
+    font-size: 21px;
+  }
+
+  .user-name-section p,
+  .user-cats-section p {
+    margin: 1%;
+    padding: 0%;
+
+  }
+
+  .user-cats-section h2,
+  .user-requssts-section h2 {
+
+  }
+
+
+
+  /* cat_rental_request/new.html.erb components */
+
+   .new-request-main {
+     display: flex;
+     flex-direction: column;
+     margin-left: 25%;
+     margin-right: 25%;
+     height: 85.8vh;
+   }
+
+   .new-request-header {
+     display: flex;
+     justify-content: space-between;
+     background: rgba(58, 41, 21, 0.5)
+   }
+
+   .new-request-section {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     flex-wrap: wrap;
+     justify-content: space-around;
+     padding: 5%;
+   }
+
+
+/* CAT TABLES */
+
+.cat-stats {
+  background: rgba(58, 41, 21, 0.5);
+}
+
+table td {
+  border: 1px solid black;
+}
+
+.cat-rental {
+ background: rgba(58, 41, 21, 0.5);
+ width: 100%;
+}
+
+.action-td {
+  text-align: center;
+}
+
+
+/* Input attributes */
+
+input {
+  style: none;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid yellow;
+  height: 40px;
+  color: yellow;
+}
+
+select {
+  style: none;
+  background: rgba(58, 41, 21, 0.5);
+  border: none;
+  color: yellow;
+  -webkit-appearance: none;
+}
+
+textarea {
+  style: none;
+  background: rgba(58, 41, 21, 0.5);
+  border: none;
+  color: yellow;
+}
+
+.button {
+  border: 1px solid yellow;
+  margin: 10px;
+  display: block;
+  background: rgba(58, 41, 21, 0.5);
+  color: yellow;
+}
+
+.sex-label {
+  margin-right: 15px;
+}
+
+/* MEDIA QUERIES */
+
+@media all and (max-width: 1075px) {
+
+  .self-main {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+
+  .welcome_message {
+    display: none;
+  }
+
+  .header-text {
+    display: none;
+  }
+
+  .start_header,
+  .end_header,
+  .start_data,
+  .end_data {
+    display: none;
+  }
+}

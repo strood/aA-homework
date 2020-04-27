@@ -1,0 +1,69 @@
+
+<main class="self-main" <%= !current_user.has_cats? && !current_user.has_requests? && !current_user.has_sessions? ? "style=height:85.6vh;" : "" %>>
+    <header class="self-header">
+      <h2>User Info</h2>
+    </header>
+
+    <section class="user-name-section">
+        <p><b>Name:</b> <%= current_user.user_name %> <a href="#">edit</a></p>
+        <p><b>Pass:</b> <%= current_user.password_digest[0..12] %>....... <a href="#">edit</a></p>
+        <p><b>Creation date:</b> <%= current_user.created_at %> </p>
+    </section>
+
+  <header class="self-header">
+    <h2>Cats:</h2>
+  </header>
+  <section class="user-cats-section">
+      <% if current_user.has_cats? %>
+        <% @user.cats.order('name').each do |cat| %>
+          <div class="user-cats-display-div">
+              <p><a href="<%= cat_url(cat) %>"><%= cat.name %></a></p>
+          </div>
+        <% end %>
+      <% else %>
+       <p>You dont have any cats yet!</p>
+      <% end %>
+
+  </section>
+  <header class="self-header">
+    <h2>Rental Requests:</h2>
+  </header>
+  <section class="user-requests-section">
+      <% if current_user.has_requests? %>
+        <% @user.requests.includes(:cat).order('start_date').each do |req| %>
+        <div class="user-reqeusts-display-div">
+            <p>Cat: <%= req.cat.name %></p>
+            <p>Start: <%= req.start_date %></p>
+            <p>End: <%= req.end_date %></p>
+            <p>Approved? <%= req.approved? ? "Yes" : "No" %></p>
+            <p><a class="button" href="<%= cat_url(req.cat) %>">View</a></p>
+          </div>
+        <% end %>
+      <% else %>
+       <p>You dont have any rental requests yet!</p>
+      <% end %>
+  </section>
+  <header class="self-header">
+    <h2>Current Sessions:</h2>
+  </header>
+  <section class="user-sessions-section">
+
+      <% if current_user.has_sessions? %>
+
+          <div class="user-sessions-display-div">
+              <p>Session: </p> <p><%= @user.session_token[0..8] %></p>
+              <p>Session Location: </p> <p>40.771,-74.044</p>
+              <p><a class="button" href="#">Terminate Session</a></p>
+          </div>
+          <div class="user-sessions-display-div">
+              <p>Session: </p> <p><%= @user.session_token[0..8] %></p>
+              <p>Session Location: </p> <p>40.771,-74.044</p>
+              <p><a class="button" href="#">Terminate Session</a></p>
+          </div>
+
+      <% else %>
+        <!-- Should never encounter this, just putting in for testing sake -->
+       <p>You dont have any active sessisons yet!</p>
+      <% end %>
+  </section>
+</main>
