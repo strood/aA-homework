@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>INTRO</title>
+  <style>
+
+  /*
+
+  RESET
+  =====
+  html, body, section, article,
+  h1, h2, p, strong, em, a {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: inherit;
+  font: inherit;
+  text-decoration: inherit;
+  text-align: inherit;
+  color: inherit;
+  background: transparent;
+
+
+  User Agent Styles
+
+    Browsers (also known as User Agents) have an internal stylesheet
+    You see them in action when you have a plain HTML page without any declared styles
+    They are sensible defaults, but differ slightly per browser
+    This stylesheet is loaded before any of your declared styles
+
+    CSS Reset
+
+    In order to be intentional about our own styles, we reset the properties the User Agent Stylesheet declares.
+    This prevents surprises and unexpected conflicts with the styles you write yourself
+    We put our reset styles at the top of our stylesheet
+    Resets consist of zero-ing out box-model properties and setting color and font properties to inherit
+    I prefer to be intentional and list the exact used tags to reset:
+
+  RESPONSIVE DESIGN INCLUDE:
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  -You should add this to the <head> of any site you want to make responsive:
+  https://open.appacademy.io/learn/full-stack-online/rails/css-responsive-design
+
+  CLEARFIX
+  ========
+  .group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+  CSS == PRESENTATION LAYER
+
+  STRUCTURE != PRESENTATION
+
+  ----SYNTAX---
+
+  selector {
+    property: value;
+  }
+
+
+  SELECTORS
+  =========
+  # WORSE
+  1) !important
+  2) inline 'style="color:yellow;""'
+  3) id 'cat-one-1'
+  # GOOD
+  4) class '.favorite'
+  5) element '<p>'
+
+  SPECIFICITY MATTERS,
+  ORDER MATTERS, LAST DECLARED TAKES PRECEDENCE,
+
+  INHERITANCE
+    Setting a property to inherit will cause it to take its property value from its parent element
+    We leverage inherit to greatly DRY up our styles
+
+}
+
+  TRANSITION AND TRANSFORM
+
+  */
+
+  h1 {
+    color: red;
+  }
+
+  p {
+    text-align: right;
+  }
+
+  .favorite {
+    color: green;
+  }
+
+  .special {
+    color: orange;
+  }
+
+  #cat-one-1 {
+    color: purple;
+  }
+
+  p {
+    color: gray !important;
+  }
+
+  /*
+    DISPLAY
+    =======
+    - NONE - does not get rendered on page (no impact on others)
+    - BLOCK - full width, min height, disappear if nothing in it, no neighbors
+    - INLINE - width & hieght to content, wrap at limit, follow textflow
+    - FLEX
+
+    BOX MODEL PROPERTIES
+    ====================
+    width: px, em, %, preferred setting.
+    height: less desirable unless fixed insides, text will overflow if limited,
+    will grow to accomidate if not set.
+    (can specify top-bottom-left-right on properties)
+    padding: inner space,
+    margin: outer space, does not stack with nearby margins, lrgst margin wins
+    margin will push out of parent unless contained by parents border or padding
+    Margin Reading
+
+    Margin is like private space, it collapses
+    Margin is see-through, not part of element
+    Cannot be given background, not part of element
+    Margin can be set to auto to distribute left and right margin space
+    Margin can be negative, pulling the element and any that follow in the negative direction
+    Weird gotcha: margins push through top and bottom of any direct ancestor elements that do not have a border or padding, or their overflow set to visible
+
+    When padding, when margin?
+
+    Padding is part of an element, margin is not
+    Margin collapses, padding always takes up space
+    As part of the element, padding can have a background, margin is always see-through
+
+    box-sizing: content-box, border-box
+    -aboive sets whether i want border a part of element or nto, helps with formatting
+
+    Pseudo Content
+
+      Used to inject content inside an element
+      You can either inject after or before the present content inside an element
+
+    h1:before {
+      content: ":)";
+      # cal also grab by property
+      content: attr(href)
+    }
+    Kind of creates <h1><span>:)</span>Hello!</h1>
+  */
+
+   .box {
+     display: block;
+     background: lightblue;
+
+     width: 200px;
+     height: 200px;
+
+     padding: 20px;
+     border: 10px solid black;
+
+     /* Optional
+      background: url("url.here")
+      background-size: contain
+
+      */
+   }
+
+  </style>
+</head>
+<body>
+
+  <h1>This is my Page</h1>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+  <article>
+      <h1 class="favorite special">Cats</h1>
+      <p class="favorite" id="cat-one-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </article>
+
+  <article>
+      <h1 style="color:yellow;">Lazers</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </article>
+
+  <article>
+      <h1 class="favorite" id="cat-one-1">Spaghetti</h1>
+      <p class="box">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. .</p>
+      <p class="box">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. .</p>
+  </article>
+</body>
+</html>
