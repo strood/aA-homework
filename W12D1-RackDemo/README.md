@@ -19,3 +19,7 @@ some HTTP parsing in it.
 nc localhost 3000
 CREATE
 Bob
+
+auth_middleware.rb - Simple example of middleware to verify admin users.
+- Use rack builder to build it into the stack to be first called before
+  passing on. 
