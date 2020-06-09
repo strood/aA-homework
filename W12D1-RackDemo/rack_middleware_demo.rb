@@ -102,6 +102,7 @@ end
 app = Rack::Builder.new do
     #Using rack-builder DSL, you say what middleware to use, and which
     # app to run, this then becomes the app you pass to server start
+    #Initialized from bottom up, called top down
     use LoggerMiddleware #Could be many of these middleware to use
     use BrowserFilter #Lower listed middleware initialized first. 
     run hey_app
